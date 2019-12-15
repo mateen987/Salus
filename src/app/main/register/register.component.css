@@ -1,0 +1,71 @@
+.my-dashboard{
+    background: #e3e8eb;
+    padding-top: 4%;
+    font-family:inherit ;
+   
+}
+.container-fluid{
+    width: 92%;
+ 
+}
+h2{
+    font-family:Montserrat-Bold ;
+}
+.employeeForm ,.billingMethod{
+    padding:0 5px 0 5px;
+}
+
+.user-form{
+    padding: 10px;
+    background: #000000;
+}
+.inputField{
+  padding: 0 10px 0 10px;
+}
+.input-label,.billing-input-label{
+    font-size: 18px;
+    font-family: Montserrat-Bold;
+}
+.billing-input-label{
+    color: white;
+}
+.security-label{
+    font-size: 12px;
+    font-family: Montserrat-Bold;
+    padding-bottom: 3px;
+    color: white;
+}
+.user{
+    background: #84ba4d;
+    margin-top: 2% ;
+    margin-bottom: 2%;
+    width: 250px;
+    border-radius: 0px;
+}
+.logfood{
+    color: white;
+    font-family: Montserrat-Bold;
+}
+input{
+    border-radius: 3px;
+    border: 1px solid #000000;
+}
+.membership{
+    color: #84ba4d;
+    text-decoration: underline;
+}
+.register{
+    font-size: 13px;
+    display: block;
+    padding: 0 10px 5px 13px;
+    font-family: Lato-Regular;
+}
+@media (max-width:1100px){
+  .col-sm-4, .col-sm-8{
+    min-width: 100%;
+  }
+}
+.expiration{
+    margin:0px !important;
+    padding:0px !important;
+}

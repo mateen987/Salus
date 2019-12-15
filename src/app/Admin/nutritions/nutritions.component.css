@@ -1,0 +1,71 @@
+.my-dashboard{
+    background: #e3e8eb;
+    padding-top: 3%;
+    font-family:inherit ;
+   
+}
+.container-fluid{
+    width: 92%;
+}
+h2,h5,h6,h4{
+    font-weight: 700;
+    font-family: Montserrat-Bold;
+}
+.add{
+    background: #83b752;
+    color: white;
+    border-radius: 0px;
+    width: 195px;
+}
+input{
+    border-radius: 0px;
+}
+/* .formField{
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+} */
+
+
+.search-btn{
+    background-color: #84ba4d;
+    color: white;
+    border-radius: 0px;
+}
+.col-md-6{
+    width: 70% !important;
+}
+.col-md-3{
+    width: 15% !important;
+}
+table{
+    background: white;
+}
+.search{
+    padding-right: 0px !important;
+}
+.fa-edit{
+    color: #87bc51;
+    font-size: 24px;
+}
+.fa-trash{
+    color: #b3254b;
+    font-size: 24px;
+}
+.text{
+    text-align: center;
+    text-decoration: underline;
+    color: #93cbfa;
+}
+.foodtext{
+    text-decoration: underline;
+    color: #93cbfa;
+}
+.submit{
+    width: 175px !important;
+    background: #84ba4d;
+    color: white;
+}
+.modal{
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+}

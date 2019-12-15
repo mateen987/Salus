@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+    font-family: Montserrat-Bold;
+    src: url(assets/font/Montserrat-Bold.otf) format("opentype");
+  }
+  @font-face {
+    font-family: Lato-Regular;
+    src: url(assets/font/Lato-Regular.ttf) format("opentype");
+  }
+  @import "../node_modules/angular-calendar/css/angular-calendar.css";
+@import '~@fullcalendar/daygrid/main.css'; 

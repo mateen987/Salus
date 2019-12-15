@@ -1,0 +1,129 @@
+<app-home></app-home>
+<div class=" my-dashboard">
+    <div class="container-fluid  ">
+
+        <div class="row justify-content-between">
+            <div>
+                <h2>ADMIN-CRUD CHALLENGES</h2>
+                <br>
+                <h4>CREATE NEW CHALLENGE</h4>
+            </div>
+            <div>
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link " href="admin/challenges">challenges</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin/badges">badges</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin/nutritions">Nutritions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="admin/exercise">Exercise</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="row p-3">
+            <div class="col-md-7">
+                <label>Challenge Title</label><br>
+                <input type="text" class="form-control mb-3 col-10" id="formGroupExampleInput" placeholder="Last">
+                <div class="row">
+                    <div class="col-md-5 mb-3">
+                        <label>Category</label>
+                        <div class="form-group inputgroup ">
+                            <select class="form-control dateInput " id="sel1" name="sellist1">
+                                <option>Excercise</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5 mb-3">
+                        <label>Sub Category</label>
+                        <div class="form-group inputgroup ">
+                            <select class="form-control dateInput " id="sel1" name="sellist1">
+                                <option>Runing Challenge</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- <date line start> -->
+                <div class="row">
+                    <div class=" col-md-3 date">
+                        <label>Start date</label>
+                        <div class="input-group">
+                            <input class="form-control border-right-0">
+                            <span class="input-group-append bg-white">
+                                <button class="btn fa fa-calendar" type="button"></button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class=" col-md-3 date">
+                        <label>End date</label>
+                        <div class="input-group">
+                            <input class="form-control border-right-0">
+                            <span class="input-group-append bg-white">
+                                <button class="btn fa fa-calendar" type="button"></button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 date">
+                        <label>Daily Points</label><br>
+                        <input type="text" class="form-control mb-3 col-12" id="formGroupExampleInput">
+                    </div>
+                </div>
+                <!-- <date line End> -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="employees">Choose participating companies or employees</label>
+                        <br>
+                        <input type="text" class="form-control mb-3 " id="formGroupExampleInput" placeholder="Last">
+                    </div>
+                    <div class="col-md-6 checkbox">
+                        <div class=" custom-control ">
+                            <input type="checkbox" class="custom-control-input" id="third">
+                            <label class="heading custom-control-label" for="third">Weekly Text Reminders</label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group purple-border">
+                    <label for="exampleFormControlTextarea4">Challenge Discription</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea4" rows="5"></textarea>
+                </div>
+                <button class="btn save">SAVE CHALLENGE</button>
+            </div>
+
+            <div class="browse col-md-5 p-3">
+                <label class="file-area">Featured Image</label>
+
+                <div class="col-md-12 browse-file justify-content-center d-flex">
+                    <div class="text-center  cloud ">
+                        <img src="../../../assets/images/icon/badges/browse.png" width="50%">
+                        <h5>Drag and drop or <span class="brows">browse</span></h5>
+                    </div>
+                </div><br>
+                <button class="btn save">UPLOAD/ADD IMAGE</button>
+                <br><br>
+                <label class="file-area mt-2">Featured Video</label>
+                <input type="text" class="form-control mb-3 col-12" id="formGroupExampleInput" placeholder="Embed Code">
+
+                <label class="file-area mt-2">PDF Download File</label><br>
+                <button class="btn save">UPLOAD/ADD PDF</button>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>

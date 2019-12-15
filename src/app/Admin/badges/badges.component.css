@@ -1,0 +1,75 @@
+.my-dashboard{
+    background: #e3e8eb;
+    padding-top: 4%;
+    font-family:inherit ;
+    height: calc(100vh - 92px);
+}
+.container-fluid{
+    width: 92%;
+}
+.inputgroup select { 
+	display: block;
+	width: 99%;
+	padding: 2px 25px 2px 2px; 
+	border: none; 
+	background: url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") right center no-repeat; 
+    appearance: none; 
+	-webkit-appearance: none;
+    -moz-appearance: none; 
+    background-color: white;
+}
+.dateInput{
+    height: calc(2.2em + 0.1rem + 1px);
+    background: #ffffff;
+    border: 0px solid;
+    color: black;
+}
+.inputgroup{
+    margin: auto;
+    width: 100%;
+    padding:0px;
+    overflow: hidden;
+    background: white;
+}
+.browse{
+    border: 1px solid #c0c5c6;
+    height:300px;
+   }
+   .brows{
+       color: #56acf5;
+   }
+   .cloud{
+    margin-top: auto;
+    margin-bottom: auto;
+
+   }
+    h2,h4,h6{
+        font-weight: 700;
+        font-family: Montserrat-Bold;
+    }
+    h2{
+        font-size: 34px;
+    }
+.form-control{
+    border: none !important;
+}
+    .calenderInput{
+        border: 1px solid #a3a5a6;
+        border-radius: 3px;
+        /* margin-bottom: 60px; */
+ 
+    }
+
+    .calender{
+        /* padding: 0.210rem .55rem; */
+        border:none;
+        border-radius: 0px;
+       color: #80bef1;
+       background: transparent !important;
+    }
+    .upload{
+        margin-top: 15px;
+        background: #84ba4d;
+        color: white;
+        width: 38%;
+    }

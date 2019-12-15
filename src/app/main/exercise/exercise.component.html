@@ -1,0 +1,136 @@
+<app-home></app-home>
+<div class=" my-dashboard">
+  <div class="container-fluid  ">
+
+    <!-- <profile section start> -->
+    <div class="row ">
+      <div class="col-sm-6 col-md-4 col-lg-4">
+        <h4>MY WELLNESS - EXERCISE </h4>
+        <h6>CURRENT GOAL:&nbsp;LOSE WEIGHT &nbsp;<a href="">Edit</a></h6>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-1">
+        <img src="../../../assets/images/icon/badges/exercise.png" width="80px">
+      </div>
+      <div class="col-lg-4 d-none d-lg-block"></div>
+      <div class="point_profile col-sm-6 col-md-4 col-lg-3 ">
+        <div class="profile row">
+          <div class="col text-right userProfile">
+            <p class="points">43</p>
+            <p class="upoints">Points</p>
+            <img src="assets/images/icon/star.png" width="100px" alt="Cinque Terre">
+          </div>
+          <div class="col text-right ">
+            <img src="assets/images/jane.jpg" class="rounded-circle" width="80px" alt="Cinque Terre">
+            <p class="text-center">Katlyn Smith</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <profile section end> -->
+    <div class="row ">
+      <div class="animation col-sm-12 col-md-4 col-lg-2 p-2">
+        <div class="items text-right ">
+          <h5 class="daily-task">Calories and macronutrient totals for today:</h5>
+          <a class="chooseDay" href="">CHOOSE ANOTHER DAY</a>
+        </div>
+        <div class="form-group calenderInput">
+          <div class="input-group">
+            <input class="form-control " placeholder="yyyy-mm-dd" name="dp">
+            <!-- <div class="input-group-append"> -->
+            <button class="btn calender btn-outline-secondary fa fa-calendar" (click)="d.toggle()"
+              type="button"></button>
+            <!-- </div> -->
+          </div>
+
+        </div>
+        <hr>
+        <div class="targetGoal text-right">TARGET GOALS:</div>
+      </div>
+      <!-- <progress bar start > -->
+      <div class="animation column col-sm-12 col-md-4 col-lg-2 p-2">
+        <div class="item text-center">
+          <label class="nutrition">CALORIES BURNED</label>
+          <circle-progress [percent]="75" radius="67" [outerStrokeWidth]="12" [innerStrokeWidth]="12" [space]="-12"
+            [showUnits]="false" [outerStrokeColor]="'#ad123c'" [innerStrokeColor]="'#e7e8ea'" [titleFontSize]="36"
+            [titleColor]=" '#ffffff' " [subtitleFontSize]="18" [animation]="true" [animationDuration]="300"
+            [subtitle]="'Kcel'" [showSubtitle]="false" [title]="360" [showTitle]="true" [startFromZero]="false"
+            [responsive]="false"> </circle-progress>
+          <p class="day_left">140 To Go Today</p>
+          <div class="number">500</div>
+        </div>
+
+      </div>
+      <!-- <end here> -->
+      <div class="col-sm-12 col-md-6 col-lg-6 p-2">
+        <div class="item text-center p-2 bg-white">
+          <hr>
+          <h5 class="slogen"><a class="challenge" href="">ADD EXERCISE</a></h5>
+
+          <div class="col-8  form-group inputgroup calenderInput">
+            <div class="input-group ">
+              <input class="form-control dateInput " placeholder="yyyy-mm-dd" name="dp">
+              <button class="btn calender btn-outline-secondary fa fa-calendar" (click)="d.toggle()"
+                type="button"></button>
+            </div>
+          </div>
+          <br>
+
+          <div class="form-group col-8 inputgroup calenderInput">
+            <select class="form-control dateInput selectpicker" id="sel1" name="sellist1">
+              
+              <option>Aerobics General</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select></div>
+          <br>
+
+
+          <div class="row d-flex justify-content-center">
+            <button class="btn btn-sm">-</button>&nbsp;
+            <input type="number" class="form-control countInput" name="dp">&nbsp;
+            <button class="btn btn-sm">+</button>
+          </div>
+
+
+          <button type="button" class=" workout  btn btn-default ">
+            <img class="pull-left icon" src="assets/images/icon/workout.png"><span class="logfood">&nbsp;ADD
+              EXERCISE&nbsp;</span>
+            <i class="logfood fa fa-chevron-right pull-right"></i>
+          </button>
+
+        </div>
+      </div>
+
+      
+      <h4>MY FOOD DIARY - OCTOBER 23, 2019</h4><br>
+
+      <table class="table table-borderless justify-content-center">
+       <thead>
+         <tr>
+           <th scope="col" class="firstNutritions">EXERCISE</th>
+           <th scope="col" class="nutritions">MINUTES</th>
+           <th scope="col" class="nutritions">WEIGHT</th>
+           <th scope="col" class="nutritions">CALORIES BURNED</th>
+           <th scope="col" class="nutritions">REMOVE EXERCISE</th>
+
+         </tr>
+       </thead>
+       <tbody>
+         <tr>
+           <td scope="row" ><a class="addFood" href="">Add Exercise</a></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           
+         </tr>
+       </tbody>
+     </table>
+   
+
+
+
+
+    </div>
+  </div>

@@ -1,0 +1,121 @@
+<app-home></app-home>
+<div class=" my-dashboard">
+  <div class="container-fluid  ">
+
+    <div class="row justify-content-between">
+      <div>
+
+        <h2>ADMIN-CRUD EXERCISE</h2>
+        <br>
+        <h5>ADD NEW EXERCISE/ACTIVITY ITEMS</h5>
+      </div>
+      <div>
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link " href="admin/challenges">challenges</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin/badges">badges</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin/nutritions">Nutritions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin/exercise">Exercise</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-5 formField">
+        <label>Exercise Title</label>
+        <input type="text" class="form-control mb-3 " id="formGroupExampleInput" placeholder="Last">
+      </div>
+
+      <div class="col-md-2 formField">
+        <label>Calories Burned</label>
+        <input type="text" class="form-control mb-3" id="formGroupExampleInput" placeholder="Last">
+      </div>
+
+      <div class="col-md-2 mt-3 formField">
+
+        <button class="btn add mt-3">ADD EXERCISE</button>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row mt-3 mb-2">
+      <h5>EDIT OR DELETE EXERCISE/ACTIVITY</h5>
+      <div class="search input-group col-md-4 col-sm-12 ml-auto">
+        <input class="search form-control py-2" type="search" value="search" id="example-search-input">
+        <span class="input-group-append">
+          <button class="btn search-btn" type="button">
+            <i class="fa fa-search"></i>
+          </button>
+        </span>
+      </div>
+
+      <table class="table table-borderless mt-3">
+        <thead>
+          <tr>
+            <th scope="col" class="col-md-6">FOOD TITLE</th>
+            <th scope="col" class="col-md-3 text-center">DATE ADDED</th>
+            <th scope="col" class="col-md-3 text-center ">EDIT/DELETE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="foodtext">Mark</td>
+            <td class="text">11-18-2019</td>
+            <td class="text-center"><span><i class="fa fa-edit"></i></span>&nbsp;&nbsp;<span><i
+                  class="fa fa-trash"></i></span></td>
+          </tr>
+          <tr>
+
+            <td class="foodtext">Jacob</td>
+            <td class="text">11-18-2019</td>
+            <td class="text-center"><span><i class="fa fa-edit"></i></span>&nbsp;&nbsp;<span><i
+                  class="fa fa-trash"></i></span></td>
+          </tr>
+          <tr>
+            <td class="foodtext">Larry the Bird</td>
+            <td class="text">11-18-2019</td>
+            <td class="text-center"><span (click)="open(content)"><i class="fa fa-edit"></i></span>&nbsp;&nbsp;<span><i
+                  class="fa fa-trash"></i></span></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+
+
+
+  </div>
+</div>
+
+
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+
+  <h4 class="text-center claim mt-3 mb-3">EDIT EXERCISE ITEM</h4>
+  <div class="row justify-content-center mb-4">
+    <div class="col-md-6">
+      <label>Title</label>
+      <input type="text" class="form-control mb-3 " id="formGroupExampleInput" placeholder="sikling,downfall">
+    </div>
+    <div class="col-md-3">
+      <label>Calories Burned</label>
+      <input type="text" class="form-control mb-3 " id="formGroupExampleInput" placeholder="Last">
+    </div>
+
+  </div>
+
+  <div class="row justify-content-center mb-5">
+    <button class="btn btn-md submit" (click)="d('Cross click')">SAVE CHANGES</button>
+  </div>
+
+</ng-template>

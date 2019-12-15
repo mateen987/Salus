@@ -1,0 +1,86 @@
+<app-home></app-home>
+
+<div class=" my-dashboard">
+  <div class="container-fluid  ">
+
+    <!-- <profile banner start> -->
+    <div class="row ">
+      <div>
+        <h2>MY WELLNESS - CHALLENGES </h2>
+        <h6>CURRENT GOAL:&nbsp;LOSE WEIGHT &nbsp;<a href="">Edit</a></h6>
+      </div>
+      <div class="badge col-1">
+        <img src="../../../assets/images/icon/badges/badge.png" width="80px">
+      </div>
+      <div class="col"></div>
+      <div class="point_profile  col-3">
+        <div class="profile row">
+          <div class="col text-right userProfile">
+            <p class="points">43</p>
+            <p class="upoints">Points</p>
+            <img src="assets/images/icon/star.png" width="100px" alt="Cinque Terre">
+          </div>
+          <div class="col text-right ">
+            <img src="assets/images/jane.jpg" class="rounded-circle" width="80px" alt="Cinque Terre">
+            <p class="text-center">Katlyn Smith</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <profile banner end> -->
+      <br><br>
+    <div class="row">
+      <div class="tabletitle col-md-5">
+        <h4>{{ viewDate | calendarDate:('dayViewTitle'):'en'}}</h4>
+      </div>
+      <div class="tabletitle col-md-7">
+        <div class="row"><h5 class="challenge">1 Mile a Day Challenge</h5>
+          <button type="button" class="btn btn-default Progress_btn  ">
+           <span class="logfood">&nbsp;INSTRUCTIONS &nbsp;</span>
+            </button>
+        </div>
+      </div>
+    </div>
+   
+    <div [ngSwitch]="view">
+      <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [cellTemplate]="customCellTemplate"
+        [viewDate]="viewDate" [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen"
+        (dayClicked)="dayClicked($event.day)" (eventClicked)="handleEvent('Clicked', $event.event)"
+        (eventTimesChanged)="eventTimesChanged($event)">
+      </mwl-calendar-month-view>
+      <ng-template #customCellTemplate let-day="day">
+        <div class="cal-cell-top">
+          <!-- <span class="cal-day-badge">0/6 points <a class="edit" (click)="open(content)">Edit</a> </span> -->
+          <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}
+          </span>
+        </div>
+        <div class="text-center task">
+          <img src="../../../assets/images/icon/badges/task-uncheck.png" class="img-fluid mx-auto ">
+        </div>
+      </ng-template>
+
+
+
+      <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events"
+        [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
+        (eventTimesChanged)="eventTimesChanged($event)">
+      </mwl-calendar-week-view>
+      <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events"
+        [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
+        (eventTimesChanged)="eventTimesChanged($event)">
+      </mwl-calendar-day-view>
+
+      <br><br><br>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+<!-- 
+</div>
+</div> -->

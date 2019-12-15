@@ -1,0 +1,95 @@
+<app-home></app-home>
+<div class=" my-dashboard">
+  <div class="container-fluid  ">
+
+    <div class="row justify-content-between">
+      <div>
+        <h2>ADMIN-CRUD-BADGES</h2>
+        <br>
+        <h4>CREATE NEW BADGE</h4>
+      </div>
+      <div>
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link " href="admin/challenges">challenges</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin/badges">badges</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin/nutritions">Nutritions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="admin/exercise">Exercise</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row p-3 ">
+      <div class="col-md-6 browse justify-content-center d-flex">
+        <div class="text-center  cloud ">
+          <img src="../../../assets/images/icon/badges/browse.png" width="40%">
+          <h5>Drag and drop or <span class="brows">browse</span></h5>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+
+        <!-- <div class="col-md-6  form-group "> -->
+        <label>Badge Title</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Last">
+        <!-- </div> -->
+        <!-- <date line start> -->
+        <div class="row">
+          <div class="col-5">
+            <label>Start Date:</label>
+            <div class="form-group calenderInput ">
+              <div class="input-group">
+                <input class="form-control " placeholder="yyyy-mm-dd" name="dp">
+                <button class="btn calender  fa fa-calendar" (click)="d.toggle()" type="button"></button>
+              </div>
+            </div>
+          </div>
+          <div class="col-5">
+            <label>End Date:</label>
+            <div class="form-group calenderInput ">
+              <div class="input-group">
+                <input class="form-control " placeholder="yyyy-mm-dd" name="dp">
+                <button class="btn calender  fa fa-calendar" (click)="d.toggle()" type="button"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <date line End> -->
+
+        <div class="row">
+          <div class="col-5">
+            <label>Total Points Earned</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Last">
+          </div>
+
+          <div class="col-7">
+            <label>choose Participating Companies</label>
+            <!-- <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Last"> -->
+            <div class="form-group inputgroup ">
+              <select class="form-control dateInput " id="sel1" name="sellist1">
+                <option>Aerobics General</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <button class="btn upload col-5">Upload/Add Badge</button>
+
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+</div>

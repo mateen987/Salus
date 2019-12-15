@@ -1,0 +1,351 @@
+.my-dashboard{
+    background: #e3e8eb;
+    padding-top: 4%;
+    font-family:inherit ;
+   
+}
+
+.container-fluid{
+    width: 92%;
+}
+.points{
+position: absolute;
+padding-left: 1.5em;
+line-height: 3.5;
+font-size: 24px;
+font-weight: 400;
+color: white;
+}
+.upoints{
+    position: absolute;
+    padding-left: 1.5em;
+    line-height: 7;
+    font-size: 18px;
+    font-weight: 300;
+    color: white;
+}
+.profile{
+    float:right;
+}
+.userProfile{
+    min-width: 120px;
+    position: relative;
+}
+
+h3,h6{
+    font-weight: 700;
+    font-family: Segoe UI ;
+}
+.logfood{
+    line-height: 34px;
+    color: white;
+}
+.nutrition{
+    color: #83b752;
+    padding-top: 10px;
+}
+.exercise{
+    color: #a7163e;
+    padding-top: 10px;
+}
+.workout ,.progress-bar-red{
+    background: #a7163e;
+}
+.checkin {
+    background:#e77428;
+}
+.daily-task{
+    color: #e77428;
+    padding-top: 10px;
+}
+.user ,.progress-bar-nutrition{
+    background:#83b752;
+}
+ a{
+    color: darkgray;
+    text-decoration: underline;
+}
+.day_left{
+    font-family: Segoe UI ;
+    color: #a9a9a9;
+    padding-bottom: 17px;
+    padding-top: 13px;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+.point_left{
+    font-family: Segoe UI ;
+    color: #a9a9a9;
+   padding-bottom: 17px;
+    padding-top: 13px;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+.dropdown-menu{
+    text-decoration: none;
+    float: left;
+}
+.dropdown-item{
+text-align: left;
+text-decoration: none;
+}
+
+.icon{
+    padding-top: 8px;
+}
+
+@media (max-width: 1186px){
+.col-lg-6 {
+ min-width: 100%; 
+}
+.col-lg-2{
+    min-width: 29% ;
+}
+}
+
+@media (max-width: 769px){
+    .col-lg-6 {
+     max-width: 100%; 
+    }
+    .col-lg-2{
+        max-width: 33% ;
+    }
+    }
+
+    @media (max-width: 615px){
+        .col-lg-6 {
+         max-width: 100%; 
+        }
+        .col-lg-2{
+            max-width: 100% ;
+        }
+        .nutrition ,.exercise {
+            position: absolute;
+            text-align: center;
+            margin-left: 57%;
+            line-height: 70px;
+            
+        }
+        .daily-task{
+            position: absolute;
+            text-align: center;
+            margin-left: 54%;
+            line-height: 70px;
+        }
+      
+        .day_left{
+            font-family: Segoe UI;
+            color: #a9a9a9;
+            position: absolute;
+            margin-left: 55%;
+            bottom: 15px;
+        }
+        .point_left{
+            font-family: Segoe UI;
+            color: #a9a9a9;
+            position: absolute;
+            margin-left: 51%;
+            bottom: 15px;
+        }
+        
+        }
+hr{
+    border-top: 2px solid black;
+}
+.challenge{
+    position: relative;
+    top: -17px;
+    padding: 0 20px 0 20px;
+    background: white;
+    text-decoration: none;
+    color: black;
+    font-family:Montserrat-Bold;
+}
+
+.challenge_section{
+    padding-left: 22px !important;
+    padding-right: 22px !important;
+}
+.current-challenge{
+font: lato;
+font-family: Montserrat-Bold;
+font-size: 12px;
+font-weight: 600;
+text-align: left;
+margin-bottom: 8px !important;
+color: #a7a7a7;
+}
+.daily-challenge{
+    text-align: left;
+    word-spacing: 2px;
+    font-family: Montserrat-Regular;
+    color: #e77428;
+}
+.weeklyChallenge{
+    display: block;
+    padding-top: .5rem;
+    text-align: left;
+    word-spacing: 2px;
+    font-family: lato-Regular;
+   color:#83b752;
+   margin-bottom: 0px;
+}
+.slogen{
+    line-height: 0.1px;
+}
+.weekDaysName{
+    font-family: Montserrat-Bold;
+    padding-top: 10px;
+}
+.initialSign{
+    height: 30px;
+}
+.weak-day{
+font-family: Montserrat-Bold;
+font-size: 12px;
+ padding-left: 10px !important;
+ padding-right: 10px !important;
+ max-width: 14% !important;
+}
+.user-status{
+    /* position: relative; */
+    
+    display: inline-block;
+    max-width: 9.6% !important;
+}
+.leaderboard{
+    background: black;
+    color: white;
+}
+.leader a{
+font: lato;
+font-family: sans-serif;
+font-size: 12px;
+color: #fab612;
+font-weight: 600;
+text-align: left;
+margin-bottom: 8px !important;
+}
+.badge{
+    /* float: left; */
+    padding-left: 24px;
+    line-height: 1.3;
+}
+.user-status .badge{
+    position: absolute;
+    left: 19px;
+    bottom: -17px;
+}
+.no{
+padding-left: 4px;
+line-height: 1.3;
+}
+.First{
+    padding-left: 8px;
+    line-height: 2; 
+}
+.badge-img{
+    float: right;
+}
+.user-profile {
+    position: relative;
+}
+.topten ,.leaders ,.Progress_btn{
+    line-height: 0.5 !important;
+}
+.topten {
+    padding-bottom: 12px;
+}
+.full-text{
+    margin-top: 5px;
+}
+.Progress_btn{
+    margin: 0px 5px 0 0;
+    background: #fab612;
+    padding-top : 0px !important;
+    padding-bottom: 0px ;
+}
+.Next_challenge{
+    padding-top : 7px !important;
+    padding-bottom: 0px ;
+    color: #fab612;
+    text-decoration: none;
+    display: inline block;
+}
+
+@media (max-width: 550px){
+    .Next_challenge , .more_badges{
+        display: block;
+    }
+    .user-status{
+     min-width: 17%; 
+    }
+}
+.p-1{
+    padding-bottom: 0.23rem !important;
+}
+.dropdown-toggle::after{
+    margin-left: 3.2em;
+}
+.btn-group {
+    display: block;
+    float: left;
+    margin-bottom: 1em;
+}
+.userSelection{
+    text-decoration: none;
+    border: 1px solid #a7a7a7;
+    color: black;
+    line-height: 1;
+}
+.sucessRate{
+    float: left;
+    color: #a7a7a7;
+}
+.progress-bar-vertical {
+    width:10px;
+    min-height: 100px;
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-end;
+  }
+  .weeklyText{
+    /* display: inline-block; */
+    float: left;
+    width: 100%;
+  }
+  .progress.justify-content-center.progress-bar-vertical{
+      margin: 0 auto;
+  }
+  .progress-bar-vertical .progress-bar {
+    width: 100%;
+    height: 0;
+  }
+  .weeklySign{
+      margin-bottom: .3rem;
+  }
+  .badges{
+      max-width: 20%;
+      min-width: 10%;
+      
+  }
+  .earned{
+      background:#e3e8eb;
+  }
+  .more_badges{
+      line-height: 1.5;
+    font-size: 14px;
+    font-weight: 700;
+    /* margin-left: 15px; */
+  }
+
+  @media (max-width: 1000px){
+  .point_profile{
+      padding-left: 0%;
+  }
+}
+@media (max-width: 990px){
+    .point_profile{
+       display: none;
+    }
+  }

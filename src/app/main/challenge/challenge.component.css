@@ -1,0 +1,77 @@
+.my-dashboard{
+    background: #e3e8eb;
+    padding-top: 4%;
+    font-family:inherit ;
+   
+}
+.container-fluid{
+    width: 92%;
+}
+.points{
+    position: absolute;
+    padding-left: 1.5em;
+    line-height: 3.5;
+    font-size: 24px;
+    font-weight: 400;
+    color: white;
+    }
+    .upoints{
+        position: absolute;
+        padding-left: 1.5em;
+        line-height: 7;
+        font-size: 18px;
+        font-weight: 300;
+        color: white;
+    }
+    .profile{
+        float:right;
+    }
+
+    .userProfile{
+        min-width: 120px;
+        position: relative;
+    }
+    h2,h4,h6{
+        font-weight: 700;
+        font-family: Montserrat-Bold;
+    }
+    h2{
+        font-size: 34px;
+    }
+    a{
+        color: darkgray;
+        text-decoration: underline;
+    }
+.col-5{
+padding-right: 0px;
+}
+.logfoods{
+line-height: 1.5rem;
+padding-left: 30px;
+}
+.logfood{
+    padding-left: 5px;
+    font-size: 12px;
+    font-family: Montserrat-Bold;
+}
+
+.user{
+background: #ffb703;
+color: white;
+border-radius:0px;
+line-height: 2;
+
+}
+.number{
+    font-size: 12px;
+    font-family: lato-regular;
+    padding-top: 8px;
+}
+.details{
+    font-size: 12px;
+    font-family: lato-regular;
+    padding-top: 7px;
+}
+h4{
+    padding-top: 3px;
+}

@@ -1,0 +1,119 @@
+.my-dashboard{
+    background: #e3e8eb;
+    padding-top: 4%;
+    font-family:inherit ;
+   
+}
+.container-fluid{
+    width: 92%;
+}
+h2,h4,h6{
+    font-weight: 700;
+    font-family: Montserrat-Bold;
+}
+
+.form-control{
+border: none !important;
+display: inline;
+}
+.browse{
+    background: black;
+    height: 500px;
+}
+.inputgroup select { 
+	display: block;
+	width: 99%;
+	padding: 2px 25px 2px 2px; 
+	border: none; 
+	background: url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") right center no-repeat; 
+    appearance: none; 
+	-webkit-appearance: none;
+    -moz-appearance: none; 
+    background-color: white;
+}
+.dateInput{
+    height: calc(2.2em + 0.1rem + 1px);
+    background: #ffffff;
+    border: 0px solid;
+    color: black;
+}
+.inputgroup{
+    margin: auto;
+    width: 100%;
+    padding:0px;
+    overflow: hidden;
+    background: white;
+}
+.calenderInput{
+    border: 1px solid #a3a5a6;
+    border-radius: 3px;
+}
+
+.calender{
+    border:none;
+    border-radius: 0px;
+   color: #80bef1;
+}
+button.btn.calender.fa.fa-calendar{
+    background: white;
+}
+input[type=checkbox] + label:before{
+    content: "\2714";
+     display: inline-block;
+     padding-left: 0.1em;
+     padding-bottom: 1em;
+     width: 1.2em;
+     line-height: 1;
+     height: 1.2em;
+     margin-right: 0.6em;
+    color: transparent;
+    /* vertical-align: bottom; */
+    }
+    input[type=checkbox]+label{
+        
+        display: block;
+        float: left;
+        padding-left: 10px;
+        /* padding-top: 5px; */
+        font-family: lato-regular;
+    }
+    input[type=checkbox]:checked + label:before{
+        background-color: #84ba4d;
+        color: #ffffff;
+        content: "\2713";
+        margin-bottom: 5px;
+    }
+
+
+
+
+/* .date{ */
+    /* padding-left: 8px;
+    padding-right: 5px; */
+/* } */
+
+.employees{
+    font-size: 13px;
+}
+.checkbox{
+    margin-top: 35px;
+}
+.save{
+    background: #84ba4d;
+    width: 190px;
+    color: white;
+    border-radius: 0px;
+}
+.file-area{
+    color: #ffffff;
+}
+.browse-file{
+    border: 1px solid #c0c5c6;
+    height:170px;
+    background:#e4f1fd;
+    
+   }
+   .cloud{
+    margin-top: auto;
+    margin-bottom: auto;
+   }

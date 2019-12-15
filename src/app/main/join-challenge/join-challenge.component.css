@@ -1,0 +1,82 @@
+.my-dashboard{
+    background: #e3e8eb;
+    padding-top: 4%;
+    font-family:inherit ;
+   
+}
+.container-fluid{
+    width: 92%;
+}
+.points{
+    position: absolute;
+    padding-left: 1.5em;
+    line-height: 3.5;
+    font-size: 24px;
+    font-weight: 400;
+    color: white;
+    }
+    .upoints{
+        position: absolute;
+        padding-left: 1.5em;
+        line-height: 7;
+        font-size: 18px;
+        font-weight: 300;
+        color: white;
+    }
+    .profile{
+        float:right;
+    }
+
+    .userProfile{
+        min-width: 120px;
+        position: relative;
+    }
+    h2,h3,h4,h6{
+        font-weight: 700;
+        font-family: Montserrat-Bold;
+    }
+    h2{
+        font-size: 34px;
+    }
+    a{
+        color: darkgray;
+        text-decoration: underline;
+    }
+    .badge{
+        margin-left: 17px;
+    }
+    
+    .Progress_btn{
+        margin: 0px 5px 0 20px;
+        background: #fab612;
+        padding-top : 0px !important;
+        padding-bottom: 0px ;
+        color: white;
+
+    }
+    .app-calendar {
+        margin: 0 auto;
+        max-width: 900px;
+      }
+
+      h3,h4{
+        margin: 0 0 10px;
+      }
+
+  .cal-day-badge {
+   margin-top: 10px !important;
+  text-align: center;
+  background-color: none !important;
+  }
+  .task{
+      margin-bottom: 20px;
+  }
+  .tabletitle{
+  margin-bottom: 10px;
+  }
+  .challenge{
+      color: #EB6F24;
+      background:#f7cfd0;
+      margin-top: 7px;
+      padding-bottom: 5px;
+  }
