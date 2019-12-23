@@ -1,0 +1,175 @@
+<app-home></app-home>
+<div class=" my-dashboard">
+    <div class="container-fluid  ">
+
+
+
+        <div class="row justify-content-between">
+            <div>
+                <h2>ADMIN-CRUD MEMBERS</h2>
+                <br>
+                <h4>MANAGE MEMBERS</h4>
+            </div>
+            <div>
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link " href="admin/challenges">challenges</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin/badges">badges</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin/nutritions">Nutritions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="admin/exercise">Exercise</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="admin/manage-member">Manage Member</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div><br>
+ 
+        <div *ngIf="display">
+    <div class="row">
+        <div class="col-6 row"><br>
+            <div class=" col-3 justify-content-center text-center">
+                <h4>Name</h4>
+                <h6>Abdul MAteen</h6>
+            </div>
+            <div class="col-3 justify-content-center text-center">
+                <h4>Company</h4>
+                <h6>DIana Jones</h6>
+            </div>
+            <div class="col-3 justify-content-center text-center">
+                <h4>Points</h4>
+                <h6>12305</h6>
+            </div>
+        </div>
+
+
+        <div class="col-6">
+            <div class="row">
+            <div class=" col-4 formField">
+                <label>Reward Points</label>
+                <input type="text" class="form-control mb-3" formControlName="calories_burned_per_minute" id="formGroupExampleInput" placeholder="Last">
+            </div>
+          <div class="col-4 mt-2"><button type="submit"  class="btn add mt-4">SAVE POINTS</button></div>
+          </div>
+
+        </div>
+        
+    </div>
+<br>
+    <h5>EARNED BADGES</h5>
+    <div class="row">
+        <div class="col-6 row"><br>
+            <div class=" col-3 justify-content-center text-center">
+                <img src="../../../assets/images/icon/badges/best_price.png">
+            </div>
+            <div class="col-3 justify-content-center text-center">
+                <img src="../../../assets/images/icon/badges/high_quality.png">
+            </div>
+            <div class="col-3 justify-content-center text-center">
+               <img src="../../../assets/images/icon/badges/premium.png">
+            </div>
+            <div class="col-3 justify-content-center text-center">
+             </div>
+             <div class="col-3 mt-2 justify-content-center text-center">
+                <img src="../../../assets/images/icon/badges/hot_deal.png">
+             </div>
+             <div class="col-3 mt-2 justify-content-center text-center">
+                <img src="../../../assets/images/icon/badges/best_choice.png">
+             </div>
+        </div>
+
+
+        <div class="col-6">
+            <div class="row">
+            <div class=" col-6 formField">
+                <label>Reward Badge</label>
+                <select class="form-control dateInput " id="sel1" name="sellist1">
+                    <option>King of the Hill</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+            </div>
+          <div class="col-4 mt-2"><button type="submit"  class="btn add mt-4">SAVE BADGE</button></div>
+          </div>
+
+        </div>
+    </div></div>
+
+ 
+    <br>
+        <div *ngIf="!tableData" class="row mt-3">
+            <div class="search input-group col-md-4 col-sm-12 ml-auto">
+                <input class="search form-control py-2" type="search" value="search" id="example-search-input"
+                    placeholder="Search">
+                <span class="input-group-append">
+                    <button class="btn search-btn" type="button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        
+
+
+            <div class="table-responsive">
+                <br>
+                <table class="table table-borderless">
+                  <thead>
+                    <tr>
+                      
+                      <th scope="col">FIRST NAME</th>
+                      <th scope="col">LAST NAME</th>
+                      <th scope="col" class="text-center">COMPANY</th>
+                      <th scope="col" class="text-right">POINTS</th>
+                      <th scope="col" class="text-right">Edit/Delete</th>
+                     
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                     
+                      <td>Cell</td>
+                      <td>Cell</td>
+                      <td class="text-center">Cell</td>
+                      <td class="text-right points">12345</td>
+                      <td class="text-right edit"><span><i (click)="editData()" class="fa fa-edit"></i></span>&nbsp; &nbsp;<span><i class="fa fa-trash"></i></span></td>
+                   
+                    </tr>
+                    <tr>
+                      
+                      <td>Cell</td>
+                      <td>Cell</td>
+                      <td class="text-center">Cell</td>
+                      <td class="text-right">Cell</td>
+                      <td class="text-right edit"><span><i class="fa fa-edit"></i></span>&nbsp; &nbsp;<span><i class="fa fa-trash"></i></span></td>
+
+                      
+                    </tr>
+                    <tr>
+                    
+                      <td>Cell</td>
+                      <td>Cell</td>
+                      <td class="text-center">Cell</td>
+                      <td class="text-right">Cell</td>
+                      <td class="text-right edit"><span><i class="fa fa-edit"></i></span>&nbsp; &nbsp;<span><i class="fa fa-trash"></i></span></td>
+
+                   
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+        </div>
+
+
+
+
+
+    </div></div>

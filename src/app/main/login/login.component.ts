@@ -2,16 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import{UserService} from '../../services/user.service'
 import { JsonPipe } from '@angular/common';
+import { Router } from '@angular/router';
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
-  constructor(private _formBuilder:FormBuilder,private userDataService:UserService) { }
+  token:any;
+  user:any;
+  constructor(private _formBuilder:FormBuilder,private userDataService:UserService,private router: Router) { }
 
   ngOnInit() {
     this.loginForm = this._formBuilder.group({
@@ -22,11 +28,16 @@ export class LoginComponent implements OnInit {
 
 login(){
 console.log('ok',this.loginForm.value)
-  this.userDataService.auth(this.loginForm.value).subscribe((reponse)=>{
-    console.log(reponse);
+  this.userDataService.auth(this.loginForm.value).subscribe(response=>{
+    console.log(response);
+     this.user=response;
+      localStorage.setItem('token',this.user.token)
+    this.router.navigate(["/dashboard"],)
+
+   },(err: HttpErrorResponse)=>{
+       console.log("err"+err);
    }); 
 
- 
 
 }
 

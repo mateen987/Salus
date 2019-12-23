@@ -22,32 +22,36 @@
           <li class="nav-item">
             <a class="nav-link " href="admin/exercise">Exercise</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link " href="admin/manage-member">Manage Member</a>
+        </li>
         </ul>
       </div>
     </div>
-
-    <div class="row p-3 ">
-      <div class="col-md-6 browse justify-content-center d-flex">
-        <div class="text-center  cloud ">
+  
+    <form [formGroup]="badgeForm" (ngSubmit)="upload()">
+    <div class="row p-3" >
+      <div   class="col-md-6 browse justify-content-center d-flex">
+        <div class="text-center cloud ">
           <img src="../../../assets/images/icon/badges/browse.png" width="40%">
-          <h5>Drag and drop or <span class="brows">browse</span></h5>
+          <h5>Drag and drop or 
+            <input style="display:none" type="file"   (change)="onFileChanged($event)" #fileInput > 
+            <span class="brows" (click)="fileInput.click()" > browse</span ></h5>
         </div>
       </div>
-
+    
       <div class="col-md-6">
-
-        <!-- <div class="col-md-6  form-group "> -->
         <label>Badge Title</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Last">
-        <!-- </div> -->
-        <!-- <date line start> -->
+        <input type="text" class="form-control" formControlName="name"  placeholder="Last">
+        <label>image location</label>
+        <input type="text" class="form-control" formControlName="img_location"  placeholder="image Url">
         <div class="row">
           <div class="col-5">
             <label>Start Date:</label>
             <div class="form-group calenderInput ">
               <div class="input-group">
-                <input class="form-control " placeholder="yyyy-mm-dd" name="dp">
-                <button class="btn calender  fa fa-calendar" (click)="d.toggle()" type="button"></button>
+                <input class="form-control"   formControlName="start_date" readonly ngbDatepicker #dd="ngbDatepicker" placeholder="yyyy-mm-dd" name="dp">
+                <button class="btn calender  fa fa-calendar" (click)="dd.toggle()" type="button"></button>
               </div>
             </div>
           </div>
@@ -55,41 +59,51 @@
             <label>End Date:</label>
             <div class="form-group calenderInput ">
               <div class="input-group">
-                <input class="form-control " placeholder="yyyy-mm-dd" name="dp">
+                <input class="form-control" [(ngModel)]="end_date" readonly formControlName="end_date" ngbDatepicker #d="ngbDatepicker"  placeholder="yyyy-mm-dd" name="dp">
                 <button class="btn calender  fa fa-calendar" (click)="d.toggle()" type="button"></button>
               </div>
             </div>
           </div>
         </div>
-        <!-- <date line End> -->
+      
 
         <div class="row">
           <div class="col-5">
             <label>Total Points Earned</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Last">
+            <select class="form-control dateInput select" [(ngModel)]="selectUserPoint"  formControlName="point_id" Placeholder="Select-Point">
+              <option *ngFor="let item of adminpoints" [value]="item.id">{{item.pointName}}&nbsp;{{item.pointValue}}</option>
+            </select>
           </div>
 
           <div class="col-7">
             <label>choose Participating Companies</label>
-            <!-- <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Last"> -->
-            <div class="form-group inputgroup ">
-              <select class="form-control dateInput " id="sel1" name="sellist1">
-                <option>Aerobics General</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+            <div class="" >
+              <select  class="form-control dateInput select" [(ngModel)]="companyId"  formControlName="groupIDs" >
+                <option  *ngFor="let company of companyName" [value]="company.group_id">{{company.name}}&nbsp;</option>
               </select>
+              <!-- <ng-multiselect-dropdown
+                  [placeholder]="'select company'"
+                  [data]="cities"
+                  [(ngModel)]="selectedItems"
+                  [settings]="dropdownSettings"
+                  formControlName="groupIDs"
+                  (onSelect)="onItemSelect($event)"
+                  (onSelectAll)="onSelectAll($event)" >
+               </ng-multiselect-dropdown> -->
             </div>
           </div>
         </div>
-        <button class="btn upload col-5">Upload/Add Badge</button>
-
+        <button type="submit" [disabled]="badgeForm.invalid" class="btn upload col-5">Upload/Add Badge</button>
+      
       </div>
+ 
     </div>
-
-
-
+ 
+  </form>
 
 
   </div>
 </div>
+
+  
+

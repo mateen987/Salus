@@ -23,27 +23,28 @@
           <li class="nav-item">
             <a class="nav-link" href="admin/exercise">Exercise</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link " href="admin/manage-member">Manage Member</a>
+        </li>
         </ul>
       </div>
     </div>
-
+    
+    <form [formGroup]="exerciseForm" (ngSubmit)="upload()">
     <div class="row">
       <div class="col-md-5 formField">
         <label>Exercise Title</label>
-        <input type="text" class="form-control mb-3 " id="formGroupExampleInput" placeholder="Last">
+        <input type="text" class="form-control mb-3" formControlName="name"  placeholder="Name">
       </div>
-
       <div class="col-md-2 formField">
         <label>Calories Burned</label>
-        <input type="text" class="form-control mb-3" id="formGroupExampleInput" placeholder="Last">
+        <input type="text" class="form-control mb-3" formControlName="calories_burned_per_minute"  placeholder="Per Minute">
       </div>
-
       <div class="col-md-2 mt-3 formField">
-
-        <button class="btn add mt-3">ADD EXERCISE</button>
+        <button type="submit" [disabled]="exerciseForm.invalid"  class="btn add mt-3">ADD EXERCISE</button>
       </div>
     </div>
-
+</form>
     <br>
 
     <div class="row mt-3 mb-2">
@@ -66,25 +67,25 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="foodtext">Mark</td>
-            <td class="text">11-18-2019</td>
+          <tr *ngFor="let items of exerciseData, let j=index">
+            <td class="foodtext">{{items.name}}</td>
+            <td class="text">{{items.created_at}}</td>
             <td class="text-center"><span><i class="fa fa-edit"></i></span>&nbsp;&nbsp;<span><i
                   class="fa fa-trash"></i></span></td>
           </tr>
-          <tr>
+          <!-- <tr>
 
             <td class="foodtext">Jacob</td>
             <td class="text">11-18-2019</td>
             <td class="text-center"><span><i class="fa fa-edit"></i></span>&nbsp;&nbsp;<span><i
                   class="fa fa-trash"></i></span></td>
-          </tr>
-          <tr>
+          </tr> -->
+          <!-- <tr>
             <td class="foodtext">Larry the Bird</td>
             <td class="text">11-18-2019</td>
             <td class="text-center"><span (click)="open(content)"><i class="fa fa-edit"></i></span>&nbsp;&nbsp;<span><i
                   class="fa fa-trash"></i></span></td>
-          </tr>
+          </tr> -->
         </tbody>
       </table>
 

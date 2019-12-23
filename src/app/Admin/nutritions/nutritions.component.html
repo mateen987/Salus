@@ -21,41 +21,45 @@
                     <li class="nav-item">
                         <a class="nav-link" href="admin/exercise">Exercise</a>
                     </li>
+                       <li class="nav-item">
+                        <a class="nav-link " href="admin/manage-member">Manage Member</a>
+                    </li>
                 </ul>
             </div>
         </div>
+        <form [formGroup]="nutritionForm" (ngSubmit)="upload()">
         <div class="row">
             <div class="col-md-5 formField">
                 <label> Title</label>
-                <input type="text" class="form-control mb-3 " id="formGroupExampleInput">
+                <input type="text" class="form-control mb-3 " formControlName="name" id="formGroupExampleInput">
             </div>
 
             <div class="col-md-1 formField">
                 <label>Calories</label>
-                <input type="text" class="form-control mb-3" id="formGroupExampleInput">
+                <input type="text" class="form-control mb-3" formControlName="calories" >
             </div>
             <div class="col-md-1 formField">
                 <label>Protein</label>
-                <input type="text" class="form-control mb-3" id="formGroupExampleInput">
+                <input type="text" class="form-control mb-3" formControlName="proteins">
             </div>
             <div class="col-md-1 formField">
                 <label>Carbs</label>
-                <input type="text" class="form-control mb-3" id="formGroupExampleInput">
+                <input type="text" class="form-control mb-3" formControlName="carbs">
             </div>
             <div class="col-md-1 formField">
                 <label>Fats</label>
-                <input type="text" class="form-control mb-3" id="formGroupExampleInput">
+                <input type="text" class="form-control mb-3" formControlName="fats">
             </div>
             <div class="col-md-1 formField">
                 <label>Sugar</label>
-                <input type="text" class="form-control mb-3" id="formGroupExampleInput">
+                <input type="text" class="form-control mb-3" formControlName="sugars">
             </div>
 
             <div class="col-md-2 mt-3 formField">
-                <button class="btn add mt-3">ADD FOOD ITEM</button>
+                <button type="submit" [disabled]="nutritionForm.invalid" class="btn add mt-3">ADD FOOD ITEM</button>
             </div>
         </div>
-
+</form>
         <br>
 
         <div class="row mt-3 mb-2">
@@ -70,7 +74,7 @@
                 </span>
             </div>
 
-            <table class="table table-borderless mt-3">
+            <table class="table table-borderless mt-3" >
                 <thead>
                     <tr>
                         <th scope="col" class="col-md-6">FOOD TITLE</th>
@@ -79,25 +83,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="foodtext">Mark</td>
-                        <td class="text">11-18-2019</td>
-                        <td class="text-center"><span><i class="fa fa-edit"></i></span>&nbsp;&nbsp;<span><i
-                                    class="fa fa-trash"></i></span></td>
-                    </tr>
-                    <tr>
-
-                        <td class="foodtext">Jacob</td>
-                        <td class="text">11-18-2019</td>
-                        <td class="text-center"><span><i class="fa fa-edit"></i></span>&nbsp;&nbsp;<span><i
-                                    class="fa fa-trash"></i></span></td>
-                    </tr>
-                    <tr>
-                        <td class="foodtext">Larry the Bird</td>
-                        <td class="text">11-18-2019</td>
-                        <td class="text-center"><span (click)="open(content)"><i
-                                    class="fa fa-edit"></i></span>&nbsp;&nbsp;<span><i class="fa fa-trash"></i></span>
-                        </td>
+                    <tr *ngFor="let items of tableData; let j=index">
+                        <td class="foodtext">{{items.name}}</td>
+                        <td class="text">{{items.created_at}}</td>
+                        <td class="text-center"><span><i (click)="open(content,items,j)" class="fa fa-edit"></i></span>&nbsp;&nbsp;
+                            <span><i (click)="deleteData(items.id)" class="fa fa-trash"></i></span></td>
                     </tr>
                 </tbody>
             </table>
@@ -115,39 +105,39 @@
     <h4 class="text-center claim mt-3 mb-3">EDIT EXERCISE ITEM</h4>
     <div class="m-auto col-md-10 mb-4">
         <label>Title</label>
-        <input type="text" class="form-control mb-3 " id="formGroupExampleInput" placeholder="sikling,downfall">
+        <input type="text" [(ngModel)]="modaldata.name" class="form-control mb-3 "  placeholder="sikling,downfall">
     </div>
     <div class="row justify-content-center mb-4">
 
-        <div class="col-md-2 modal">
+        <div class="col-md-2 ">
             <label>Calories</label>
-            <input type="text" class="form-control mb-3 " id="formGroupExampleInput" placeholder="Last">
+            <input type="text"  [(ngModel)]="modaldata.calories" class="form-control mb-3 "  placeholder="Last">
         </div>
 
-        <div class="col-md-2 modal">
+        <div class="col-md-2 ">
             <label>Protein</label>
-            <input type="text" class="form-control mb-3 " id="formGroupExampleInput" placeholder="Last">
+            <input type="text" [(ngModel)]="modaldata.protein" class="form-control mb-3 "  placeholder="Last">
         </div>
 
-        <div class="col-md-2 modal">
+        <div class="col-md-2 ">
             <label>Carbs</label>
-            <input type="text" class="form-control mb-3 " id="formGroupExampleInput" placeholder="Last">
+            <input type="text" [(ngModel)]="modaldata.carbs" class="form-control mb-3 "  placeholder="Last">
         </div>
 
-        <div class="col-md-2 modal">
+        <div class="col-md-2 ">
             <label>Fats</label>
-            <input type="text" class="form-control mb-3 " id="formGroupExampleInput" placeholder="Last">
+            <input type="text" [(ngModel)]="modaldata.fats" class="form-control mb-3 "  placeholder="Last">
         </div>
 
-        <div class="col-md-2 modal">
+        <div class="col-md-2">
             <label>Sugar</label>
-            <input type="text" class="form-control mb-3 " id="formGroupExampleInput" placeholder="Last">
+            <input type="text" [(ngModel)]="modaldata.sugar" class="form-control mb-3 "  placeholder="Last">
         </div>
 
     </div>
 
     <div class="row justify-content-center mb-5">
-        <button class="btn btn-md submit" (click)="d('Cross click')">SAVE CHANGES</button>
+        <button class="btn btn-md submit" (click)="updateData()">SAVE CHANGES</button>
     </div>
 
 </ng-template>

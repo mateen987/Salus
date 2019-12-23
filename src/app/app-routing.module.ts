@@ -13,62 +13,69 @@ import { JoinChallengeComponent } from './main/join-challenge/join-challenge.com
 import { BadgesComponent } from './Admin/badges/badges.component';
 import { ChallengesComponent } from './Admin/challenges/challenges.component';
 import { AdminExerciseComponent } from './Admin/exercise/exercise.component';
+import { ManageMemberComponent } from './Admin/manage-member/manage-member.component';
 import { NutritionsComponent } from './Admin/nutritions/nutritions.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
 
   {
     path: "register",
-    component: RegisterComponent
+    component: RegisterComponent,
   },
 
   {
-    path: "login",
-    component: LoginComponent
+    path: "dashboard",
+    component: DashboardComponent,canActivate:[AuthGuard]
   },
   {
     path: "nutrition",
-    component: NutritionComponent
+    component: NutritionComponent,canActivate:[AuthGuard]
   },
   {
     path: "exercise",
-    component: ExerciseComponent
+    component: ExerciseComponent,canActivate:[AuthGuard]
   },
   {
     path: "challenge",
-    component: ChallengeComponent
+    component: ChallengeComponent,canActivate:[AuthGuard]
   },
   {
     path: "daily-task",
-    component: DailyTaskComponent
+    component: DailyTaskComponent,canActivate:[AuthGuard]
   },
   {
     path: "choose-challenge",
-    component: ChooseChallengeComponent
+    component: ChooseChallengeComponent,canActivate:[AuthGuard]
   },
   {
     path: "join-challenge",
-    component: JoinChallengeComponent
+    component: JoinChallengeComponent,canActivate:[AuthGuard]
   },
   {
     path:'admin/badges',
-    component: BadgesComponent
+    component: BadgesComponent,canActivate:[AuthGuard]
   },
   {
     path:'admin/challenges',
-    component: ChallengesComponent
+    component: ChallengesComponent,canActivate:[AuthGuard]
   },
   {
     path:'admin/exercise',
-    component: AdminExerciseComponent
+    component: AdminExerciseComponent,canActivate:[AuthGuard]
   },
   {
     path:'admin/nutritions',
-    component: NutritionsComponent
+    component: NutritionsComponent,canActivate:[AuthGuard]
   },
   {
+    path:'admin/manage-member',
+    component: ManageMemberComponent,canActivate:[AuthGuard]
+  },
+
+  {
     path: "**",
-    component: DashboardComponent,
+    component: LoginComponent,
   },
 
 ];
@@ -83,6 +90,7 @@ export const routing = [
   DashboardComponent,
   LoginComponent,
   RegisterComponent,
+  ManageMemberComponent,
   ExerciseComponent,
   ChooseChallengeComponent,
   NutritionComponent, 

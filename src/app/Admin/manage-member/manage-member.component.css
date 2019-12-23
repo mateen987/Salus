@@ -1,0 +1,56 @@
+
+.my-dashboard{
+    background: #e3e8eb;
+    padding-top: 4%;
+    /* height: calc(100vh - 92px); */
+    font-family:inherit ;
+   
+}
+.container-fluid{
+    width: 92%;
+}
+h2,h4,h6{
+    font-weight: 700;
+    font-family: Montserrat-Bold;
+}
+h6{
+    text-decoration: underline;
+    color:#68b4f4;
+    padding-top: 15px;
+    font-size: 14px;
+}
+.add{
+    color: white;
+    background: #84ba4d;
+    border-radius: 0px;
+}
+table{
+    background-color: white;
+}
+
+td{
+    text-decoration: underline;
+    color: #68b4f4;
+}
+.points{
+padding-right: 10px;
+}
+.fa-edit{
+    color: #87bc51;
+    font-size: 24px;
+}
+.fa-trash{
+    color: #b3254b;
+    font-size: 24px;
+}
+.edit{
+text-decoration: none !important;
+}
+.search{
+    padding-right: 0px !important;
+}
+.search-btn{
+    background-color: #84ba4d;
+    color: white;
+    border-radius: 0px;
+}

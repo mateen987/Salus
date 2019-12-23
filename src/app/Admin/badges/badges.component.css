@@ -37,11 +37,11 @@
    }
    .brows{
        color: #56acf5;
+       cursor: pointer;
    }
    .cloud{
     margin-top: auto;
     margin-bottom: auto;
-
    }
     h2,h4,h6{
         font-weight: 700;
@@ -73,3 +73,5 @@
         color: white;
         width: 38%;
     }
+
+  
