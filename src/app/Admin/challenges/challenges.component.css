@@ -117,3 +117,6 @@ input[type=checkbox] + label:before{
     margin-top: auto;
     margin-bottom: auto;
    }
+.array{
+    display:none !important;
+}

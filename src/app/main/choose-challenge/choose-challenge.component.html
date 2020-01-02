@@ -15,12 +15,13 @@
         <div class="point_profile  col-3">
           <div class="profile row">
             <div class="col text-right userProfile">
-              <p class="points">43</p>
+              <p class="points">{{userPoints}}</p>
               <p class="upoints">Points</p>
               <img src="assets/images/icon/star.png" width="100px" alt="Cinque Terre">
             </div>
             <div class="col text-right ">
-              <img src="assets/images/jane.jpg" class="rounded-circle" width="80px" alt="Cinque Terre">
+              <!-- <img src="assets/images/jane.jpg" class="rounded-circle" width="80px" alt="Cinque Terre"> -->
+             <img src="assets/images/icon/user.png" class="rounded-circle" width="80px" alt="profile">  
               <p class="text-center">Katlyn Smith</p>
             </div>
           </div>
@@ -35,20 +36,14 @@
                     <h6 class="slogen"><a class="find-challenge" href="">FIND A CHALLENGE</a></h6>
                     <p class="category" >Choose Category :</p>
                     <div class="form-group inputgroup ">   
-                <select class="form-control dateInput " id="sel1" name="sellist1">
-                        <option>Aerobics General</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
+                <select class="form-control dateInput" [(ngModel)]="Category"  (change)="open($event.target.value)" >
+                        <option *ngFor="let items of category" [value]="items.id">{{items.name}}</option>
                       </select>
             </div><br>
-            <p class="category">Choose Category :</p>
+            <p class="category">Sub Category :</p>
                     <div class="form-group inputgroup ">   
-                <select class="form-control dateInput " id="sel1" name="sellist1">
-                        <option>Aerobics General</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
+                <select class="form-control dateInput"  id="sel1" name="sellist1">
+                        <option *ngFor="let item of subCategory">{{item.name}}</option>
                       </select>
             </div><br>
             <button type="button" class="user btn btn-sm pull-right ">
@@ -59,21 +54,29 @@
 
 
             
-            <div class="col-sm-12 col-md-12 col-lg-8 ">
+            <div class="col-sm-12 col-md-12 col-lg-8" >
                 <div class="challenge p-3">
-                  <h4>RUNNING JOGGING - CHALLENGES</h4>
+                  <h4> CHALLENGES</h4>
                   </div>
-                 <div class="p-3">
-                  <h6>21-day learn to run challenge</h6>
+                 <div class="p-3"  *ngFor="let items of challeng">
+                  <h6 >{{items.name}}</h6>
+                  <p class="description">
+                   {{items.dicription}}
+                  </p>
+                 <button type="button" class="btn viewChallenge" [value]="items.id" (click)="moredescriptive(items.id)">VIEW OR JOIN CHALLENGE</button>
+                 <!-- <p class="p-4" >15 people are signup for this</p> -->
+                 </div>
+                 <!-- [routerLink]="'/challenge'" -->
+                 <!-- <div class="p-3">
                   <p class="description">
                     This 21-day run challenge is designed move you from cardio walking (CW) to jogging to briskly paced runs. We’ve incorporated strength
                     training days that strengthen your leg muscles as well as your bones and joints.
                   </p>
-                 <button type="button" class="btn viewChallenge" [routerLink]="'/challenge'">VIEW OR JOIN CHALLENGE</button>
-                 <p class="p-4" >15 people are signup for this</p>
-                 </div>
+                 <button type="button" class="btn viewChallenge">VIEW OR JOIN CHALLENGE</button>
+                 <p class="p-4">15 people are signup for this</p>
+                 </div> -->
 
-                 <div class="p-3">
+                 <!-- <div class="p-3">
                   <h6>30-day runing challenge for beginers</h6>
                   <p class="description">
                     This 21-day run challenge is designed move you from cardio walking (CW) to jogging to briskly paced runs. We’ve incorporated strength
@@ -81,7 +84,7 @@
                   </p>
                  <button type="button" class="btn viewChallenge">VIEW OR JOIN CHALLENGE</button>
                  <p class="p-4">15 people are signup for this</p>
-                 </div>
+                 </div> -->
                  
             </div>
            

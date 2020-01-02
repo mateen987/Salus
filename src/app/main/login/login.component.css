@@ -105,3 +105,12 @@ input[type=checkbox]:checked + label:before{
         width: 90%;
 
 }}
+a:focus,
+select:focus,
+button:focus,
+input:focus,
+textarea:focus {
+outline: none;
+outline: 0;
+-webkit-box-shadow: none;
+}

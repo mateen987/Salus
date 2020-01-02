@@ -12,12 +12,13 @@
       <div class="point_profile col-sm-6 col-md-4 col-lg-3 ">
         <div class="profile row">
           <div class="col text-right userProfile">
-            <p class="points">43</p>
-            <p class="upoints">Points</p>
+            <p class="points">{{userPoints}}</p>
+            <p class="upoints" >Points</p>
             <img src="assets/images/icon/star.png" width="100px" alt="Cinque Terre">
           </div>
           <div class="col text-right ">
-            <img src="assets/images/jane.jpg" class="rounded-circle" width="80px" alt="Cinque Terre">
+            <!-- <img src="assets/images/jane.jpg" class="rounded-circle" width="80px" alt="Cinque Terre"> -->
+            <img src="assets/images/icon/user.png" class="rounded-circle" width="80px" alt="Profile">
             <p class="text-center">Katlyn Smith</p>
           </div>
         </div>
@@ -32,10 +33,10 @@
       <div class="animation col-sm-12 col-md-4 col-lg-2 p-1">
         <div class="items text-center bg-white">
           <h4 class="nutrition">Nutrition</h4>
-          <circle-progress [percent]="70" radius="67" [outerStrokeWidth]="12" [innerStrokeWidth]="12" [space]="-12"
+          <circle-progress [percent]="80" radius="67" [outerStrokeWidth]="12" [innerStrokeWidth]="12" [space]="-12"
             [showUnits]="false" [outerStrokeColor]="'#83b752'" [innerStrokeColor]="'#e7e8ea'" [titleFontSize]="32"
             [titleColor]=" '#83b752' " [subtitleFontSize]="22" [animation]="true" [animationDuration]="300"
-            [subtitle]="'Kcel'" [showSubtitle]="true" [title]="2340" [showTitle]="true" [startFromZero]="false"
+            [subtitle]="'Kcel'" [showSubtitle]="true" [title]="Calories" [showTitle]="true" [startFromZero]="false"
             [responsive]="false"> </circle-progress>
           <button type="button" class="user btn btn-default  ">
             <img class="pull-left icon" src="assets/images/icon/apple.png"><span class="logfood">&nbsp;LOG FOOD
@@ -48,10 +49,10 @@
       <div class=" col-sm-12 col-md-4 col-lg-2 p-1">
         <div class="items text-center bg-white">
           <h4 class="exercise">Exercise</h4>
-          <circle-progress [percent]="80" radius="67" [outerStrokeWidth]="12" [innerStrokeWidth]="12" [space]="-12"
+          <circle-progress [percent]="caloriesBurned" radius="67" [outerStrokeWidth]="12" [innerStrokeWidth]="12" [space]="-12"
             [showUnits]="false" [outerStrokeColor]="'#a7163e'" [innerStrokeColor]="'#e7e8ea'" [titleFontSize]="32"
             [titleColor]=" '#a7163e' " [subtitleFontSize]="22" [animation]="true" [animationDuration]="300"
-            [subtitle]="'Burned'" [showSubtitle]="true" [title]="360" [showTitle]="true" [startFromZero]="false"
+            [subtitle]="'Burned'" [showSubtitle]="true" [title]="caloriesBurned" [showTitle]="true" [startFromZero]="false"
             [responsive]="false"> </circle-progress>
           <button type="button" class=" workout  btn btn-default ">
             <img class="pull-left icon" src="assets/images/icon/workout.png"><span class="logfood">LOG WORKOUT</span>
@@ -64,10 +65,10 @@
       <div class=" col-sm-12 col-md-4 col-lg-2 p-1">
         <div class="items text-center bg-white">
           <h4 class="daily-task">Daily Tasks</h4>
-          <circle-progress [percent]="60" radius="67" [outerStrokeWidth]="12" [innerStrokeWidth]="12" [space]="-12"
+          <circle-progress [percent]="point" radius="67" [outerStrokeWidth]="12" [innerStrokeWidth]="12" [space]="-12"
             [showUnits]="false" [outerStrokeColor]="'#e77428'" [innerStrokeColor]="'#e7e8ea'" [titleFontSize]="32"
             [titleColor]=" '#e77428' " [subtitleFontSize]="22" [animation]="true" [animationDuration]="300"
-            [subtitle]="'Points'" [showSubtitle]="true" [title]="4" [showTitle]="true" [startFromZero]="false"
+            [subtitle]="'Points'" [showSubtitle]="true" [title]="point" [showTitle]="true" [startFromZero]="false"
             [responsive]="false"> </circle-progress>
           <button type="button" class=" checkin  btn btn-default  ">
             <img class="pull-left icon" src="assets/images/icon/check-in.png"><span class="logfood">&nbsp;CHECK IN
@@ -89,13 +90,14 @@
               <p class="current-challenge">CURRENT CHALLENGE:</p>
               <h4 class="daily-challenge">1 Mile A Day Challenge</h4>
             </div>
-            <div class="col-md-8 col-sm-12">
-              <div class="row">
-                <div class="col weak-day">
-                  <p>SUN</p>
-                  <p><img src="assets/images/icon/tick.png"></p>
+            <div class="col-md-8 col-sm-12" >
+              <div class="row" >
+                <div class="col weak-day" *ngFor="let items of weekdays">
+                  <p>{{items.weekday}}</p>
+                  <p *ngIf="items.challengeEntry == true"><img src="assets/images/icon/tick.png"></p>
+                  <p *ngIf="items.challengeEntry == false"><img src="assets/images/icon/uncheck.png"></p>
                 </div>
-                <div class="col weak-day">
+                <!-- <div class="col weak-day">
                   <p>MON</p>
                   <p><img src="assets/images/icon/tick.png"></p>
                 </div>
@@ -118,7 +120,7 @@
                 <div class="col weak-day">
                   <p>SAT</p>
                   <p><img src="assets/images/icon/uncheck.png"></p>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -137,18 +139,21 @@
               </div>
 
               <div class="col-md-12 col-lg-12 col-sm-12">
-                <div class="row topten justify-content-center">
+                <div class="row topten justify-content-center" >
 
-                  <div class="col user-status ">
-                    <img src="assets/images/jane.jpg" class="rounded-circle" width="45px" alt="Cinque Terre">
-                    <span class="badge"><img class="badge-img" src="assets/images/icon/starlead.png">
-                      <p class="First">1</p>
+                  <div class="col user-status" *ngFor="let items of leaderBoard ;let i = index">
+                    <img src="assets/images/icon/leader.png" alt="" class="rounded-circle" width="45px" alt="Cinque Terre">
+                    <span class="badge">
+                      <img *ngIf="i<1" class="badge-img" src="assets/images/icon/starlead.png">    
+                      <img  *ngIf="i>1" class="badge-img" src="assets/images/icon/status.png">
+                      <p class="First">{{i+1}}</p>
                     </span>
                   </div>
 
-                  <div class="col user-status ">
+                  <!-- <div class="col user-status ">
                     <span><img src="assets/images/jane.jpg" class="rounded-circle" width="45px" alt="Cinque Terre">
-                      <span class="badge"><img class="badge-img" src="assets/images/icon/status.png">
+                      <span class="badge">
+                        <img class="badge-img" src="assets/images/icon/status.png">
                         <p class="no">2</p>
                       </span></span>
                   </div>
@@ -199,7 +204,7 @@
                       <span class="badge"><img class="badge-img" src="assets/images/icon/status.png">
                         <p class="no">10</p>
                       </span></span>
-                  </div>
+                  </div> -->
 
                 </div>
 
@@ -233,10 +238,10 @@
                   aria-haspopup="true" aria-expanded="false">
                   Nutrition
                 </button>
-                <div class="dropdown-menu">
+                <!-- <div class="dropdown-menu">
                   <a class="dropdown-item" href="#">Action</a>
                   <a class="dropdown-item" href="#">Something else here</a>
-                </div>
+                </div> -->
               </div>
               <div class="weeklyText">
                 <h4 class="weeklyChallenge">Nutrition Goal: 2340 Kcel</h4>
@@ -358,12 +363,13 @@
         <div class=" challenge_section text-center p-2">
           <hr>
           <h5 class="slogen "><a class="challenge earned" href="">EARNED BADGES</a></h5>
-          <div class="row">
-            <div class="col badges"><img class="img-fluid" src="assets/images/icon/badges/best_price.png"></div>
-            <div class="col badges"><img class="img-fluid" src="assets/images/icon/badges/high_quality.png"></div>
-            <div class="col badges"><img class="img-fluid" src="assets/images/icon/badges/premium.png"></div>
-            <div class="col badges"><img class="img-fluid" src="assets/images/icon/badges/hot_deal.png"></div>
-            <div class="col badges"><img class="img-fluid" src="assets/images/icon/badges/best_choice.png"></div>
+          <div class="row" *ngFor="let badge of badges" >
+            <!-- <div class="col badges" *ngIf="!badge.length > 0"><p>No Badges are register yet</p></div> -->
+            <!-- <div class="col badges" *ngIf="badge.length > 0"><img class="img-fluid" src="assets/images/icon/badges/best_price.png"></div> -->
+            <!-- <div class="col badges"><img class="img-fluid" src="assets/images/icon/badges/high_quality.png"></div> -->
+            <!-- <div class="col badges"><img class="img-fluid" src="assets/images/icon/badges/premium.png"></div> -->
+            <!-- <div class="col badges"><img class="img-fluid" src="assets/images/icon/badges/hot_deal.png"></div> -->
+            <!-- <div class="col badges"><img class="img-fluid" src="assets/images/icon/badges/best_choice.png"></div> -->
           </div>
 
         </div>

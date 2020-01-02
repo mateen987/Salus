@@ -1,4 +1,4 @@
-<app-home></app-home>
+<!-- <app-home></app-home> -->
 <div class=" my-dashboard">
     <div class="container-fluid  ">
 
@@ -26,6 +26,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " href="admin/manage-member">Manage Member</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link logout"   (click)="logout()">logout</a>
                     </li>
                 </ul>
             </div>
@@ -133,35 +136,16 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr *ngFor="let items of tableRecord">
                      
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td class="text-center">Cell</td>
+                      <td>{{items.display_name}}</td>
+                      <td>{{items.user_nicename}}</td>
+                      <td class="text-center">{{items.user_email}}</td>
                       <td class="text-right points">12345</td>
                       <td class="text-right edit"><span><i (click)="editData()" class="fa fa-edit"></i></span>&nbsp; &nbsp;<span><i class="fa fa-trash"></i></span></td>
                    
                     </tr>
-                    <tr>
-                      
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td class="text-center">Cell</td>
-                      <td class="text-right">Cell</td>
-                      <td class="text-right edit"><span><i class="fa fa-edit"></i></span>&nbsp; &nbsp;<span><i class="fa fa-trash"></i></span></td>
 
-                      
-                    </tr>
-                    <tr>
-                    
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td class="text-center">Cell</td>
-                      <td class="text-right">Cell</td>
-                      <td class="text-right edit"><span><i class="fa fa-edit"></i></span>&nbsp; &nbsp;<span><i class="fa fa-trash"></i></span></td>
-
-                   
-                    </tr>
                   </tbody>
                 </table>
               </div>

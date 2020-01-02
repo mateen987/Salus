@@ -6,6 +6,7 @@
     letter-spacing: 4px;
     font-weight: bold !important;
     font-size: calc(14px + 3vw);
+    text-decoration: none;
 }
 .navbar-custom {
     background-color: black !important;
@@ -37,6 +38,7 @@
     line-height: normal;
     font-family: Roboto-Medium;
     color: #828282!important;
+    text-decoration: none !important;
 }
 
 @media (min-width: 992px){

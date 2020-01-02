@@ -10,9 +10,9 @@
 }
 .points{
     position: absolute;
-    padding-left: 1.5em;
-    line-height: 3.5;
-    font-size: 24px;
+    padding-left: 1.1em; 
+    line-height: 3.8;
+    font-size: 22px;
     font-weight: 400;
     color: white;
     }
@@ -57,9 +57,14 @@
      
     }
     .form-control{
-        height: calc(1.2em + .1rem + 1px) ;
-        background: #e3e8eb;
-        border: 0px solid ;
+        /* height: calc(1.2em + .1rem + 1px) ; */
+         background: #e3e8eb; 
+        border: 0px;
+    }
+    .form-controls{
+        border: 1px solid ; 
+        border-radius: 0px;
+        background: #ffffff; 
     }
     .calender{
         padding: 0.210rem .55rem;
@@ -113,7 +118,7 @@
        background: #ffffff;
    }
    .addFood{
- color: #3fa2f7;
+ color: #3fa2f7 !important;
  font-weight: 700;
  font-family: lato-regular;
    }
@@ -155,6 +160,43 @@
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
+.submit{
+    width: 175px !important;
+    background: #84ba4d;
+    color: white;
+}
+input{
+    border-radius: 0px;
+}
 
-
- 
+.inputgroup select { 
+	display: block;
+	width: 99%;
+	padding: 2px 25px 2px 2px; 
+	border: none; 
+	background: url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") right center no-repeat; 
+    appearance: none; 
+	-webkit-appearance: none;
+    -moz-appearance: none; 
+    background-color: white;
+}
+.addfood{
+    margin-left: 17%;
+    color:black;
+}
+.inputgroup{
+    margin: auto;
+    width: 100%;
+    padding:0px;
+    overflow: hidden;
+    background: white;
+}
+a:focus,
+select:focus,
+button:focus,
+input:focus,
+textarea:focus {
+outline: none;
+outline: 0;
+/* -webkit-box-shadow: none; */
+}

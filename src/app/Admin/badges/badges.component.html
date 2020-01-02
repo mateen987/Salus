@@ -1,4 +1,4 @@
-<app-home></app-home>
+<!-- <app-home></app-home> -->
 <div class=" my-dashboard">
   <div class="container-fluid  ">
 
@@ -25,11 +25,14 @@
           <li class="nav-item">
             <a class="nav-link " href="admin/manage-member">Manage Member</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link logout"   (click)="logout()">logout</a>
+      </li>
         </ul>
       </div>
     </div>
   
-    <form [formGroup]="badgeForm" (ngSubmit)="upload()">
+    <form [formGroup]="badgeForm" (ngSubmit)="upload()" >
     <div class="row p-3" >
       <div   class="col-md-6 browse justify-content-center d-flex">
         <div class="text-center cloud ">
@@ -43,8 +46,10 @@
       <div class="col-md-6">
         <label>Badge Title</label>
         <input type="text" class="form-control" formControlName="name"  placeholder="Last">
+        <div class="alert" *ngIf="!badgeForm.controls['name'].valid && badgeForm.controls['name'].touched">Name is required</div>
         <label>image location</label>
         <input type="text" class="form-control" formControlName="img_location"  placeholder="image Url">
+        <div class="alert" *ngIf="!badgeForm.controls['img_location'].valid && badgeForm.controls['img_location'].touched">Enter online image Url</div>
         <div class="row">
           <div class="col-5">
             <label>Start Date:</label>
@@ -54,33 +59,38 @@
                 <button class="btn calender  fa fa-calendar" (click)="dd.toggle()" type="button"></button>
               </div>
             </div>
+            <!-- <div class="alert" *ngIf="!badgeForm.controls['start_date'].valid && badgeForm.controls['start_date'].touched">Select Date</div> -->
           </div>
           <div class="col-5">
             <label>End Date:</label>
             <div class="form-group calenderInput ">
               <div class="input-group">
-                <input class="form-control" [(ngModel)]="end_date" readonly formControlName="end_date" ngbDatepicker #d="ngbDatepicker"  placeholder="yyyy-mm-dd" name="dp">
-                <button class="btn calender  fa fa-calendar" (click)="d.toggle()" type="button"></button>
+                <input class="form-control" readonly formControlName="end_date" ngbDatepicker #d="ngbDatepicker"  placeholder="yyyy-mm-dd" name="dp">
+                <button class="btn calender  fa fa-calendar" (click)="d.toggle()" type="button"></button>              
               </div>
             </div>
+            <!-- <div class="alert" *ngIf="!badgeForm.controls['end_date'].valid && badgeForm.controls['end_date'].touched">Select Date</div>               -->
           </div>
-        </div>
-      
-
+      </div>
+        
         <div class="row">
           <div class="col-5">
             <label>Total Points Earned</label>
+            <div class="form-group inputgroup" >
             <select class="form-control dateInput select" [(ngModel)]="selectUserPoint"  formControlName="point_id" Placeholder="Select-Point">
               <option *ngFor="let item of adminpoints" [value]="item.id">{{item.pointName}}&nbsp;{{item.pointValue}}</option>
             </select>
+            </div>
           </div>
+          <!-- <div class="alert" *ngIf="!badgeForm.controls['point_id'].valid && badgeForm.controls['point_id'].touched">Select Date</div>                     -->
 
           <div class="col-7">
             <label>choose Participating Companies</label>
-            <div class="" >
+            <div class="form-group inputgroup" >
               <select  class="form-control dateInput select" [(ngModel)]="companyId"  formControlName="groupIDs" >
                 <option  *ngFor="let company of companyName" [value]="company.group_id">{{company.name}}&nbsp;</option>
               </select>
+              <!-- <div class="alert" *ngIf="!badgeForm.controls['groupIDs'].valid && badgeForm.controls['groupIDs'].touched">Select Date</div> -->
               <!-- <ng-multiselect-dropdown
                   [placeholder]="'select company'"
                   [data]="cities"

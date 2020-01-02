@@ -2,7 +2,7 @@
 .my-dashboard{
     background: #e3e8eb;
     padding-top: 4%;
-    /* height: calc(100vh - 92px); */
+     height:100vh;
     font-family:inherit ;
    
 }

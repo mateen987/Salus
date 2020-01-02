@@ -1,69 +1,66 @@
 <app-home></app-home>
 
 <div class=" my-dashboard">
-    <div class="container-fluid  ">
-  
-      <!-- <profile banner start> -->
-      <div class="row ">
-        <div class="col-5">
-          <h2>MY WELLNESS - Daily TASKS </h2>
-          <h6>CURRENT GOAL:&nbsp;LOSE WEIGHT &nbsp;<a href="">Edit</a></h6>
-        </div>
-        <div class="col-1">
-          <img src="../../../assets/images/icon/badges/daily-task.png" width="80px">
-        </div>
-        <div class="col-lg-3 col-3"></div>
-        <div class="point_profile  col-3 ">
-          <div class="profile row">
-            <div class="col text-right userProfile">
-              <p class="points">43</p>
-              <p class="upoints">Points</p>
-              <img src="assets/images/icon/star.png" width="100px" alt="Cinque Terre">
-            </div>
-            <div class="col text-right ">
-              <img src="assets/images/jane.jpg" class="rounded-circle" width="80px" alt="Cinque Terre">
-              <p class="text-center">Katlyn Smith</p>
-            </div>
+  <div class="container-fluid  ">
+
+    <!-- <profile banner start> -->
+    <div class="row ">
+      <div class="col-5">
+        <h2>MY WELLNESS - Daily TASKS </h2>
+        <h6>CURRENT GOAL:&nbsp;LOSE WEIGHT &nbsp;<a href="">Edit</a></h6>
+      </div>
+      <div class="col-1">
+        <img src="../../../assets/images/icon/badges/daily-task.png" width="80px">
+      </div>
+      <div class="col-lg-3 col-3"></div>
+      <div class="point_profile  col-3 ">
+        <div class="profile row">
+          <div class="col text-right userProfile">
+            <p class="points">{{userPoints}}</p>
+            <p class="upoints">Points</p>
+            <img src="assets/images/icon/star.png" width="100px" alt="Cinque Terre">          
+          </div>
+          
+          <div class="col text-right ">
+            <img src="assets/images/icon/user.png" class="rounded-circle" width="80px" alt="Profile">
+            <p class="text-center">Katlyn Smith</p>
           </div>
         </div>
       </div>
-      <!-- <profile banner end> -->
-          
-        <div class="row">
-         
-          <div class="col-md-12">
-            <h3>{{ viewDate | calendarDate:('dayViewTitle'):'en'}}</h3>
-          </div>
-         
+    </div>
+    <!-- <profile banner end> -->
+
+    <div class="row">
+
+      <div class="col-md-12">
+        <h3>{{ viewDate | calendarDate:('dayViewTitle'):'en'}}</h3>
+      </div>
+
+    </div>
+    <!-- (dayClicked)="dayClicked(day)" -->
+    <br />
+    <div [ngSwitch]="view">
+      <mwl-calendar-month-view #ref *ngSwitchCase="CalendarView.Month" [cellTemplate]="customCellTemplate"
+        [viewDate]="viewDate" [events]="events" [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen"
+        
+        (eventClicked)="dayClicked(day)" (eventTimesChanged)="eventTimesChanged($event)">
+      </mwl-calendar-month-view>
+      <ng-template #customCellTemplate let-day="day" let-point="day">
+        <div class="cal-cell-top">
+          <span class="cal-day-badge"> <span> {{test[point.date.getDate()-1]}}/6 points </span> <a class="edit"
+              (click)="open(content,day)">Edit</a> </span>
+          <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}
+          </span>
         </div>
-        <br />
-        <div [ngSwitch]="view" >
-          <mwl-calendar-month-view
-            *ngSwitchCase="CalendarView.Month"
-            [cellTemplate]="customCellTemplate" 
-            [viewDate]="viewDate"
-          
-            [refresh]="refresh"
-            [activeDayIsOpen]="activeDayIsOpen"
-            (dayClicked)="dayClicked($event.day)"
-            (eventClicked)="handleEvent('Clicked', $event.event)"
-            (eventTimesChanged)="eventTimesChanged($event)"
-          >
-          </mwl-calendar-month-view>
-  <ng-template #customCellTemplate let-day="day" >
-    <div class="cal-cell-top">
-        <span class="cal-day-badge" >0/6 points <a class="edit" (click)="open(content)" >Edit</a> </span>
-        <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}
-        </span>
-    </div>
-    <div class="text-center task">
-      <img src="../../../assets/images/icon/badges/task-uncheck.png"  class="img-fluid mx-auto " >
-    </div>
-</ng-template>
+        <div class="text-center task">
+          <img *ngIf="test[point.date.getDate()-1] <6" src="../../../assets/images/icon/badges/task-uncheck.png" class="img-fluid mx-auto ">
+          <img  *ngIf="test[point.date.getDate()-1] >=6" src="../../../assets/images/icon/badges/daily-task.png" width="44%" class="img-fluid mx-auto ">
+        </div>
+      </ng-template>
 
 
 
-          <mwl-calendar-week-view
+      <!-- <mwl-calendar-week-view
             *ngSwitchCase="CalendarView.Week"
             [viewDate]="viewDate"
             [events]="events"
@@ -80,63 +77,78 @@
             (eventClicked)="handleEvent('Clicked', $event.event)"
             (eventTimesChanged)="eventTimesChanged($event)"
           >
-          </mwl-calendar-day-view>
+          </mwl-calendar-day-view> -->
 
-        <br><br><br>
+      <br><br><br>
 
-        </div>
-
-
-
-
-
-
-
-        </div></div>
-
-
-        <ng-template #content let-c="close" let-d="dismiss">
-      
-            <h4 class="text-center claim" >CLAIM YOUR POINTS</h4>
-          <h6 class="text-center">SIX DAILY TASK FOR IMPROVING YOUR WELL-BEING AND MENTAL HEALTH</h6>
-         
-            <div class=" custom-control  mb-3">
-              <input type="checkbox" class=" custom-control-input" id="first">
-              <label class="heading custom-control-label" for="first">EXERCISE: Today I was active for 30 minutes or more</label>
-            <br><p class="subline">Your physical health plays a key role in keeping you mentally healthy. Being physically active can improve
-              your mood and reduces stress.</p>
-            </div>
-          <div class=" custom-control  mb-3">
-            <input type="checkbox" class=" custom-control-input" id="second">
-            <label class=" custom-control-label" for="second">EAT WELL. Today I ate three nutritious well-balanced meals. Avoiding processed sugar and
-              highly processed foods</label>
-          </div>
-        <div class=" custom-control  mb-3">
-          <input type="checkbox" class="custom-control-input" id="third">
-          <label class="heading custom-control-label" for="third">SLEEP WELL: Today I slept for a duration of 7-8 hours.</label>
-          <br><p class="subline">We cannot function properly without sleep. Sleep helps us to repair and restore our bodies and minds</p>
-        </div>
-       <div class=" custom-control  mb-3">
-        <input type="checkbox" class=" custom-control-input" id="four">
-        <label class="heading custom-control-label" for="four">MINDFULNESS: Today I practiced mindfulness.</label>
-        <br><p class="subline">Mindfulness is about being in the present. You are fully aware of your surroundings observing your
-          thoughts and feelings in a positive way and concentrate on taste, touch, smell, sight, and sound.</p> 
-      </div>
-     <div class=" custom-control  mb-3">
-      <input type="checkbox" class=" custom-control-input" id="five">
-      <label class="heading custom-control-label" for="five">HYDRATE: Today I consumed eight to ten glasses of water.</label>
-      <br><p class="subline">Drinking enough water regularly helps prevent dehydration which can make you irritable.</p> 
     </div>
-  <div class=" custom-control  mb-3">
-    <input type="checkbox" class=" custom-control-input" id="six">
-    <label class="heading custom-control-label" for="six">TAKE TIME OUT. Today I took time to relax, and let go of worries.</label>
-    <br><p class="subline">Relaxing gives your mind and body time to recover from the stresses of everyday life.</p>
+
+
+
+
+
+
+
+  </div>
 </div>
-          
-         <div class="row justify-content-center">
-            <button class="btn btn-sm col-2 cancel" (click)="d('Cross click')">Cancel</button> 
-          
-             <button class="btn btn-sm col-2 submit" (click)="d('Cross click')">Submit</button>
-          </div>
-         
-        </ng-template>
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+
+
+  <h4 class="text-center claim">{{mateen}}CLAIM YOUR POINTS</h4>
+  <h6 class="text-center">SIX DAILY TASK FOR IMPROVING YOUR WELL-BEING AND MENTAL HEALTH</h6>
+
+  <div class=" custom-control  mb-3">
+
+    <input type="checkbox" class=" custom-control-input" [(ngModel)]="exercise" id="first">
+    <label class="heading custom-control-label" for="first">EXERCISE: Today I was active for 30 minutes or more</label>
+    <br>
+    <p class="subline">Your physical health plays a key role in keeping you mentally healthy. Being physically active
+      can improve
+      your mood and reduces stress.</p>
+  </div>
+  <div class=" custom-control  mb-3">
+    <input type="checkbox" class=" custom-control-input" [(ngModel)]="nutrition" id="second">
+    <label class=" custom-control-label" for="second">EAT WELL. Today I ate three nutritious well-balanced meals.
+      Avoiding processed sugar and
+      highly processed foods</label>
+  </div>
+  <div class=" custom-control  mb-3">
+    <input type="checkbox" class="custom-control-input" [(ngModel)]="sleep" id="third">
+    <label class="heading custom-control-label" for="third">SLEEP WELL: Today I slept for a duration of 7-8
+      hours.</label>
+    <br>
+    <p class="subline">We cannot function properly without sleep. Sleep helps us to repair and restore our bodies and
+      minds</p>
+  </div>
+  <div class=" custom-control  mb-3">
+    <input type="checkbox" class=" custom-control-input" [(ngModel)]="wellBeing" id="four">
+    <label class="heading custom-control-label" for="four">MINDFULNESS: Today I practiced mindfulness.</label>
+    <br>
+    <p class="subline">Mindfulness is about being in the present. You are fully aware of your surroundings observing
+      your
+      thoughts and feelings in a positive way and concentrate on taste, touch, smell, sight, and sound.</p>
+  </div>
+  <div class=" custom-control  mb-3">
+    <input type="checkbox" class=" custom-control-input" [(ngModel)]="hydrate" id="five">
+    <label class="heading custom-control-label" for="five">HYDRATE: Today I consumed eight to ten glasses of
+      water.</label>
+    <br>
+    <p class="subline">Drinking enough water regularly helps prevent dehydration which can make you irritable.</p>
+  </div>
+  <div class=" custom-control  mb-3">
+    <input type="checkbox" class=" custom-control-input" [(ngModel)]="reflect" id="six">
+    <label class="heading custom-control-label" for="six">TAKE TIME OUT. Today I took time to relax, and let go of
+      worries.</label>
+    <br>
+    <p class="subline">Relaxing gives your mind and body time to recover from the stresses of everyday life.</p>
+  </div>
+
+  <div class="row justify-content-center">
+    <button class="btn btn-sm col-2 cancel" (click)="d('Cross click')">Cancel</button>
+
+    <button class="btn btn-sm col-2 submit" (click)="submit()">Submit</button>
+  </div>
+
+</ng-template>

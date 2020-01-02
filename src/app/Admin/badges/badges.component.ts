@@ -4,6 +4,8 @@ import{UserService} from '../../services/user.service'
 import {NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { HttpErrorResponse } from '@angular/common/http';
+import {  ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-badges',
@@ -29,7 +31,8 @@ export class BadgesComponent implements OnInit {
   value:any;
   token:any;
   end_date:Date;
-  constructor(private _formBuilder:FormBuilder,private service:UserService,private ngbDateParserFormatter: NgbDateParserFormatter) { 
+  constructor(private _formBuilder:FormBuilder,private service:UserService,private router:Router,
+    private ngbDateParserFormatter: NgbDateParserFormatter,private toastr:ToastrService) { 
 
     this.badgeForm = this._formBuilder.group({
       name   : ['', Validators.required],
@@ -44,12 +47,12 @@ export class BadgesComponent implements OnInit {
    
   }
   itemselect(point){
-    console.log("selected item"+point)
+    // console.log("selected item"+point)
   }
   getcompanyName(){
      this.service.getcompany().subscribe(res => {
        this.companyName=res;
-       console.log(this.companyId);
+      //  console.log(this.companyId);
       
      })
   }
@@ -81,12 +84,18 @@ this.getcompanyName();
       allowSearchFilter: this.ShowFilter
   };
   }
+  showSuccess(){
+  this.toastr.success("Data Saved successfully");
+  }
+  showError(){
+    this.toastr.error("Please Enter Correct data");
+    }
   
   onItemSelect(item_id: any) {
-    console.log('onItemSelect', item_id);
+    // console.log('onItemSelect', item_id);
 }
 onSelectAll(items: any) {
-    console.log('onSelectAll', items);
+    // console.log('onSelectAll', items);
 }
 toogleShowFilter() {
     this.ShowFilter = !this.ShowFilter;
@@ -111,7 +120,7 @@ handleLimitSelection() {
   }
   selectChangeHandler(event:any){
     this.value = event.target.value;
-    console.log(this.value);
+    // console.log(this.value);
     // console.log("ok",this.end_date);
   }
   newSkill(): FormGroup {
@@ -143,12 +152,24 @@ upload(){
   //   fd.append('active', this.badgeForm.get('active').value);
   //   fd.append('groupIDs', this.badgeForm.get('groupIDs').value);
 
-  console.log(this.badgeForm.value)
+  // console.log(this.badgeForm.value)
    this.service.postbadge(this.badgeForm.value).subscribe(res =>{
-   console.log("okg"+res);
-   },
-   )
-
- 
+  //  console.log("okg"+res);
+   this.showSuccess();
+    this.badgeForm.reset();
+   },error=>{
+    this.showError();
+   }
+   ) 
+  
+  
 }
+
+logout(){
+
+  localStorage.removeItem('userid');
+    localStorage.clear();
+    this.router.navigate(["/"],)
+}
+
 }

@@ -27,17 +27,21 @@ export class LoginComponent implements OnInit {
 }
 
 login(){
-console.log('ok',this.loginForm.value)
+  //  console.log('ok',this.loginForm.value)
   this.userDataService.auth(this.loginForm.value).subscribe(response=>{
-    console.log(response);
+    // console.log(response);
      this.user=response;
-      localStorage.setItem('token',this.user.token)
+      localStorage.setItem('token',this.user.token,);
+      localStorage.setItem('userid',this.user.user_id);
+   if(this.user.admin == true){
+    this.router.navigate(["/admin/badges"],)
+   }else{
     this.router.navigate(["/dashboard"],)
+  }
 
    },(err: HttpErrorResponse)=>{
-       console.log("err"+err);
+      //  console.log("err"+err);
    }); 
-
 
 }
 

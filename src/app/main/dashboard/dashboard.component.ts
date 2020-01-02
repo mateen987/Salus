@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import{UserService} from '../../services/user.service'
+import {NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,29 +9,65 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
   progress = 500;
-  constructor() { }
+  user_id:any;
+  userData:any;
+  Calories:any;
+  caloriesBurned:any;
+  weekdays:any;
+  leaderBoard:any;
+  badges:any;
+  userPoints:any;
+  point=0;
+  constructor(private service:UserService) { }
+
   progressBar = document.querySelector('.progress-bar');
-  intervalId;
+  // intervalId;
+
   ngOnInit() {
-  
-    const getDownloadProgress = () => {
-      console.log('getDownload', this);
-      if (this.progress <= 99) {
-     
-        this.progress = this.progress + 1;
-        console.log('inside if', this.progress);
-      }
-      else {
-        clearInterval(this.intervalId);
-      }
-    }
-    this.intervalId = setInterval(getDownloadProgress, 1000);
+    this.user_id = localStorage.getItem('userid');
+    this.getPoint();
+    this.getuserdata();
 
   }
 
-  ngOnDestroy() {
-    clearInterval(this.intervalId);
-  } 
+ getPoint(){
+   this.service.userPoint(this.user_id).subscribe(res=>{
+     this.userPoints=res;
+     this.userPoints=this.userPoints.points;
+     console.log(this.userPoints)
+   })
+ }
+
+getuserdata(){
+   this.service.dashboardData(this.user_id).subscribe(res=>{
+      this.userData=res;
+      // console.log(this.userData)
+      this.Calories=this.userData.today.Calories;
+      this.caloriesBurned=this.userData.today.totalCaloriesBurned
+      if(this.userData['wellBeing'] != null ){
+        this.point++
+      }
+      if(this.userData['nutrition'] !=null){
+        this.point++
+      }
+      if(this.userData['hydrate'] !=null){
+        this.point++
+      }
+      if(this.userData['exercise'] !=null){
+        this.point++
+      }
+      if(this.userData['sleep'] !=null){
+        this.point++
+      }
+      if(this.userData['reflect'] !=null){
+        this.point++
+      }
+  this.weekdays=this.userData.currentWeek;
+   this.leaderBoard=this.userData.leaderboard;
+  this.badges=this.userData.badges;
+  // console.log(this.badges)
+   })
+}
 
 
 }

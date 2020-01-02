@@ -2,16 +2,16 @@
     background: #e3e8eb;
     padding-top: 4%;
     font-family:inherit ;
-   
+   height: 100vh;
 }
 .container-fluid{
     width: 92%;
 }
 .points{
     position: absolute;
-    padding-left: 1.5em;
-    line-height: 3.5;
-    font-size: 24px;
+    padding-left: 1em;
+    line-height: 3.7;
+    font-size: 22px;
     font-weight: 400;
     color: white;
     }

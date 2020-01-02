@@ -1,358 +1,398 @@
 <app-home></app-home>
 
 <div class=" my-dashboard">
-    <div class="container-fluid  ">
-          
-        <div class="row ">
-                    <div class="col-sm-6 col-md-4 col-lg-4">
-                      <h4>MY WELLNESS - NUTRITION </h4>
-                      <h6>CURRENT GOAL:&nbsp;LOSE WEIGHT &nbsp;<a href="">Edit</a></h6>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-1">
-                      <img src="../../../assets/images/icon/nutritionSign.png" width="70px">
-                    </div>
-                    <div class="col-lg-4 d-none d-lg-block"></div>
-                    <div class="point_profile col-sm-6 col-md-4 col-lg-3 ">
-                      <div class="profile row">
-                            <div class="col text-right userProfile">
-                                    <p class="points">43</p>
-                                    <p class="upoints">Points</p>
-                                    <img src="assets/images/icon/star.png" width="100px" alt="Cinque Terre">
-                                  </div>
-                                  <div class="col text-right ">
-                                    <img src="assets/images/jane.jpg" class="rounded-circle" width="80px" alt="Cinque Terre">
-                                    <p class="text-center">Katlyn Smith</p>
-                                  </div>
-                          </div>
-                        </div>
-                    </div>
-                    <!-- <profile section end> -->
-               <div class="row justify-content-center">
-                <div class="animation col-sm-12 col-md-4 col-lg-2 p-2">
-                  <div class="items text-right ">
-                    <h5 class="daily-task">Calories and macronutrient totals for today:</h5>
-                    <a class="chooseDay" href="">CHOOSE ANOTHER DAY</a>
-                  </div>
-                  <div class="form-group calenderInput">
-                      <div class="input-group">
-                        <input class="form-control " placeholder="yyyy-mm-dd" name="dp">
-                          <button class="btn calender btn-outline-secondary fa fa-calendar" (click)="d.toggle()" type="button"></button>
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="targetGoal text-right">TARGET GOALS:</div>
+  <div class="container-fluid  ">
 
-                  
-                </div>
-                <!-- <end here> -->
-                       <!-- <progress bar start > -->
-                    <div class="animation col-sm-12 col-md-4 col-lg-2 p-2">
-                        <div class="items text-center bg-white">
-                          <label class="nutrition">CALORIES</label>
-                          <circle-progress [percent]="70" radius="67" [outerStrokeWidth]="12" [innerStrokeWidth]="12" [space]="-12"
-                            [showUnits]="false" [outerStrokeColor]="'#83b752'" [innerStrokeColor]="'#e7e8ea'" [titleFontSize]="32"
-                            [titleColor]=" '#83b752' " [subtitleFontSize]="18" [animation]="true" [animationDuration]="300"
-                            [subtitle]="'Kcel'" [showSubtitle]="true" [title]="1245" [showTitle]="true" [startFromZero]="false"
-                            [responsive]="false"> </circle-progress>
-                          <p class="day_left">248 To Go Today</p>
-                          <div class="number">1493</div>
-                        </div>
-                      </div>
-                        <!-- <end here> -->
-                               <!-- <progress bar start > -->
-                                  <div class="animation col-sm-12 col-md-4 col-lg-2 p-2">
-                                      <div class="items text-center bg-white">
-                                        <label class="nutrition">PROTEIN</label>
-                                        <circle-progress [percent]="70" radius="67" [outerStrokeWidth]="12" [innerStrokeWidth]="12" [space]="-12"
-                                          [showUnits]="false" [outerStrokeColor]="'#83b752'" [innerStrokeColor]="'#e7e8ea'" [titleFontSize]="32"
-                                          [titleColor]=" '#83b752' " [subtitleFontSize]="22" [animation]="true" [animationDuration]="300"
-                                          [subtitle]="'Kcel'" [showSubtitle]="false" [title]="85" [showTitle]="true" [startFromZero]="false"
-                                          [responsive]="false"> </circle-progress>
-                                        <p class="day_left">27 To Go Today</p>
-                                        <div class="number">112</div>
-                                      </div>
-                                    </div>
-                        <!-- <end here> -->
-                               <!-- <progress bar start > -->
-                            <div class="animation col-sm-12 col-md-4 col-lg-2 p-2">
-                                <div class="items text-center bg-white">
-                                    <label class="nutrition">FAT</label>
-                                  <circle-progress [percent]="70" radius="67" [outerStrokeWidth]="12" [innerStrokeWidth]="12" [space]="-12"
-                                    [showUnits]="false" [outerStrokeColor]="'#83b752'" [innerStrokeColor]="'#e7e8ea'" [titleFontSize]="32"
-                                    [titleColor]=" '#83b752' " [subtitleFontSize]="22" [animation]="true" [animationDuration]="300"
-                                    [subtitle]="'Kcel'" [showSubtitle]="false" [title]="40" [showTitle]="true" [startFromZero]="false"
-                                    [responsive]="false"> </circle-progress>
-                                  <p class="day_left">10 To Go Today</p>
-                                  <div class="number">50</div>
-                                </div>
-                              </div>
-                        <!-- <end here> -->
-                               <!-- <progress bar start > -->
-                            <div class="animation col-sm-12 col-md-4 col-lg-2 p-2">
-                                <div class="items text-center bg-white">
-                                    <label class="nutrition">CARBS</label>
-                                  <circle-progress [percent]="70" radius="67" [outerStrokeWidth]="12" [innerStrokeWidth]="12" [space]="-12"
-                                    [showUnits]="false" [outerStrokeColor]="'#83b752'" [innerStrokeColor]="'#e7e8ea'" [titleFontSize]="32"
-                                    [titleColor]=" '#83b752' " [subtitleFontSize]="22" [animation]="true" [animationDuration]="300"
-                                    [subtitle]="'Kcel'" [showSubtitle]="false" [title]="73" [showTitle]="true" [startFromZero]="false"
-                                    [responsive]="false"> </circle-progress>
-                                  <p class="day_left">76 To Go Today</p>
-                                  <div class="number">149</div>
-                                </div>
-                              </div>
-                        <!-- <end here> -->
-                            <!-- <progress bar start > -->
-                            <div class="animation col-sm-12 col-md-4 col-lg-2 p-2">
-                                <div class="items text-center bg-white">
-                                    <label class="nutrition">SUGARS</label>
-                                  <circle-progress [percent]="70" radius="67" [outerStrokeWidth]="12" [innerStrokeWidth]="12" [space]="-12"
-                                    [showUnits]="false" [outerStrokeColor]="'#83b752'" [innerStrokeColor]="'#e7e8ea'" [titleFontSize]="32"
-                                    [titleColor]=" '#83b752' " [subtitleFontSize]="22" [animation]="true" [animationDuration]="300"
-                                    [subtitle]="'Kcel'" [showSubtitle]="false" [title]="15" [showTitle]="true" [startFromZero]="false"
-                                    [responsive]="false"> </circle-progress>
-                                  <p class="day_left">22 To Go Today</p>
-                                  <div class="number">37</div>
-                                </div>
-                              </div>
-                         <!-- <end here> -->
-               </div>
-              <br><h5>MY FOOD DIARY - OCTOBER 23, 2019</h5><br>
-
-               <table class="table table-borderless justify-content-center">
-                <thead>
-                  <tr>
-                    <th scope="col" class="firstNutritions">BREAKFAST FOODS</th>
-                    <th scope="col" class="nutritions">SERVINGS</th>
-                    <th scope="col" class="nutritions">CALORIES</th>
-                    <th scope="col" class="nutritions">CARBS</th>
-                    <th scope="col" class="nutritions">FATS</th>
-                    <th scope="col" class="nutritions">PROTIEN</th>
-                    <th scope="col" class="nutritions">SUGAR</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td scope="row" ><a class="addFood" href="">Add Food</a></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-               
+    <div class="row ">
+      <div class="col-sm-6 col-md-4 col-lg-4">
+        <h4>MY WELLNESS - NUTRITION </h4>
+        <h6>CURRENT GOAL:&nbsp;LOSE WEIGHT &nbsp;<a href="">Edit</a></h6>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-1">
+        <img src="../../../assets/images/icon/nutritionSign.png" width="70px">
+      </div>
+      <div class="col-lg-4 d-none d-lg-block"></div>
+      <div class="point_profile col-sm-6 col-md-4 col-lg-3 ">
+        <div class="profile row">
+          <div class="col text-right userProfile">
+            <p class="points">{{userPoints}}</p>
+            <p class="upoints">Points</p>
+            <img src="assets/images/icon/star.png" width="100px" alt="Cinque Terre">
+          </div>
+          <div class="col text-right ">
+            <img src="assets/images/icon/user.png" class="rounded-circle" width="80px" alt="Cinque Terre">
+            <p class="text-center">Katlyn Smith</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <profile section end> -->
+    <div class="row justify-content-center">
+      <div class="animation col-sm-12 col-md-4 col-lg-2 p-2">
+        <div class="items text-right ">
+          <h5 class="daily-task">Calories and macronutrient totals for today:</h5>
+          <a class="chooseDay" href="">CHOOSE ANOTHER DAY</a>
+        </div>
+        <div class="form-group calenderInput">
+          <div class="input-group">
+            <input class="form-control" readonly ngbDatepicker #d="ngbDatepicker" placeholder="Select-Date" name="dp">
+            <button class="btn calender btn-outline-secondary fa fa-calendar" (click)="d.toggle()"
+              type="button"></button>
+          </div>
+        </div>
+        <hr>
+        <div class="targetGoal text-right">TARGET GOALS:</div>
 
 
+      </div>
+      <!-- <end here> -->
+      <!-- <progress bar start > -->
+      <div class="animation col-sm-12 col-md-4 col-lg-2 p-2">
+        <div class="items text-center bg-white">
+          <label class="nutrition">CALORIES</label>
+          <circle-progress #circleProgress [percent]="77" radius="67" [outerStrokeWidth]="12"
+            [innerStrokeWidth]="12" [space]="-12" [showUnits]="false" [outerStrokeColor]="'#83b752'"
+            [innerStrokeColor]="'#e7e8ea'" [titleFontSize]="32" [titleColor]=" '#83b752' " [subtitleFontSize]="18"
+            [animation]="true" [animationDuration]="300" [subtitle]="'Kcel'" [showSubtitle]="true" [title]="Calories"
+            [showTitle]="true" [startFromZero]="false" [responsive]="false"> </circle-progress>
+          <p class="day_left">248 To Go Today</p>
+          <div class="number">1493</div>
+        </div>
+      </div>
+      <!-- <end here> -->
+      <!-- <progress bar start > -->
+      <div class="animation col-sm-12 col-md-4 col-lg-2 p-2">
+        <div class="items text-center bg-white">
+          <label class="nutrition">PROTEIN</label>
+          <circle-progress [percent]="55" radius="67" [outerStrokeWidth]="12" [innerStrokeWidth]="12"
+            [space]="-12" [showUnits]="false" [outerStrokeColor]="'#83b752'" [innerStrokeColor]="'#e7e8ea'"
+            [titleFontSize]="32" [titleColor]=" '#83b752' " [subtitleFontSize]="22" [animation]="true"
+            [animationDuration]="300" [subtitle]="'Kcel'" [showSubtitle]="false" [title]="Proteins" [showTitle]="true"
+            [startFromZero]="false" [responsive]="false"> </circle-progress>
+          <p class="day_left">27 To Go Today</p>
+          <div class="number">112</div>
+        </div>
+      </div>
+      <!-- <end here> -->
+      <!-- <progress bar start > -->
+      <div class="animation col-sm-12 col-md-4 col-lg-2 p-2">
+        <div class="items text-center bg-white">
+          <label class="nutrition">FAT</label>
+          <circle-progress [percent]="56" radius="67" [outerStrokeWidth]="12" [innerStrokeWidth]="12" [space]="-12"
+            [showUnits]="false" [outerStrokeColor]="'#83b752'" [innerStrokeColor]="'#e7e8ea'" [titleFontSize]="32"
+            [titleColor]=" '#83b752' " [subtitleFontSize]="22" [animation]="true" [animationDuration]="300"
+            [subtitle]="'Kcel'" [showSubtitle]="false" [title]="Fats" [showTitle]="true" [startFromZero]="false"
+            [responsive]="false"> </circle-progress>
+          <p class="day_left">10 To Go Today</p>
+          <div class="number">50</div>
+        </div>
+      </div>
+      <!-- <end here> -->
+      <!-- <progress bar start > -->
+      <div class="animation col-sm-12 col-md-4 col-lg-2 p-2">
+        <div class="items text-center bg-white">
+          <label class="nutrition">CARBS</label>
+          <circle-progress [percent]="77" radius="67" [outerStrokeWidth]="12" [innerStrokeWidth]="12" [space]="-12"
+            [showUnits]="false" [outerStrokeColor]="'#83b752'" [innerStrokeColor]="'#e7e8ea'" [titleFontSize]="32"
+            [titleColor]=" '#83b752' " [subtitleFontSize]="22" [animation]="true" [animationDuration]="300"
+            [subtitle]="'Kcel'" [showSubtitle]="false" [title]="Carbs" [showTitle]="true" [startFromZero]="false"
+            [responsive]="false"> </circle-progress>
+          <p class="day_left">76 To Go Today</p>
+          <div class="number">149</div>
+        </div>
+      </div>
+      <!-- <end here> -->
+      <!-- <progress bar start > -->
+      <div class="animation col-sm-12 col-md-4 col-lg-2 p-2">
+        <div class="items text-center bg-white">
+          <label class="nutrition">SUGARS</label>
+          <circle-progress [percent]="68" radius="67" [outerStrokeWidth]="12" [innerStrokeWidth]="12" [space]="-12"
+            [showUnits]="false" [outerStrokeColor]="'#83b752'" [innerStrokeColor]="'#e7e8ea'" [titleFontSize]="32"
+            [titleColor]=" '#83b752' " [subtitleFontSize]="22" [animation]="true" [animationDuration]="300"
+            [subtitle]="'Kcel'" [showSubtitle]="false" [title]="Sugar" [showTitle]="true" [startFromZero]="false"
+            [responsive]="false"> </circle-progress>
+          <p class="day_left">22 To Go Today</p>
+          <div class="number">37</div>
+        </div>
+      </div>
+      <!-- <end here> -->
+    </div>
+    <br>
+    <h5>MY FOOD DIARY - OCTOBER 23, 2019</h5><br>
 
-
-
-
-              
-              <table class="table table-borderless justify-content-center">
-                <thead>
-                  <tr>
-                    <th scope="col" class="firstNutritions">LUNCH FOODS</th>
-                    <th scope="col" class="nutritions">SERVINGS</th>
-                    <th scope="col" class="nutritions">CALORIES</th>
-                    <th scope="col" class="nutritions">CARBS</th>
-                    <th scope="col" class="nutritions">FATS</th>
-                    <th scope="col" class="nutritions">PROTIEN</th>
-                    <th scope="col" class="nutritions">SUGAR</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td scope="row" ><a class="addFood" href="">Add Food</a></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-
-
-
-
-              <table class="table table-borderless justify-content-center">
-                <thead>
-                  <tr>
-                    <th scope="col" class="firstNutritions">DiNNER FOODS</th>
-                    <th scope="col" class="nutritions">SERVINGS</th>
-                    <th scope="col" class="nutritions">CALORIES</th>
-                    <th scope="col" class="nutritions">CARBS</th>
-                    <th scope="col" class="nutritions">FATS</th>
-                    <th scope="col" class="nutritions">PROTIEN</th>
-                    <th scope="col" class="nutritions">SUGAR</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td scope="row" ><a class="addFood" href="">Add Food</a></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
+    <table class="table table-borderless justify-content-center">
+      <thead>
+        <tr>
+          <th scope="col" class="firstNutritions">BREAKFAST FOODS</th>
+          <!-- <th scope="col" class="nutritions">SERVINGS</th> -->
+          <th scope="col" class="nutritions">CALORIES</th>
+          <th scope="col" class="nutritions">CARBS</th>
+          <th scope="col" class="nutritions">FATS</th>
+          <th scope="col" class="nutritions">PROTIEN</th>
+          <th scope="col" class="nutritions">SUGAR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of Meals">
+          <td scope="row" *ngIf="data.type=='A type'"><a class="btn addFood"  (click)="open(content,'A type')">Add Food</a></td>
+          <td *ngIf="data.type=='A type'">{{data.calories}}</td>
+          <td *ngIf="data.type== 'A type' ">{{data.carbs}}</td>
+          <td *ngIf="data.type== 'A type' ">{{data.fats}}</td>
+          <td *ngIf="data.type== 'A type' ">{{data.proteins}}</td>
+          <td *ngIf="data.type== 'A type' ">{{data.sugars}}</td>
+        </tr>
+      </tbody>
+    </table>
 
 
 
 
 
-              <table class="table table-borderless table-responsive-sm justify-content-center">
-                <thead>
-                  <tr>
-                    <th scope="col" class="firstNutritions">SNACK FOODS</th>
-                    <th scope="col" class="nutritions">SERVINGS</th>
-                    <th scope="col" class="nutritions">CALORIES</th>
-                    <th scope="col" class="nutritions">CARBS</th>
-                    <th scope="col" class="nutritions">FATS</th>
-                    <th scope="col" class="nutritions">PROTIEN</th>
-                    <th scope="col" class="nutritions">SUGAR</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td scope="row" ><a class="addFood" href="">Add Food</a></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-
-
-              <br><h5>ADD OR CREATE FOODS</h5><br>
-
-              <div class="nav nav-pills">
-                <button href="#prices" class="btn nav-link active" data-toggle="pill">
-                  ADD FOOD
-                </button>
-                <button href="#features" class="btn nav-link" data-toggle="pill">
-                 VIEW SAVED FAVOURITES
-                </button>
-                <button href="#features" class="btn nav-link" data-toggle="pill">
-                  VIEW SAVED MEALS
-                </button>
- 
-                <div class="search input-group col-md-4 col-sm-12 ml-auto">
-                  <input class="search form-control py-2" type="search" value="search" id="example-search-input">
-                  <span class="input-group-append">
-                    <button class="btn search-btn" type="button">
-                        <i class="fa fa-search"></i>
-                    </button>
-                  </span>
-            </div>
-             
-
-                
-              </div>
-              <div class="tab-content">
-                <div class="tab-pane active" id="prices">
-                  <table class="table favouriteFood table-borderless table-responsive-sm justify-content-center">
-                    <thead class="thead-bg">
-                      <tr>
-                        <th scope="col" >FOODS</th>
-                        <th scope="col" >CALORIES</th>
-                        <th scope="col" >CARBS</th>
-                        <th scope="col" >FATS</th>
-                        <th scope="col" >PROTIEN</th>
-                        <th scope="col" >SUGAR</th>
-                        <th scope="col">ADD TO FAVOURITES</th>
-
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td ></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td> <img src="../../../assets/images/icon/starlead.png"> </td>
-                      </tr>
-                      <tr>
-                        <td ></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-
-                      <tr>
-                        <td ></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-
-                      <tr>
-                        <td ></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-
-                      <tr>
-                        <td ></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-
-
-                      <tr>
-                        <td ></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-
-                      <tr>
-                        <td ></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                </div>
-                <div class="tab-pane" id="features">Features Content</div>
-              </div> 
-
-              <br>
-                 
 
 
 
-                </div></div>
+    <table class="table table-borderless justify-content-center">
+      <thead>
+        <tr>
+          <th scope="col" class="firstNutritions">LUNCH FOODS</th>
+          <th scope="col" class="nutritions">CALORIES</th>
+          <th scope="col" class="nutritions">CARBS</th>
+          <th scope="col" class="nutritions">FATS</th>
+          <th scope="col" class="nutritions">PROTIEN</th>
+          <th scope="col" class="nutritions">SUGAR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of Meals">
+          <td scope="row" *ngIf="data.type=='B type'"><a class="btn addFood" (click)="open(content,'B type')">Add Food</a></td>
+          <td *ngIf="data.type=='B type'">{{data.calories}}</td>
+          <td *ngIf="data.type== 'B type' ">{{data.carbs}}</td>
+          <td *ngIf="data.type== 'B type' ">{{data.fats}}</td>
+          <td *ngIf="data.type== 'B type' ">{{data.proteins}}</td>
+          <td *ngIf="data.type== 'B type' ">{{data.sugars}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+
+    <table class="table table-borderless justify-content-center">
+      <thead>
+        <tr>
+          <th scope="col" class="firstNutritions">DiNNER FOODS</th>
+          <th scope="col" class="nutritions">CALORIES</th>
+          <th scope="col" class="nutritions">CARBS</th>
+          <th scope="col" class="nutritions">FATS</th>
+          <th scope="col" class="nutritions">PROTIEN</th>
+          <th scope="col" class="nutritions">SUGAR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of Meals">
+          <td scope="row" *ngIf="data.type=='C type'"><a class="btn addFood"  (click)="open(content,'C type')">Add Food</a></td>
+          <td *ngIf="data.type=='C type'">{{data.calories}}</td>
+          <td *ngIf="data.type== 'C type' ">{{data.carbs}}</td>
+          <td *ngIf="data.type== 'C type' ">{{data.fats}}</td>
+          <td *ngIf="data.type== 'C type' ">{{data.proteins}}</td>
+          <td *ngIf="data.type== 'C type' ">{{data.sugars}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+    <table class="table table-borderless table-responsive-sm justify-content-center">
+      <thead>
+        <tr>
+          <th scope="col" class="firstNutritions">SNACK FOODS</th>
+          <th scope="col" class="nutritions">CALORIES</th>
+          <th scope="col" class="nutritions">CARBS</th>
+          <th scope="col" class="nutritions">FATS</th>
+          <th scope="col" class="nutritions">PROTIEN</th>
+          <th scope="col" class="nutritions">SUGAR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of Meals">
+          <td scope="row" *ngIf="data.type=='D type'"><a class="btn addFood"  (click)="open(content,'D type')">Add Food</a></td>
+          <td *ngIf="data.type=='D type'">{{data.calories}}</td>
+          <td *ngIf="data.type== 'D type' ">{{data.carbs}}</td>
+          <td *ngIf="data.type== 'D type' ">{{data.fats}}</td>
+          <td *ngIf="data.type== 'D type' ">{{data.proteins}}</td>
+          <td *ngIf="data.type== 'D type' ">{{data.sugars}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+    <br>
+    <h5>ADD OR CREATE FOODS</h5><br>
+
+    <div class="nav nav-pills">
+      <button href="#prices" class="btn nav-link active" data-toggle="pill">
+        ADD FOOD
+      </button>
+      <button href="#favourite" class="btn nav-link" data-toggle="pill">
+        VIEW SAVED FAVOURITES
+      </button>
+      <button href="#features" class="btn nav-link" data-toggle="pill">
+        VIEW SAVED MEALS
+      </button>
+
+      <div class="search input-group col-md-4 col-sm-12 ml-auto">
+        <input class="search form-control py-2" type="search" value="search" id="example-search-input">
+        <span class="input-group-append">
+          <button class="btn search-btn" type="button">
+            <i class="fa fa-search"></i>
+          </button>
+        </span>
+      </div>
+
+
+
+    </div>
+    <div class="tab-content">
+      <div class="tab-pane active" id="prices">
+        <table class="table favouriteFood table-borderless table-responsive-sm justify-content-center">
+          <thead class="thead-bg">
+            <tr>
+              <th scope="col">FOODS</th>
+              <th scope="col">CALORIES</th>
+              <th scope="col">CARBS</th>
+              <th scope="col">FATS</th>
+              <th scope="col">PROTIEN</th>
+              <th scope="col">SUGAR</th>
+              <th scope="col">ADD TO FAVOURITES</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let items of favouriteMeal  | slice:0:50; let i=index">
+              <td>{{items.name}}</td>
+              <td>{{items.calories}}</td>
+              <td>{{items.carbs}}</td>
+              <td>{{items.fats}}</td>
+              <td>{{items.proteins}}</td>
+              <td>{{items.sugars}}</td>
+              <td>
+                <p *ngIf="items.favorite==true">
+                  <img src="../../../assets/images/icon/starlead.png">
+                </p>
+
+                <p *ngIf="items.favorite==false">
+                  <img src="../../../assets/images/icon/starlead.png">
+                </p>
+                <!-- {{items.favorite}} -->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- User Favorite food section -->
+
+      <div class="tab-pane" id="favourite">
+
+        <table class="table favouriteFood table-borderless table-responsive-sm justify-content-center">
+          <thead class="thead-bg">
+            <tr>
+              <th scope="col">FOODS</th>
+              <th scope="col">CALORIES</th>
+              <th scope="col">CARBS</th>
+              <th scope="col">FATS</th>
+              <th scope="col">PROTIEN</th>
+              <th scope="col">SUGAR</th>
+
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let items of userFavorite">
+              <td>{{items.name}}</td>
+              <td>{{items.name}}</td>
+              <td>{{items.name}}</td>
+              <td>{{items.name}}</td>
+              <td>{{items.name}}</td>
+              <td>{{items.name}}</td>
+            </tr>
+
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+
+            </tr>
+          </tbody>
+        </table>
+
+
+      </div>
+
+      <div class="tab-pane" id="features">
+        Comming Soon
+      </div>
+
+    </div>
+
+    <br>
+
+
+
+
+  </div>
+</div>
+
+
+
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+
+  <h4 class="text-center claim mt-3 mb-3">EDIT EXERCISE ITEM</h4>
+
+
+  <!-- <label class="addfood">ADD FOOD:</label>
+    <div class="form-group inputgroup  form-controls  col-8 p-0 m-auto">
+    <select class="form-control dateInput selectpicker" [(ngModel)]="exercise" >     
+      <option  *ngFor="let items of foodName" [value]="items.id">{{items.name}}</option>
+    
+
+    </select>
+  </div> -->
+  <br>
+
+  <div class="row justify-content-center mb-4">
+    <div class="col-md-3 mb-3">
+      <label>Servings</label>
+      <div class="form-group inputgroup form-controls ">
+        <select class="form-control dateInput" [(ngModel)]="Serving">
+          <option [value]="1">1</option>
+          <option [value]="2">2</option>
+          <option [value]="3">3</option>
+          <option [value]="4">4</option>
+          <option [value]="5">5</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-5 pl-0.3">
+      <label>Choose Meal</label>
+      <div class="form-group inputgroup form-controls">
+        <select class="form-control dateInput" [(ngModel)]="Category">
+          <option *ngFor="let items of foodName" [value]="items.id">{{items.name}}</option>
+        </select>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row justify-content-center mb-5">
+    <button class="btn btn-md submit" (click)="uploaddata()">ADD FOOD</button>
+  </div>
+
+</ng-template>

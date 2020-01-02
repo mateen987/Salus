@@ -1,4 +1,4 @@
-<app-home></app-home>
+<!-- <app-home></app-home> -->
 <div class=" my-dashboard">
   <div class="container-fluid  ">
 
@@ -26,6 +26,10 @@
           <li class="nav-item">
             <a class="nav-link " href="admin/manage-member">Manage Member</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link logout"   (click)="logout()">logout</a>
+      </li>
+      
         </ul>
       </div>
     </div>
@@ -50,9 +54,9 @@
     <div class="row mt-3 mb-2">
       <h5>EDIT OR DELETE EXERCISE/ACTIVITY</h5>
       <div class="search input-group col-md-4 col-sm-12 ml-auto">
-        <input class="search form-control py-2" type="search" value="search" id="example-search-input">
+        <input class="search form-control py-2" type="number" [(ngModel)]="getsearchid" id="example-search-input">
         <span class="input-group-append">
-          <button class="btn search-btn" type="button">
+          <button (click)="search()" class="btn search-btn" type="button">
             <i class="fa fa-search"></i>
           </button>
         </span>
@@ -70,8 +74,8 @@
           <tr *ngFor="let items of exerciseData, let j=index">
             <td class="foodtext">{{items.name}}</td>
             <td class="text">{{items.created_at}}</td>
-            <td class="text-center"><span><i class="fa fa-edit"></i></span>&nbsp;&nbsp;<span><i
-                  class="fa fa-trash"></i></span></td>
+            <td class="text-center"><span><i (click)="open(content,items,j)" class="fa fa-edit"></i></span>&nbsp;&nbsp;<span>
+              <i (click)="deleteData(items.id)" class="fa fa-trash"></i></span></td>
           </tr>
           <!-- <tr>
 
@@ -106,11 +110,11 @@
   <div class="row justify-content-center mb-4">
     <div class="col-md-6">
       <label>Title</label>
-      <input type="text" class="form-control mb-3 " id="formGroupExampleInput" placeholder="sikling,downfall">
+      <input type="text"  [(ngModel)]="modalData.name" class="form-control mb-3 "  placeholder="sikling,downfall">
     </div>
     <div class="col-md-3">
       <label>Calories Burned</label>
-      <input type="text" class="form-control mb-3 " id="formGroupExampleInput" placeholder="Last">
+      <input type="text"  [(ngModel)]="modalData.calories" class="form-control mb-3 "  placeholder="per Minute">
     </div>
 
   </div>

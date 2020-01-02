@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { map } from "rxjs/operators"; 
-
+import{Subject} from 'rxjs';
 
 
 @Injectable({
@@ -9,11 +9,39 @@ import { map } from "rxjs/operators";
 })
 
 export class UserService {
-   baseUrl = 'http://f22d4ed5.ngrok.io/api/auth/';
-   adminbaseUrl='http://f22d4ed5.ngrok.io/api/';
-   admindeleteData='http://f22d4ed5.ngrok.io/api/foods/';
 
-  constructor(private http:HttpClient) { }
+   baseUrl = 'https://dev-api.saluslifestyles.com/api/auth/';
+   adminbaseUrl='https://dev-api.saluslifestyles.com/api/';
+   admindeleteData='https://dev-api.saluslifestyles.com/api/foods/';
+   adminexercise='https://dev-api.saluslifestyles.com/api/exercises/';
+ 
+     pageData =new Subject<any>();
+     data$=this.pageData.asObservable();
+userdata:any;
+calendarData:any;
+Name:any;
+   constructor(private http:HttpClient) { }
+   sendData(data){
+   this.userdata=data;
+   }
+   getuserData(){
+  return this.userdata
+   }
+   CalendarInfo(info){
+    this.calendarData=info;
+   }
+   getcalendarData(){
+     return this.calendarData;
+   }
+
+   sendName(data){
+    this.Name=data;
+    }
+    getName(){
+   return this.Name
+    }
+
+
   token= localStorage.getItem('token');
   auth(obj){
   return this.http.post(this.baseUrl+'login',obj,{
@@ -70,6 +98,124 @@ return this.http.put(this.admindeleteData+data.id,data,{
 getexercise(){
    return this.http.get(this.adminbaseUrl+'exercises')
 }
+deleteExercise(id){
+  return this.http.delete(this.adminexercise+id,{
+  }).pipe(map(res=>res))
+}
+
+updateExercise(info){
+  console.log("ok",info);
+return this.http.put(this.admindeleteData+info.id,info,{
+}).pipe(map(res=>res))
+}
+getSearchExercise(id){
+  return this.http.get(this.adminbaseUrl+'badges',id)
+}
+
+getCategory(){
+  return this.http.get(this.adminbaseUrl+'categories')
+}
+getUsers(){
+return this.http.get(this.adminbaseUrl+'users?page=2')
+}
+ 
+uploadchallenges(data){
+  return this.http.post(this.adminbaseUrl+'challenges',data,{
+
+  }).pipe(map(res=>res))
+}
+
+
+// user api section start here 
+
+adduserexercise(data){
+return this.http.post(this.adminbaseUrl+'exerciseLogs',data,{
+}).pipe(map(res=>res))
+}
+
+getUserExerciseTable(data){
+  return this.http.post(this.adminbaseUrl+'exerciseLogs/userLogs',data,{
+
+  }).pipe(map(res=>res))
+}
+deleteexercise(id){
+  return this.http.delete(this.adminbaseUrl+'exerciseLogs/'+id,{
+
+  }).pipe(map(res=>res))
+}
+
+usermeals(data){
+  return this.http.post(this.adminbaseUrl+'meals/userMeals',data,{
+
+  }).pipe(map(res=>res))
+}
+FavouriteMeal(data){
+    return this.http.post(this.adminbaseUrl+'foods/userFavorites',data,{
+    }).pipe(map(res=>res))
+}
+
+userFavouriteMeals(id){
+  return this.http.post(this.adminbaseUrl+'favoriteFoodLogs/userFavorites',id,{
+
+  }).pipe(map(res=>res))
+}
+
+dashboardData(id){
+  return this.http.get(this.adminbaseUrl+'users/'+id+'/dashboard')
+}
+
+dailytasks(id){
+  return this.http.get(this.adminbaseUrl+'dailyTasks/'+id)
+}
+dailytaskpost(data){
+  return this.http.post(this.adminbaseUrl+'dailyTasks',data,{
+
+  }).pipe(map(res=>res))
+}
+
+
+foodName(){
+return this.http.get(this.adminbaseUrl+'foods?page=1');
+
+}
+
+addNutritionFood(data){
+  return this.http.post(this.adminbaseUrl+'nutritionalLogs',data,{
+  }).pipe(map(res=>res))
+}
+
+joinChallenge(data){
+  return this.http.post(this.adminbaseUrl+'challengeLogs/userEntries',data,{
+
+  }).pipe(map(res=>res))
+}
+
+joinSelectedChallenge(data){
+  return this.http.post(this.adminbaseUrl+'challengeLogs',data,{
+  }).pipe(map(res=>res))
+}
+
+mealsForNutrition(){
+   return this.http.get(this.adminbaseUrl+'meals');
+}
+
+addMeal(data){
+  return this.http.post(this.adminbaseUrl+'meals',data,{
+  }).pipe(res=>res);
+
+}
+
+userPoint(id){
+  return this.http.get(this.adminbaseUrl+'users/'+id+'/points')
+}
+
+
+
+
+
+
+
+
 
 }
 

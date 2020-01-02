@@ -4,14 +4,17 @@
     font-family:inherit ;
    
 }
+input,button:focus, input:focus{
+    outline: none;
+}
 .container-fluid{
     width: 92%;
 }
 .points{
     position: absolute;
-    padding-left: 1.5em;
-    line-height: 3.5;
-    font-size: 24px;
+    padding-left: 1.1em; 
+    line-height: 3.8;
+    font-size: 22px;
     font-weight: 400;
     color: white;
     }
@@ -148,6 +151,7 @@ hr{
     height: calc(2em + 0.1rem + 1px);
     background: #ffffff;
     border: 1px solid #e3e8eb;
+    padding-right: 0px;
     border-radius: 0px;
     width: 60px;
     text-align: center;
@@ -200,3 +204,19 @@ td{
         margin-bottom: 2%;
         font-family:Montserrat-Bold;
       }
+.date{
+  margin: 0 auto;
+}
+.fa-trash{
+    color: #b3254b;
+    font-size: 24px;
+}
+a:focus,
+select:focus,
+button:focus,
+input:focus,
+textarea:focus {
+outline: none;
+outline: 0;
+/* -webkit-box-shadow: none; */
+}

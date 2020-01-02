@@ -16,12 +16,12 @@
       <div class="point_profile  col-3">
         <div class="profile row">
           <div class="col text-right userProfile">
-            <p class="points">43</p>
+            <p class="points">{{userPoints}}</p>
             <p class="upoints">Points</p>
             <img src="assets/images/icon/star.png" width="100px" alt="Cinque Terre">
           </div>
           <div class="col text-right ">
-            <img src="assets/images/jane.jpg" class="rounded-circle" width="80px" alt="Cinque Terre">
+            <img src="assets/images/icon/user.png" class="rounded-circle" width="80px" alt="Profile">
             <p class="text-center">Katlyn Smith</p>
           </div>
         </div>
@@ -34,8 +34,8 @@
         <h4>{{ viewDate | calendarDate:('dayViewTitle'):'en'}}</h4>
       </div>
       <div class="tabletitle col-md-7">
-        <div class="row"><h5 class="challenge">1 Mile a Day Challenge</h5>
-          <button type="button" class="btn btn-default Progress_btn  ">
+        <div class="row"><h5 class="challenge">{{Name}}</h5>
+          <button type="button" (click)="instruction()" class="btn btn-default Progress_btn  ">
            <span class="logfood">&nbsp;INSTRUCTIONS &nbsp;</span>
             </button>
         </div>
@@ -45,30 +45,34 @@
     <div [ngSwitch]="view">
       <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [cellTemplate]="customCellTemplate"
         [viewDate]="viewDate" [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen"
-        (dayClicked)="dayClicked($event.day)" (eventClicked)="handleEvent('Clicked', $event.event)"
-        (eventTimesChanged)="eventTimesChanged($event)">
+        (dayClicked)="dayClicked($event.day)"  (eventClicked)="handleEvent('Clicked', $event.event)"
+        (eventTimesChanged)="eventTimesChanged($event)"
+        (beforeViewRender)="beforeMonthViewRender($event)"
+        >
       </mwl-calendar-month-view>
-      <ng-template #customCellTemplate let-day="day">
-        <div class="cal-cell-top">
+      <ng-template #customCellTemplate let-day="day" >
+        <div class="cal-cell-top" (click)="data(day)" >
           <!-- <span class="cal-day-badge">0/6 points <a class="edit" (click)="open(content)">Edit</a> </span> -->
-          <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}
-          </span>
+          <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }} </span>
+        
         </div>
-        <div class="text-center task">
-          <img src="../../../assets/images/icon/badges/task-uncheck.png" class="img-fluid mx-auto ">
+        <div class="text-center task" >
+          <img (click)="joinChallenge(day)" *ngIf="userCalendar[day.date.getDate()].challengeEntry == false"  src="../../../assets/images/icon/badges/task-uncheck.png" class="img-fluid mx-auto ">
+          <img *ngIf="userCalendar[day.date.getDate()].challengeEntry == true"  src="../../../assets/images/icon/badges/daily-task.png" width="44%" class="img-fluid mx-auto ">
+    
         </div>
       </ng-template>
 
 
 
-      <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events"
+      <!-- <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events"
         [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
         (eventTimesChanged)="eventTimesChanged($event)">
       </mwl-calendar-week-view>
       <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events"
         [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
         (eventTimesChanged)="eventTimesChanged($event)">
-      </mwl-calendar-day-view>
+      </mwl-calendar-day-view> -->
 
       <br><br><br>
 

@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, FormControl,FormArray, Validators } from '@angu
 import{UserService} from '../../services/user.service'
 import {NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 import {DatePipe} from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nutritions',
@@ -24,7 +26,8 @@ export class NutritionsComponent implements OnInit {
   fats:any;
   sugar:any;
   currentDate:any;
-  constructor(private model:NgbModal, private _formBuilder:FormBuilder,private service:UserService,
+  constructor(private model:NgbModal, private _formBuilder:FormBuilder,private router:Router,
+    private toastr:ToastrService,private service:UserService,
     private ngbDateParserFormatter: NgbDateParserFormatter,private date:DatePipe) { 
  
   this.nutritionForm=this._formBuilder.group({
@@ -45,9 +48,9 @@ export class NutritionsComponent implements OnInit {
     this.nutritionTable();
   }
   open(content,items,index){
-    console.log("ok")
+    // console.log("ok")
     this.model.open(content , { centered: true,size:"lg" });
-    console.log("items",items);
+    // console.log("items",items);
     this.modaldata=items;
     
     this.modaldata.name=items.name;
@@ -59,11 +62,23 @@ export class NutritionsComponent implements OnInit {
     // this.modaldata.updated_at= Date
     this.modaldata.updated_at = this.date.transform(new Date(),"yyyy-MM-dd,h:mm a");
   }
+  showSuccess(){
+    this.toastr.success("Data Saved successfully");
+    }
+    showError(){
+      this.toastr.error("Please Enter Correct data");
+      }
+
   upload(){
     this.service.addFoodNutrition(this.nutritionForm.value).subscribe(data=>{
        this.result=data;
-       console.log(this.result);
+      //  console.log(this.result);
+       this.showSuccess();
+       this.nutritionForm.reset();
+    },error=>{
+      this.showError();
     })
+
   }
 nutritionTable(){
   this.service.getnutrition().subscribe(data=>{
@@ -77,11 +92,18 @@ deleteData(id){
   })
 }
 updateData(){
-  console.log("so now"+this.modaldata)
+  // console.log("so now"+this.modaldata)
 this.service.updateNutrition(this.modaldata).subscribe(res=>{
   this.nutritionTable();
+this.model.dismissAll();
 
 })
+}
+logout(){
+
+  localStorage.removeItem('userid');
+    localStorage.clear();
+    this.router.navigate(["/"],)
 }
 
 }
