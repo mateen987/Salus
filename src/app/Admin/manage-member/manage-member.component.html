@@ -108,7 +108,7 @@
 
  
     <br>
-        <div *ngIf="!tableData" class="row mt-3">
+        <div *ngIf="tabledata" class="row mt-3">
             <div class="search input-group col-md-4 col-sm-12 ml-auto">
                 <input class="search form-control py-2" type="search" value="search" id="example-search-input"
                     placeholder="Search">
@@ -143,9 +143,9 @@
                       <td class="text-center">{{items.user_email}}</td>
                       <td class="text-right points">12345</td>
                       <td class="text-right edit"><span><i (click)="editData()" class="fa fa-edit"></i></span>&nbsp; &nbsp;<span><i class="fa fa-trash"></i></span></td>
-                   
+        
+                      
                     </tr>
-
                   </tbody>
                 </table>
               </div>

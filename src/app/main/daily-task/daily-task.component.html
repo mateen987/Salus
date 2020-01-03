@@ -38,18 +38,20 @@
 
     </div>
     <!-- (dayClicked)="dayClicked(day)" -->
+    <!-- (eventTimesChanged)="eventTimesChanged($event)" -->
+    <!-- (eventClicked)="dayClicked(day)" -->
     <br />
     <div [ngSwitch]="view">
       <mwl-calendar-month-view #ref *ngSwitchCase="CalendarView.Month" [cellTemplate]="customCellTemplate"
-        [viewDate]="viewDate" [events]="events" [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen"
+        [viewDate]="viewDate" [events]="events" [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen"       
         
-        (eventClicked)="dayClicked(day)" (eventTimesChanged)="eventTimesChanged($event)">
+         >
       </mwl-calendar-month-view>
       <ng-template #customCellTemplate let-day="day" let-point="day">
         <div class="cal-cell-top">
           <span class="cal-day-badge"> <span> {{test[point.date.getDate()-1]}}/6 points </span> <a class="edit"
               (click)="open(content,day)">Edit</a> </span>
-          <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}
+          <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber' }}
           </span>
         </div>
         <div class="text-center task">

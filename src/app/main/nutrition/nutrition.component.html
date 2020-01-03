@@ -133,6 +133,7 @@
         </tr>
       </thead>
       <tbody>
+        <td scope="row" ><a class="btn addFood"  (click)="open(content,'A type')">Add Food</a></td>
         <tr *ngFor="let data of Meals">
           <td scope="row" *ngIf="data.type=='A type'"><a class="btn addFood"  (click)="open(content,'A type')">Add Food</a></td>
           <td *ngIf="data.type=='A type'">{{data.calories}}</td>
@@ -143,12 +144,6 @@
         </tr>
       </tbody>
     </table>
-
-
-
-
-
-
 
 
     <table class="table table-borderless justify-content-center">
@@ -163,6 +158,7 @@
         </tr>
       </thead>
       <tbody>
+        <td scope="row" ><a class="btn addFood"  (click)="open(content,'A type')">Add Food</a></td>
         <tr *ngFor="let data of Meals">
           <td scope="row" *ngIf="data.type=='B type'"><a class="btn addFood" (click)="open(content,'B type')">Add Food</a></td>
           <td *ngIf="data.type=='B type'">{{data.calories}}</td>
@@ -189,6 +185,7 @@
         </tr>
       </thead>
       <tbody>
+        <td scope="row" ><a class="btn addFood"  (click)="open(content,'A type')">Add Food</a></td>
         <tr *ngFor="let data of Meals">
           <td scope="row" *ngIf="data.type=='C type'"><a class="btn addFood"  (click)="open(content,'C type')">Add Food</a></td>
           <td *ngIf="data.type=='C type'">{{data.calories}}</td>
@@ -216,6 +213,7 @@
         </tr>
       </thead>
       <tbody>
+        <td scope="row" ><a class="btn addFood"  (click)="open(content,'A type')">Add Food</a></td>
         <tr *ngFor="let data of Meals">
           <td scope="row" *ngIf="data.type=='D type'"><a class="btn addFood"  (click)="open(content,'D type')">Add Food</a></td>
           <td *ngIf="data.type=='D type'">{{data.calories}}</td>

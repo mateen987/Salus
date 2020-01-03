@@ -41,19 +41,19 @@
         </div>
       </div>
     </div>
-   
+    <!-- (dayClicked)="dayClicked($event.day)"   -->
     <div [ngSwitch]="view">
       <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [cellTemplate]="customCellTemplate"
         [viewDate]="viewDate" [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen"
-        (dayClicked)="dayClicked($event.day)"  (eventClicked)="handleEvent('Clicked', $event.event)"
-        (eventTimesChanged)="eventTimesChanged($event)"
+       
+    
         (beforeViewRender)="beforeMonthViewRender($event)"
         >
       </mwl-calendar-month-view>
       <ng-template #customCellTemplate let-day="day" >
-        <div class="cal-cell-top" (click)="data(day)" >
+        <div class="cal-cell-top"  >
           <!-- <span class="cal-day-badge">0/6 points <a class="edit" (click)="open(content)">Edit</a> </span> -->
-          <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }} </span>
+          <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber' }} </span>
         
         </div>
         <div class="text-center task" >
