@@ -6,7 +6,9 @@
     <div class="row ">
       <div class="col-sm-6 col-md-8 col-lg-9">
         <h3>MY WELLNESS DASHBOARD </h3>
-        <h6>CURRENT GOAL:&nbsp;LOSE WEIGHT &nbsp;<a href="">Edit</a></h6>
+        <h6>CURRENT GOAL:&nbsp;LOSE WEIGHT &nbsp;
+          <a href="https://saluslifestyles.com/my-profile/">Edit</a>
+        </h6>
       </div>
       <!-- <div ></div> -->
       <div class="point_profile col-sm-6 col-md-4 col-lg-3 ">
@@ -33,12 +35,12 @@
       <div class="animation col-sm-12 col-md-4 col-lg-2 p-1">
         <div class="items text-center bg-white">
           <h4 class="nutrition">Nutrition</h4>
-          <circle-progress [percent]="80" radius="67" [outerStrokeWidth]="12" [innerStrokeWidth]="12" [space]="-12"
+          <circle-progress [percent]="Calories" radius="67" [outerStrokeWidth]="12" [innerStrokeWidth]="12" [space]="-12"
             [showUnits]="false" [outerStrokeColor]="'#83b752'" [innerStrokeColor]="'#e7e8ea'" [titleFontSize]="32"
             [titleColor]=" '#83b752' " [subtitleFontSize]="22" [animation]="true" [animationDuration]="300"
-            [subtitle]="'Kcel'" [showSubtitle]="true" [title]="Calories" [showTitle]="true" [startFromZero]="false"
+            [subtitle]="'Kcal'" [showSubtitle]="true" [title]="Calories" [showTitle]="true" [startFromZero]="false"
             [responsive]="false"> </circle-progress>
-          <button type="button" class="user btn btn-default  ">
+          <button type="button" (click)="Nutrition()" class="user btn btn-default">
             <img class="pull-left icon" src="assets/images/icon/apple.png"><span class="logfood">&nbsp;LOG FOOD
               &nbsp;</span>
             <i class="logfood fa fa-chevron-right pull-right"></i>
@@ -54,7 +56,7 @@
             [titleColor]=" '#a7163e' " [subtitleFontSize]="22" [animation]="true" [animationDuration]="300"
             [subtitle]="'Burned'" [showSubtitle]="true" [title]="caloriesBurned" [showTitle]="true" [startFromZero]="false"
             [responsive]="false"> </circle-progress>
-          <button type="button" class=" workout  btn btn-default ">
+          <button type="button" (click)="Exercise()" class=" workout btn btn-default ">
             <img class="pull-left icon" src="assets/images/icon/workout.png"><span class="logfood">LOG WORKOUT</span>
             <i class="logfood fa fa-chevron-right pull-right"></i>
           </button>
@@ -70,7 +72,7 @@
             [titleColor]=" '#e77428' " [subtitleFontSize]="22" [animation]="true" [animationDuration]="300"
             [subtitle]="'Points'" [showSubtitle]="true" [title]="point" [showTitle]="true" [startFromZero]="false"
             [responsive]="false"> </circle-progress>
-          <button type="button" class=" checkin  btn btn-default  ">
+          <button type="button" (click)="dailyTask()" class=" checkin  btn btn-default  ">
             <img class="pull-left icon" src="assets/images/icon/check-in.png"><span class="logfood">&nbsp;CHECK IN
               &nbsp;</span>
             <i class="logfood fa fa-chevron-right pull-right"></i>
@@ -244,7 +246,7 @@
                 </div> -->
               </div>
               <div class="weeklyText">
-                <h4 class="weeklyChallenge">Nutrition Goal: 2340 Kcel</h4>
+                <h4 class="weeklyChallenge">Nutrition Goal: 2340 Kcal</h4>
                 <p class="sucessRate">75% Success Rate</p>
               </div>
             </div>

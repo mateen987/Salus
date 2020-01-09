@@ -21,6 +21,7 @@ import { UserService } from './services/user.service';
 import { PointService } from './services/points.service';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import {DatePipe} from '@angular/common';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {DatePipe} from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    NgxSpinnerModule,
     NgMultiSelectDropDownModule.forRoot(),
     ToastrModule.forRoot({
       timeOut:5000,

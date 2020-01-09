@@ -6,7 +6,7 @@
     letter-spacing: 4px;
     font-weight: bold !important;
     font-size: calc(14px + 3vw);
-    text-decoration: none;
+    text-decoration: none !important;
 }
 .navbar-custom {
     background-color: black !important;

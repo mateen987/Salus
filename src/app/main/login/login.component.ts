@@ -4,7 +4,7 @@ import{UserService} from '../../services/user.service'
 import { JsonPipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
-
+import {  ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   token:any;
   user:any;
-  constructor(private _formBuilder:FormBuilder,private userDataService:UserService,private router: Router) { }
+  constructor(private _formBuilder:FormBuilder,private toastr:ToastrService,private userDataService:UserService,private router: Router) { }
 
   ngOnInit() {
     this.loginForm = this._formBuilder.group({
@@ -26,6 +26,9 @@ export class LoginComponent implements OnInit {
      })
 }
 
+showError(){
+  this.toastr.error("Please Enter Correct Username and Password");
+  }
 login(){
   //  console.log('ok',this.loginForm.value)
   this.userDataService.auth(this.loginForm.value).subscribe(response=>{
@@ -41,6 +44,7 @@ login(){
 
    },(err: HttpErrorResponse)=>{
       //  console.log("err"+err);
+      this.showError();
    }); 
 
 }

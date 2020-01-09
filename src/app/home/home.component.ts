@@ -7,10 +7,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+points:any;
   constructor(private router:Router) { }
 
   ngOnInit() {
+    this.points=localStorage.getItem('userPoints')
   }
   logout(){
     localStorage.removeItem('userid');

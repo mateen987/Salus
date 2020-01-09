@@ -22,6 +22,8 @@ user_id:any;
 data={};
 userPoints:any;
 tableData:any;
+viewDate: Date = new Date();
+
   constructor(private _formBuilder:FormBuilder,private toastr:ToastrService,private service:UserService,private date:DatePipe,private ngbDateParserFormatter: NgbDateParserFormatter) {
     this.exerciseForm =this._formBuilder.group({
     entry_date:['',Validators.required],
@@ -30,10 +32,10 @@ tableData:any;
     user_id:['']
     })
 
-this.data={
-  user_id:localStorage.getItem('userid'),
-  date:this.date.transform(new Date(),"yyyy-MM-dd")
-}
+    this.data={
+      user_id:localStorage.getItem('userid'),
+      date:this.date.transform(new Date(),"yyyy-MM-dd")
+    }
 
    }
 
@@ -54,7 +56,7 @@ getexercises(){
 getPoint(){
   this.service.userPoint(this.user_id).subscribe(res=>{
     this.userPoints=res;
-    this.userPoints=this.userPoints.points;
+    this.userPoints=this.userPoints.month;
     console.log(this.userPoints)
   })
 }
@@ -68,8 +70,9 @@ upload(){
   id['user_id']=this.userid;
 
   this.service.adduserexercise(this.exerciseForm.value).subscribe(res=>{
-    // console.log("okay"+res);
+     console.log("okay",res);
     this.showSuccess();
+    this.getTableData();
     this.exerciseForm.reset();
   },error=>{
     this.showError();
@@ -101,22 +104,35 @@ showSuccess(){
       }
 
 getTableData(){
+
+  this.data={
+    user_id:localStorage.getItem('userid'),
+    date:this.date.transform(new Date(),"yyyy-MM-dd")
+  }
+  console.log(this.data)
   this.service.getUserExerciseTable(this.data).subscribe(res=>{
     this.tableData=res;
-    // console.log(this.tableData)
+     console.log("table data",this.tableData)
     this.calories=this.tableData.totalCaloriesBurned;
+    this.calories=this.calories.toFixed(2)
     this.exerciseLogs=this.tableData.exerciseLogs;
     // console.log(this.exerciseLogs)
   
   })
 }
-
+caloriesburned(items){
+  let durations =items.duration;
+  let calories_burned_per_minute=items.exercise.calories_burned_per_minute;
+  return durations*calories_burned_per_minute
+  
+}
 
 deleteData(id){
 this.service.deleteexercise(id).subscribe(res=>{
        this.tableData=res;
-      //  console.log(res);
+       
        this.deletesuccess();
+       this.getTableData();
 },error=>{
   this.dltError();
 })

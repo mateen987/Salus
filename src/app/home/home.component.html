@@ -19,7 +19,7 @@
     <div class="row userdata">
       <p class="username">Hi<span>
         <br><img class="staricon" src="assets/images/icon/starlead.png"
-            width="14px">43 pts</span></p>
+            width="14px">{{points}} pts</span></p>
       <p class="username"><img class="rounded-circle" src="assets/images/icon/user.png" width="40px"></p>
     </div>
 
@@ -65,23 +65,23 @@
       </div>
       <div class="profile_info">
         <!-- <p class="username">Katelyn Smith</p> -->
-        <p class="username "><img class="badge-img" src="assets/images/icon/starlead.png"><span class="First">43
-            points</span></p>
+        <p class="username "><img class="badge-img" src="assets/images/icon/starlead.png"><span class="First">
+          {{points}}  points</span></p>
         <p><a class="username profile" href="#">View Profile</a></p>
       </div>
     </div>
     <!-- <a href="#" class="list-group-item collapsed" data-parent="#sidebar"><i class="fa fa-heart"></i> <span class="hidden-sm-down">Home</span></a> -->
-    <a href="dashboard" class="list-group-item collapsed" data-parent="#sidebar"><img
+    <a href="/nutrition" class="list-group-item collapsed" data-parent="#sidebar"><img
         src="assets/images/icon/greenapple.png"><span class="hidden-sm-down"> Nutration</span></a>
-    <a href="#" class="list-group-item collapsed" data-parent="#sidebar"><img
+    <a href="/exercise" class="list-group-item collapsed" data-parent="#sidebar"><img
         src="assets/images/icon/exercise.png"><span class="hidden-sm-down">Exercise</span></a>
-    <a href="#" class="list-group-item collapsed" data-parent="#sidebar"><img
+    <a href="daily-task" class="list-group-item collapsed" data-parent="#sidebar"><img
         src="assets/images/icon/dailytask.png"><span class="hidden-sm-down">Daily Tasks</span></a>
-    <a href="#" class="list-group-item collapsed" data-parent="#sidebar"><img
+    <a href="choose-challenge" class="list-group-item collapsed" data-parent="#sidebar"><img
         src="assets/images/icon/challenge.png"><span class="hidden-sm-down">Challenge</span></a>
     <a href="https://saluslifestyles.com/my-profile/" class="list-group-item collapsed" data-parent="#sidebar"><img src="assets/images/icon/profile.png"><span
         class="hidden-sm-down">Profile</span></a>
-    <a href="#" class="list-group-item collapsed" data-parent="#sidebar"><img src="assets/images/icon/login.png"><span
+    <a   class="list-group-item collapsed" (click)="logout()" data-parent="#sidebar"><img src="assets/images/icon/login.png"><span
         class="hidden-sm-down">Logout</span></a>
   </div>
 </div>

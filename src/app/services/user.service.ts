@@ -12,8 +12,9 @@ export class UserService {
 
    baseUrl = 'https://dev-api.saluslifestyles.com/api/auth/';
    adminbaseUrl='https://dev-api.saluslifestyles.com/api/';
-   admindeleteData='https://dev-api.saluslifestyles.com/api/foods/';
+   admindeleteData='https://dev-api.saluslifestyles.com/api/foods/';  
    adminexercise='https://dev-api.saluslifestyles.com/api/exercises/';
+
  
      pageData =new Subject<any>();
      data$=this.pageData.asObservable();
@@ -150,7 +151,7 @@ usermeals(data){
   }).pipe(map(res=>res))
 }
 FavouriteMeal(data){
-    return this.http.post(this.adminbaseUrl+'foods/userFavorites',data,{
+    return this.http.post(this.adminbaseUrl+'foods/userFavorites?page=1',data,{
     }).pipe(map(res=>res))
 }
 
@@ -183,6 +184,10 @@ addNutritionFood(data){
   return this.http.post(this.adminbaseUrl+'nutritionalLogs',data,{
   }).pipe(map(res=>res))
 }
+removeNutritionFood(data){
+  return this.http.delete(this.adminbaseUrl+'meals/'+data,{
+  }).pipe(map(res=>res))
+}
 
 joinChallenge(data){
   return this.http.post(this.adminbaseUrl+'challengeLogs/userEntries',data,{
@@ -208,7 +213,11 @@ addMeal(data){
 userPoint(id){
   return this.http.get(this.adminbaseUrl+'users/'+id+'/points')
 }
+favouriteFood(data){
+  return this.http.post(this.adminbaseUrl+'favoriteFoodLogs',data,{
 
+  }).pipe(map(res=>res))
+}
 
 
 

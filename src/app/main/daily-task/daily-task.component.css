@@ -9,7 +9,7 @@
 }
 .points{
     position: absolute;
-    padding-left: 1.1em; 
+    padding-left: 1.3em; 
     line-height: 3.8;
     font-size: 22px;
     font-weight: 400;
@@ -125,7 +125,14 @@ input[type=checkbox] + label:before{
     font-size: 13px;
 }
 
-
+.cal-disabled {
+    background-color: #eee;
+    pointer-events: none;
+  }
+  
+  .cal-disabled .cal-day-number {
+    opacity: 0.1;
+  }
 
 
 

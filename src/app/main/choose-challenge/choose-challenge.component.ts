@@ -30,7 +30,7 @@ data={}
   getPoint(){
     this.service.userPoint(this.user_id).subscribe(res=>{
       this.userPoints=res;
-      this.userPoints=this.userPoints.points;
+      this.userPoints=this.userPoints.month;
       console.log(this.userPoints)
       localStorage.setItem('userPoints',this.userPoints);
     })

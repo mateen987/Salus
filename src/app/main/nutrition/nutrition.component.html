@@ -6,7 +6,10 @@
     <div class="row ">
       <div class="col-sm-6 col-md-4 col-lg-4">
         <h4>MY WELLNESS - NUTRITION </h4>
-        <h6>CURRENT GOAL:&nbsp;LOSE WEIGHT &nbsp;<a href="">Edit</a></h6>
+        <h6>CURRENT GOAL:&nbsp;LOSE WEIGHT &nbsp;
+          <!-- <a href="">Edit</a> -->
+          <a href="https://saluslifestyles.com/my-profile/">Edit</a>
+        </h6>
       </div>
       <div class="col-sm-6 col-md-4 col-lg-1">
         <img src="../../../assets/images/icon/nutritionSign.png" width="70px">
@@ -118,8 +121,8 @@
       <!-- <end here> -->
     </div>
     <br>
-    <h5>MY FOOD DIARY - OCTOBER 23, 2019</h5><br>
-
+    <h5>MY FOOD DIARY - {{ viewDate | calendarDate:('dayViewTitle'):'en'}}</h5><br>
+   
     <table class="table table-borderless justify-content-center">
       <thead>
         <tr>
@@ -130,17 +133,21 @@
           <th scope="col" class="nutritions">FATS</th>
           <th scope="col" class="nutritions">PROTIEN</th>
           <th scope="col" class="nutritions">SUGAR</th>
+          <th scope="col" class="nutritions">Option</th>
         </tr>
       </thead>
       <tbody>
         <td scope="row" ><a class="btn addFood"  (click)="open(content,'A type')">Add Food</a></td>
-        <tr *ngFor="let data of Meals">
-          <td scope="row" *ngIf="data.type=='A type'"><a class="btn addFood"  (click)="open(content,'A type')">Add Food</a></td>
+        <tr *ngFor="let data of Meals" [hidden]="showFood(data) == 0" >
+          <td scope="row"><a class="btn addFood" >{{showFood(data)}}</a></td>
           <td *ngIf="data.type=='A type'">{{data.calories}}</td>
           <td *ngIf="data.type== 'A type' ">{{data.carbs}}</td>
           <td *ngIf="data.type== 'A type' ">{{data.fats}}</td>
           <td *ngIf="data.type== 'A type' ">{{data.proteins}}</td>
           <td *ngIf="data.type== 'A type' ">{{data.sugars}}</td>
+          <td *ngIf="data.type=='A type'">
+    <i (click)="deleteData(data.id)" class="fa fa-trash"></i></td>
+          
         </tr>
       </tbody>
     </table>
@@ -155,17 +162,22 @@
           <th scope="col" class="nutritions">FATS</th>
           <th scope="col" class="nutritions">PROTIEN</th>
           <th scope="col" class="nutritions">SUGAR</th>
+          <th scope="col" class="nutritions">Option</th>
         </tr>
       </thead>
       <tbody>
-        <td scope="row" ><a class="btn addFood"  (click)="open(content,'A type')">Add Food</a></td>
-        <tr *ngFor="let data of Meals">
-          <td scope="row" *ngIf="data.type=='B type'"><a class="btn addFood" (click)="open(content,'B type')">Add Food</a></td>
+        <td scope="row" ><a class="btn addFood"  (click)="open(content,'B type')">Add Food</a></td>
+        <tr *ngFor="let data of Meals" [hidden]="lunchFood(data) == 0">
+          <td scope="row" ><a class="btn addFood">{{lunchFood(data)}}</a></td>
+          <!-- <td *ngIf="data.type=='B type'">{{data.food}}</td>  -->
           <td *ngIf="data.type=='B type'">{{data.calories}}</td>
           <td *ngIf="data.type== 'B type' ">{{data.carbs}}</td>
           <td *ngIf="data.type== 'B type' ">{{data.fats}}</td>
           <td *ngIf="data.type== 'B type' ">{{data.proteins}}</td>
           <td *ngIf="data.type== 'B type' ">{{data.sugars}}</td>
+          <td *ngIf="data.type=='B type'">
+            <i (click)="deleteData(data.id)" class="fa fa-trash"></i>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -182,17 +194,21 @@
           <th scope="col" class="nutritions">FATS</th>
           <th scope="col" class="nutritions">PROTIEN</th>
           <th scope="col" class="nutritions">SUGAR</th>
+          <th scope="col" class="nutritions">Option</th>
         </tr>
       </thead>
       <tbody>
-        <td scope="row" ><a class="btn addFood"  (click)="open(content,'A type')">Add Food</a></td>
-        <tr *ngFor="let data of Meals">
-          <td scope="row" *ngIf="data.type=='C type'"><a class="btn addFood"  (click)="open(content,'C type')">Add Food</a></td>
+        <td scope="row" ><a class="btn addFood"  (click)="open(content,'C type')">Add Food</a></td>
+        <tr *ngFor="let data of Meals"  [hidden]="dinnerFood(data) == 0">
+          <td scope="row" ><a class="btn addFood" >{{dinnerFood(data)}}</a></td>
           <td *ngIf="data.type=='C type'">{{data.calories}}</td>
           <td *ngIf="data.type== 'C type' ">{{data.carbs}}</td>
           <td *ngIf="data.type== 'C type' ">{{data.fats}}</td>
           <td *ngIf="data.type== 'C type' ">{{data.proteins}}</td>
           <td *ngIf="data.type== 'C type' ">{{data.sugars}}</td>
+          <td *ngIf="data.type=='C type'">
+            <i (click)="deleteData(data.id)" class="fa fa-trash"></i>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -210,17 +226,21 @@
           <th scope="col" class="nutritions">FATS</th>
           <th scope="col" class="nutritions">PROTIEN</th>
           <th scope="col" class="nutritions">SUGAR</th>
+          <th scope="col" class="nutritions">Option</th>
         </tr>
       </thead>
       <tbody>
-        <td scope="row" ><a class="btn addFood"  (click)="open(content,'A type')">Add Food</a></td>
-        <tr *ngFor="let data of Meals">
-          <td scope="row" *ngIf="data.type=='D type'"><a class="btn addFood"  (click)="open(content,'D type')">Add Food</a></td>
+        <td scope="row" ><a class="btn addFood"  (click)="open(content,'D type')">Add Food</a></td>
+        <tr *ngFor="let data of Meals" [hidden]="snackFood(data) == 0">
+          <td scope="row"><a class="btn addFood" >{{snackFood(data)}}</a></td>
           <td *ngIf="data.type=='D type'">{{data.calories}}</td>
           <td *ngIf="data.type== 'D type' ">{{data.carbs}}</td>
           <td *ngIf="data.type== 'D type' ">{{data.fats}}</td>
           <td *ngIf="data.type== 'D type' ">{{data.proteins}}</td>
           <td *ngIf="data.type== 'D type' ">{{data.sugars}}</td>
+          <td *ngIf="data.type=='D type'">
+            <i (click)="deleteData(data.id)" class="fa fa-trash"></i>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -240,6 +260,7 @@
         VIEW SAVED MEALS
       </button>
 
+      <!-- Search button disable for now -->
       <div class="search input-group col-md-4 col-sm-12 ml-auto">
         <input class="search form-control py-2" type="search" value="search" id="example-search-input">
         <span class="input-group-append">
@@ -277,11 +298,11 @@
               <td>{{items.sugars}}</td>
               <td>
                 <p *ngIf="items.favorite==true">
-                  <img src="../../../assets/images/icon/starlead.png">
+                  <img (click)="value(items.id)" src="../../../assets/images/icon/starlead.png" width="15%">
                 </p>
 
-                <p *ngIf="items.favorite==false">
-                  <img src="../../../assets/images/icon/starlead.png">
+                <p  *ngIf="items.favorite==false">
+                  <img (click)="value(items.id)" src="../../../assets/images/icon/notFvrt.png" width="15%">
                 </p>
                 <!-- {{items.favorite}} -->
               </td>
@@ -352,7 +373,7 @@
 
 <ng-template #content let-c="close" let-d="dismiss">
 
-  <h4 class="text-center claim mt-3 mb-3">EDIT EXERCISE ITEM</h4>
+  <h4 class="text-center claim mt-3 mb-3">ADD FOOD ITEM</h4>
 
 
   <!-- <label class="addfood">ADD FOOD:</label>

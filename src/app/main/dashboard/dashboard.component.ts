@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import{UserService} from '../../services/user.service'
 import {NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,7 +19,7 @@ export class DashboardComponent implements OnInit {
   badges:any;
   userPoints:any;
   point=0;
-  constructor(private service:UserService) { }
+  constructor(private service:UserService,private router: Router) { }
 
   progressBar = document.querySelector('.progress-bar');
   // intervalId;
@@ -33,9 +34,21 @@ export class DashboardComponent implements OnInit {
  getPoint(){
    this.service.userPoint(this.user_id).subscribe(res=>{
      this.userPoints=res;
-     this.userPoints=this.userPoints.points;
+     this.userPoints=this.userPoints.month;
+     localStorage.setItem('userPoints',this.userPoints);
      console.log(this.userPoints)
+
    })
+ }
+
+ Nutrition(){
+   this.router.navigate(["/nutrition"])
+ }
+ Exercise(){
+  this.router.navigate(["/exercise"])
+ }
+ dailyTask(){
+  this.router.navigate(["/daily-task"])
  }
 
 getuserdata(){
@@ -43,7 +56,10 @@ getuserdata(){
       this.userData=res;
       // console.log(this.userData)
       this.Calories=this.userData.today.Calories;
+      console.log(this.Calories);
       this.caloriesBurned=this.userData.today.totalCaloriesBurned
+      this.caloriesBurned=this.caloriesBurned.toFixed(2);
+      console.log(this.caloriesBurned)
       if(this.userData['wellBeing'] != null ){
         this.point++
       }
@@ -62,6 +78,7 @@ getuserdata(){
       if(this.userData['reflect'] !=null){
         this.point++
       }
+      
   this.weekdays=this.userData.currentWeek;
    this.leaderBoard=this.userData.leaderboard;
   this.badges=this.userData.badges;

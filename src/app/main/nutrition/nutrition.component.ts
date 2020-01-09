@@ -18,6 +18,7 @@ user_id:any;
 date:any;
 MealID:any;
 data={};
+favourite={};
 userData:any;
 Calories:any;
 Category:any;
@@ -26,6 +27,7 @@ mealData={};
 Carbs:any;
 Fats:any;
 Proteins:any;
+foodItemID:String;
 mealReturnId:any
 favorite:boolean=false
 Serving:any;
@@ -39,9 +41,10 @@ nutritionData:any;
 MealDataResponse:any;
 userFavorite:any
 foodName:any;
+viewDate: Date = new Date();
   constructor(private datenow:DatePipe,private service:UserService,private toastr:ToastrService,
     private model:NgbModal,) {
-
+  
       this.getmeals()
    }
 
@@ -59,18 +62,34 @@ foodName:any;
   getPoint(){
     this.service.userPoint(this.user_id).subscribe(res=>{
       this.userPoints=res;
-      this.userPoints=this.userPoints.points;
       console.log(this.userPoints)
+      this.userPoints=this.userPoints.month;
+    
     })
   }
 
   showSuccess(){
     this.toastr.success("Data Saved successfully");
     }
+    showDltSuccess(){
+      this.toastr.success("Data Delete successfully");
+      }
     showError(){
       this.toastr.error("Please Enter Correct data");
       }
+      tryAgain(){
+        this.toastr.error("Please Try again");
+        }
 
+      deleteData(data){
+        this.service.removeNutritionFood(data).subscribe(res=>{
+          this.showDltSuccess();   
+          this.getnutrition();
+        },error=>{
+          this.tryAgain(); 
+        })
+             
+      }
 
     open(content,name){
 
@@ -105,20 +124,61 @@ foodName:any;
          this.Proteins=this.userData.dateTotalsArray.Proteins;
          this.Sugar=this.userData.dateTotalsArray.Sugars;
          this.Meals=this.userData.meals
-         console.log(this.Meals)
+        this.foodName=this.userData.meals.logs;
+          //  this.foodName=this.foodName.logs
+           console.log(this.foodName)               
+         console.log("meals",this.Meals)
       })
   }
-  
+  showFood(data){
+    if(data.type =="A type" && data.logs.length !== 0){
+      return data.logs[0].food.name;
+    } 
+    else {
+      return 0;
+    }
+  }
+  lunchFood(data){
+    if(data.type =="B type" && data.logs.length !== 0){
+      return data.logs[0].food.name;
+    } 
+    else {
+      return 0;
+    }
+  }
+
+  dinnerFood(data){
+    if(data.type == "C type" && data.logs.length !== 0){
+      return data.logs[0].food.name;
+    } 
+    else {
+      return 0;
+    }
+  }
+
+  snackFood(data){
+    if(data.type == "D type" && data.logs.length !== 0){
+      return data.logs[0].food.name;
+    } 
+    else {
+      return 0;
+    }
+  }
+
 favouriteMeals(){
+  this.data={
+    user_id: this.user_id,
+    date: this.date
+  }
   this.service.FavouriteMeal(this.data).subscribe(res=>{
     this.favouriteMeal=res;
-    console.log(this.favouriteMeal);
+    console.log("okay",this.favouriteMeal);
   })
 }
 userselectedFavorite(){
   this.service.userFavouriteMeals(this.user_id).subscribe(res=>{
         this.userFavorite=res;
-        console.log(this.userFavorite)
+        console.log("han g",this.userFavorite)
   })
 }
 getmeals(){
@@ -146,13 +206,27 @@ uploaddata(){
      res=res;
      console.log(res);
      this.showSuccess();
+     this.getnutrition();
      this.model.dismissAll();
    },error=>{
     this.showError();
    })
 }
 
+value(item){
+this.foodItemID=item;
+this.favourite={
+  user_id:this.user_id,
+  food_id:this.foodItemID,
+}
+this.service.favouriteFood(this.favourite).subscribe(res=>{
+       res=res;
+       console.log("response of favrt",res);
+       this.favouriteMeals();
+})
 
+
+}
 
 
 

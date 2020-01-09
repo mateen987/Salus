@@ -1,12 +1,15 @@
-import {Component,ChangeDetectionStrategy,ViewChild,TemplateRef, OnInit, ChangeDetectorRef} from '@angular/core';
-import {startOfDay,endOfDay,subDays,addDays,endOfMonth,isSameDay,isSameMonth,addHours} from 'date-fns';
-import { Subject } from 'rxjs';
+import {Component,ChangeDetectionStrategy,ViewChild,TemplateRef,ViewEncapsulation, OnInit, ChangeDetectorRef} from '@angular/core';
+import {startOfDay,endOfDay,subDays,addDays,endOfMonth,subMonths,isSameDay,isSameMonth,addHours} from 'date-fns';
+import { Subject, from } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {CalendarEvent,CalendarEventAction,CalendarEventTimesChangedEvent,CalendarView} from 'angular-calendar';
+import {CalendarEvent,CalendarEventAction,CalendarMonthViewDay,CalendarEventTimesChangedEvent,CalendarView} from 'angular-calendar';
 import { Title } from '@angular/platform-browser';
 import {DatePipe} from '@angular/common';
 import{UserService} from '../../services/user.service'
 import { FormBuilder, FormGroup, FormControl,FormArray, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { window } from 'rxjs/operators';
+
 
 const colors: any = {
   red: {
@@ -26,7 +29,8 @@ const colors: any = {
   selector: 'app-daily-task',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './daily-task.component.html',
-  styleUrls: ['./daily-task.component.css']
+  styleUrls: ['./daily-task.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class DailyTaskComponent implements OnInit{
@@ -36,8 +40,8 @@ export class DailyTaskComponent implements OnInit{
   user_id:any;
   point=0;
   points="hell"
-test:any[]=[]
-  
+  test:any[]=[]
+  userCalendar:any[]=[]
   exercise:boolean=false;
   hydrate:boolean=false;
   nutrition:boolean=false;
@@ -56,6 +60,14 @@ test:any[]=[]
   CalendarView = CalendarView;
 
   viewDate: Date = new Date();
+
+
+  minDate: Date = subMonths(new Date(), 1);
+
+  maxDate: Date = new Date();
+
+
+
   viewTitle:"Hello";
   modalData: {
     action: string;
@@ -65,79 +77,16 @@ test:any[]=[]
 
 
   CalendarEvent:any[]=[{start:"2019-12-12",title:"okay sir"}]
-  actions: CalendarEventAction[] = [
-    
-    // {
-    //   label: '<i class="fa fa-fw fa-pencil"></i>',
-    //   a11yLabel: 'Edit',
-    //   onClick: ({ event }: { event: CalendarEvent }): void => {
-    //     this.handleEvent('Edited', event);
-
-    //   }
-    // },
-    // {
-    //   label: '<i class="fa fa-fw fa-times"></i>',
-    //   a11yLabel: 'Delete',
-    //   onClick: ({ event }: { event: CalendarEvent }): void => {
-    //     this.events = this.events.filter(iEvent => iEvent !== event);
-    //     this.handleEvent('Deleted', event);
-    //   }
-    // }
-  ];
-
+  actions: CalendarEventAction[] = [];
   refresh: Subject<any> = new Subject();
-
-  events: CalendarEvent[] = [
-   
-    // {
-    //   start: startOfDay(new Date("2019-12-5")),
-    //   title: 'A 3 day event',
-    //   color: colors.red,
-      
-    //  meta:{
-    //    point: 10
-    //  }
-      
-    // },
-    // {
-    //   start: startOfDay(new Date()),
-    //   title: 'An event with no end date',
-    //   color: colors.yellow,
-    //   actions: this.actions,
-      
-    //   meta:{
-    //     point: 10
-    //   }
-      
-    // },
-    // {
-    //   start: subDays(endOfMonth(new Date()), 3),
-    //   end: addDays(endOfMonth(new Date()), 3),
-    //   title: 'A long event that spans 2 months',
-    //   color: colors.blue,
-    //   allDay: true,
-    //   meta:{
-    //     point: 10
-    //   }
-    // },
-    // {
-    //   start: addHours(startOfDay(new Date()), 2),
-    //   end: addHours(new Date(), 2),
-    //   title: 'A draggable and resizable event',
-    //   color: colors.yellow,
-    //   actions: this.actions,
-    //   resizable: {
-    //     beforeStart: true,
-    //     afterEnd: true
-    //   },
-    //   draggable: true
-    // }
-  ];
+  events: CalendarEvent[] = [];
 
   activeDayIsOpen: boolean = false;
 
   constructor(private modal: NgbModal ,private service:UserService,private ref: ChangeDetectorRef,
-    private _formBuilder:FormBuilder,private datenow:DatePipe) {
+    private _formBuilder:FormBuilder,private datenow:DatePipe,private router: Router) {
+
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 
   }
 
@@ -161,15 +110,28 @@ ngOnInit()
 {
   this.user_id=localStorage.getItem('userid');
   this.getPoint();
-this.getdata();
+  this.getdata();
   this.setView(CalendarView.Month); 
   
 }
+
+dateIsValid(date: Date): boolean {
+  return date >= this.minDate && date <= this.maxDate;
+}
+beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
+  body.forEach(day => {
+    if (!this.dateIsValid(day.date)) {
+      day.cssClass = 'cal-disabled';
+    }
+  });
+}
+
 getPoint(){
   this.service.userPoint(this.user_id).subscribe(res=>{
     this.userPoints=res;
-    this.userPoints=this.userPoints.points;
+    this.userPoints=this.userPoints.month;
     console.log(this.userPoints)
+    //this.ref.detectChanges();
   })
 }
 
@@ -177,18 +139,8 @@ getPoint(){
     
    this.selectedDate=day.day.date;
    console.log(day.day.date);
-    // if (isSameMonth(day.date, this.viewDate)) {
-    //   if (
-    //     (isSameDay(this.viewDate, day.date) && this.activeDayIsOpen === true) ||
-    //     events.length === 0
-    //   ) {
-    //     this.activeDayIsOpen = false;
-    //   } else {
-    //     this.activeDayIsOpen = true;
-    //   }
-    //   this.viewDate = date;
-   // }
   }
+
 ngAfterViewChecked(){
   this.refresh.next();
   this.setView(CalendarView.Month); 
@@ -242,7 +194,7 @@ ngAfterViewChecked(){
 
   setView(view: CalendarView) {
     this.view = view;
-  
+
   }
 
   closeOpenMonthViewDay() {
@@ -278,10 +230,9 @@ ngAfterViewChecked(){
         // console.log("test"+this.test)
          this.point=0;
        }
-      
-     
-     this.refresh.next(); 
-     this.ref.detectChanges();
+           
+      //  this.refresh.next(); 
+    // this.ref.detectChanges();
    })
  }
 
@@ -304,10 +255,13 @@ submit(){
 this.service.dailytaskpost(this.data).subscribe(res=>{
   // console.log("data  here "+this.data);
   this.resData=res;
-  // console.log(this.resData)
-  this.getdata();
-  this.refresh.next();
+  //  console.log(this.resData)
+  location.reload();
+ this.getdata();
+ this.getPoint();
   this.modal.dismissAll();
+
+ 
 })
 
 

@@ -7,7 +7,10 @@
     <div class="row ">
       <div class="col-5">
         <h2>MY WELLNESS - Daily TASKS </h2>
-        <h6>CURRENT GOAL:&nbsp;LOSE WEIGHT &nbsp;<a href="">Edit</a></h6>
+        <h6>CURRENT GOAL:&nbsp;LOSE WEIGHT &nbsp;
+          <!-- <a href="">Edit</a> -->
+          <a href="https://saluslifestyles.com/my-profile/">Edit</a>
+        </h6>
       </div>
       <div class="col-1">
         <img src="../../../assets/images/icon/badges/daily-task.png" width="80px">
@@ -44,7 +47,7 @@
     <div [ngSwitch]="view">
       <mwl-calendar-month-view #ref *ngSwitchCase="CalendarView.Month" [cellTemplate]="customCellTemplate"
         [viewDate]="viewDate" [events]="events" [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen"       
-        
+        (beforeViewRender)="beforeMonthViewRender($event)"
          >
       </mwl-calendar-month-view>
       <ng-template #customCellTemplate let-day="day" let-point="day">

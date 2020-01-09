@@ -6,7 +6,11 @@
     <div class="row ">
       <div class="col-sm-6 col-md-4 col-lg-4">
         <h4>MY WELLNESS - EXERCISE </h4>
-        <h6>CURRENT GOAL:&nbsp;LOSE WEIGHT &nbsp;<a href="">Edit</a></h6>
+        <h6>CURRENT GOAL:&nbsp;LOSE WEIGHT &nbsp;
+          <!-- <a href="">Edit</a> -->
+          <a href="https://saluslifestyles.com/my-profile/">Edit</a>
+
+        </h6>
       </div>
       <div class="col-sm-6 col-md-4 col-lg-1">
         <img src="../../../assets/images/icon/badges/exercise.png" width="80px">
@@ -36,7 +40,7 @@
         </div>
         <div class="form-group calenderInput">
           <div class="input-group">
-            <input class="form-control" readonly  ngbDatepicker #dd="ngbDatepicker" placeholder="Select-Date" name="dp">
+            <input class="form-control date" readonly  ngbDatepicker #dd="ngbDatepicker" placeholder="Select-Date" name="dp">
             <!-- <div class="input-group-append"> -->
             <button class="btn calender btn-outline-secondary fa fa-calendar" (click)="dd.toggle()"
               type="button"></button>
@@ -54,7 +58,7 @@
           <circle-progress [percent]="75" radius="67" [outerStrokeWidth]="12" [innerStrokeWidth]="12" [space]="-12"
             [showUnits]="false" [outerStrokeColor]="'#ad123c'" [innerStrokeColor]="'#e7e8ea'" [titleFontSize]="36"
             [titleColor]=" '#ffffff' " [subtitleFontSize]="18" [animation]="true" [animationDuration]="300"
-            [subtitle]="'Kcel'" [showSubtitle]="false" [title]="360" [showTitle]="true" [startFromZero]="false"
+            [subtitle]="'Kcel'" [showSubtitle]="false" [title]="calories" [showTitle]="true" [startFromZero]="false"
             [responsive]="false"> </circle-progress>
           <p class="day_left">140 To Go Today</p>
           <div class="number">500</div>
@@ -105,7 +109,7 @@
       
 
       
-      <h4>MY FOOD DIARY - OCTOBER 23, 2019</h4><br>
+      <h4>MY Exercise Diary - {{ viewDate | calendarDate:('dayViewTitle'):'en'}}</h4><br>
 
       <table class="table table-borderless justify-content-center">
        <thead>
@@ -122,7 +126,7 @@
          <tr *ngFor="let items of exerciseLogs"> 
            <td scope="row" ><a class="addFood" href="">{{items.exercise_name}}</a></td>
            <td>{{items.duration}}</td>         
-           <td>{{calories}}</td>
+           <td>{{caloriesburned(items)}}</td>
            <td> <i (click)="deleteData(items.id)" class="fa fa-trash"></i></td>
            
          </tr>

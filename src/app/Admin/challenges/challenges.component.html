@@ -26,6 +26,9 @@
                         <a class="nav-link " href="admin/manage-member">Manage Member</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link " href="/dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link logout"   (click)="logout()">logout</a>
                     </li>
                 </ul>
@@ -58,7 +61,7 @@
                         <label >Sub Category</label>
                         <div class="form-group inputgroup" >
                             <select  class="form-control dateInput" [(ngModel)]="subCategory"  formControlName="categoryIDs" name="sellist1">  
-                                <option *ngFor="let subitems of  subCategory" [value]="subitems.id">{{subitems.name}}</option>         
+                                <option *ngFor="let subitems of subCategory" [value]="subitems.id">{{subitems.name}}</option>         
                             </select>                           
                         </div>
                     </div>
