@@ -31,6 +31,7 @@ foodItemID:String;
 mealReturnId:any
 favorite:boolean=false
 Serving:any;
+searchText:any;
 Sugar:any;
 Meals:any;
 userMeal:any;

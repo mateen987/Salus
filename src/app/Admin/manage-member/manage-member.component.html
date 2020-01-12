@@ -43,15 +43,15 @@
         <div class="col-6 row"><br>
             <div class=" col-3 justify-content-center text-center">
                 <h4>Name</h4>
-                <h6>Abdul MAteen</h6>
+                <h6>{{name}}</h6>
             </div>
             <div class="col-3 justify-content-center text-center">
                 <h4>Company</h4>
-                <h6>DIana Jones</h6>
+                <h6>{{companyName}}</h6>
             </div>
             <div class="col-3 justify-content-center text-center">
                 <h4>Points</h4>
-                <h6>12305</h6>
+                <h6>{{point}}</h6>
             </div>
         </div>
 
@@ -60,9 +60,11 @@
             <div class="row">
             <div class=" col-4 formField">
                 <label>Reward Points</label>
-                <input type="text" class="form-control mb-3" formControlName="calories_burned_per_minute" id="formGroupExampleInput" placeholder="Last">
+                <select class="form-control dateInput" [(ngModel)]="selectedPoint" id="sel1" name="sellist1">
+                    <option *ngFor="let item of userPointsID" >{{item.id}}</option>
+                </select>
             </div>
-          <div class="col-4 mt-2"><button type="submit"  class="btn add mt-4">SAVE POINTS</button></div>
+          <div class="col-4 mt-2"><button (click)="savePoint()"  class="btn add mt-4">SAVE POINTS</button></div>
           </div>
 
         </div>
@@ -113,7 +115,7 @@
     <br>
         <div *ngIf="tabledata" class="row mt-3">
             <div class="search input-group col-md-4 col-sm-12 ml-auto">
-                <input class="search form-control py-2" type="search" value="search" id="example-search-input"
+                <input class="search form-control py-2" type="search" [(ngModel)]="searchText" id="example-search-input"
                     placeholder="Search">
                 <span class="input-group-append">
                     <button class="btn search-btn" type="button">
@@ -135,17 +137,18 @@
                       <th scope="col" class="text-center">COMPANY</th>
                       <th scope="col" class="text-right">POINTS</th>
                       <th scope="col" class="text-right">Edit/Delete</th>
-                     
+
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let items of tableRecord">
+                    <tr *ngFor="let items of tableRecord | filter:searchText">
                      
                       <td>{{items.display_name}}</td>
                       <td>{{items.user_nicename}}</td>
-                      <td class="text-center">{{items.user_email}}</td>
-                      <td class="text-right points">12345</td>
-                      <td class="text-right edit"><span><i (click)="editData()" class="fa fa-edit"></i></span>&nbsp; &nbsp;<span><i class="fa fa-trash"></i></span></td>
+
+                      <td class="text-center">{{ company(items) }}</td>
+                      <td class="text-right points">{{points(items)}}</td>
+                      <td class="text-right edit"><span><i (click)="editData(items)" class="fa fa-edit"></i></span>&nbsp; &nbsp;<span><i class="fa fa-trash"></i></span></td>
         
                       
                     </tr>

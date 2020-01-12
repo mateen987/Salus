@@ -57,7 +57,7 @@
     <div class="row mt-3 mb-2">
       <h5>EDIT OR DELETE EXERCISE/ACTIVITY</h5>
       <div class="search input-group col-md-4 col-sm-12 ml-auto">
-        <input class="search form-control py-2" type="number" [(ngModel)]="getsearchid" id="example-search-input">
+        <input class="search form-control py-2" type="text" [(ngModel)]="searchText" id="example-search-input">
         <span class="input-group-append">
           <button (click)="search()" class="btn search-btn" type="button">
             <i class="fa fa-search"></i>
@@ -74,7 +74,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let items of exerciseData, let j=index">
+          <tr *ngFor="let items of exerciseData | filter:searchText, let j=index " >
             <td class="foodtext">{{items.name}}</td>
             <td class="text">{{items.created_at}}</td>
             <td class="text-center"><span><i (click)="open(content,items,j)" class="fa fa-edit"></i></span>&nbsp;&nbsp;<span>

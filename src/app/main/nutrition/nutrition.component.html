@@ -262,7 +262,7 @@
 
       <!-- Search button disable for now -->
       <div class="search input-group col-md-4 col-sm-12 ml-auto">
-        <input class="search form-control py-2" type="search" value="search" id="example-search-input">
+        <input class="search form-control py-2" type="search" [(ngModel)]="searchText" id="example-search-input">
         <span class="input-group-append">
           <button class="btn search-btn" type="button">
             <i class="fa fa-search"></i>
@@ -289,7 +289,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let items of favouriteMeal  | slice:0:50; let i=index">
+            <tr *ngFor="let items of favouriteMeal | filter:searchText; let i=index">
               <td>{{items.name}}</td>
               <td>{{items.calories}}</td>
               <td>{{items.carbs}}</td>

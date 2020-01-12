@@ -219,6 +219,11 @@ favouriteFood(data){
   }).pipe(map(res=>res))
 }
 
+trackPoint(data){
+  return this.http.post(this.adminbaseUrl+'trackedPoints',data,{
+
+  }).pipe(map(res=>res))
+}
 
 
 

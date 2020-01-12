@@ -23,6 +23,7 @@ export class NutritionsComponent implements OnInit {
   calories:any;
   protein:any;
   carbs:any;
+  searchText:any;
   fats:any;
   sugar:any;
   currentDate:any;

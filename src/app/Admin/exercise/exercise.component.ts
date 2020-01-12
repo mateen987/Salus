@@ -17,6 +17,7 @@ exerciseInfo:any;
 exerciseData:any;
 modalData:any;
 name:any;
+searchText:any
 calories:any;
 getsearchid:any;
 

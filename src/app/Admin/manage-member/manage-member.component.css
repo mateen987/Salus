@@ -2,7 +2,7 @@
 .my-dashboard{
     background: #e3e8eb;
     padding-top: 4%;
-     height:100vh;
+     /* height:100vh; */
     font-family:inherit ;
    
 }
@@ -33,7 +33,7 @@ td{
     color: #68b4f4;
 }
 .points{
-padding-right: 10px;
+padding-right: 20px;
 }
 .fa-edit{
     color: #87bc51;

@@ -22,7 +22,7 @@ import { PointService } from './services/points.service';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import {DatePipe} from '@angular/common';
 import { NgxSpinnerModule } from "ngx-spinner";
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +43,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
       progressAnimation:"increasing",
       preventDuplicates:true,
     }),
-    FullCalendarModule,
+    FullCalendarModule,Ng2SearchPipeModule,
     BrowserAnimationsModule,
     AngularFontAwesomeModule,
     ReactiveFormsModule,
