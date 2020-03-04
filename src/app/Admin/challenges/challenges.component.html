@@ -14,7 +14,7 @@
                         <a class="nav-link " href="admin/challenges">challenges</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="admin/badges">badges</a>
+                        <a class="nav-link" href="admin/badges">Badges</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="admin/nutritions">Nutritions</a>
@@ -50,17 +50,21 @@
                 <div class="row">
                     <div class="col-md-5 mb-3">
                         <label>Category</label>
-                        <div class="form-group inputgroup ">
-                            <select class="form-control dateInput" [(ngModel)]="Category"  [ngModelOptions]="{standalone: true}"  (change)="open($event.target.value)"   name="sellist1">
-                                <option *ngFor="let items of categoryData;"  [value]="items.id">{{items.name}}</option>                             
+                        <div class="form-group inputgroup">
+                            <select class="form-control dateInput" [(ngModel)]="Category" [ngModelOptions]="{standalone: true}" (change)="open($event.target.value)" >
+                                <option  *ngFor="let items of categoryData"   [value]="items.id">{{items.name}}</option>                             
                             </select>
                         </div>
+                <!-- <input type="text" class="form-control inputgroup"  formControlName="Category" placeholder="Category"><br> -->
+
                     </div>
 
                     <div class="col-md-5 mb-3"  >
                         <label >Sub Category</label>
+                <!-- <input type="text" class="form-control inputgroup"  formControlName="categoryIDs" placeholder="subCategory"><br> -->
+
                         <div class="form-group inputgroup" >
-                            <select  class="form-control dateInput" [(ngModel)]="subCategory"  formControlName="categoryIDs" name="sellist1">  
+                            <select  class="form-control dateInput"  formControlName="categoryIDs"  >  
                                 <option *ngFor="let subitems of subCategory" [value]="subitems.id">{{subitems.name}}</option>         
                             </select>                           
                         </div>
@@ -145,6 +149,31 @@
             </div>
 
         </div>
+
+
+        <table class="table table-borderless mt-3" >
+            <thead>
+                <tr>
+                    <th scope="col" class="col">Challenge TITLE</th>
+                    <th scope="col" class="col text-center">Instructions</th>
+                    <th scope="col" class="col text-center">Start Date</th>
+                    <th scope="col" class="col text-center ">End Date</th>
+                    <th scope="col" class="col text-center ">EDIT/DELETE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let items of allChallenges | filter:searchText; let j=index">
+                    <td class="col text">{{items.name}}</td>
+                    <td class="col text text-center">{{items.instructions}}</td>
+                    <td class="col text text-center">{{items.start_date}}</td>
+                    <td class="col text text-center">{{items.end_date}}</td> 
+                    <td class="col  text-center"><span><i (click)="open(content,items,j)" class="fa fa-edit"></i></span>&nbsp;&nbsp;
+                    <span><i (click)="deleteData(items.id)" class="fa fa-trash"></i></span></td>
+                </tr>
+            </tbody>
+        </table>
+
+
 
 
 

@@ -54,37 +54,42 @@ export class DashboardComponent implements OnInit {
 getuserdata(){
    this.service.dashboardData(this.user_id).subscribe(res=>{
       this.userData=res;
-      // console.log(this.userData)
+       console.log(this.userData)
       this.Calories=this.userData.today.Calories;
       console.log(this.Calories);
       this.caloriesBurned=this.userData.today.totalCaloriesBurned
-      this.caloriesBurned=this.caloriesBurned.toFixed(2);
+      // this.caloriesBurned=this.caloriesBurned.toFixed(2);
       console.log(this.caloriesBurned)
-      if(this.userData['wellBeing'] != null ){
+      // this.point=1;
+      if(this.userData.today.dailyTasks['wellBeing']  != null ){
+        this.point++
+        console.log(this.point)
+      }
+      if(this.userData.today.dailyTasks['nutrition'] !=null){
         this.point++
       }
-      if(this.userData['nutrition'] !=null){
+      if(this.userData.today.dailyTasks['hydrate'] !=null){
         this.point++
       }
-      if(this.userData['hydrate'] !=null){
+      if(this.userData.today.dailyTasks['exercise'] !=null){
         this.point++
       }
-      if(this.userData['exercise'] !=null){
+      if(this.userData.today.dailyTasks['sleep'] !=null){
         this.point++
       }
-      if(this.userData['sleep'] !=null){
-        this.point++
-      }
-      if(this.userData['reflect'] !=null){
+      if(this.userData.today.dailyTasks['reflect'] !=null){
         this.point++
       }
       
   this.weekdays=this.userData.currentWeek;
    this.leaderBoard=this.userData.leaderboard;
   this.badges=this.userData.badges;
-  // console.log(this.badges)
+   console.log("ok",this.weekdays);
    })
 }
-
+percentage(value){
+ return  value.calorieIntake/value.goalCalories*100
+console.log("day is" ,value);
+}
 
 }

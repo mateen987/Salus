@@ -11,7 +11,15 @@ h2,h4,h6{
     font-weight: 700;
     font-family: Montserrat-Bold;
 }
-
+table{
+    background: white;
+}
+.col{
+  width: 20% !important; 
+}
+.col-md-3{
+    width: 15% !important;
+}
 .form-control{
 border: none !important;
 display: inline;
@@ -119,4 +127,17 @@ input[type=checkbox] + label:before{
    }
 .array{
     display:none !important;
+}
+.fa-edit{
+    color: #87bc51;
+    font-size: 24px;
+}
+.fa-trash{
+    color: #b3254b;
+    font-size: 24px;
+}
+.text{
+        text-align: center;
+        text-decoration: underline;
+        color: #93cbfa;
 }

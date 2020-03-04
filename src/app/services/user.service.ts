@@ -154,10 +154,30 @@ FavouriteMeal(data){
     return this.http.post(this.adminbaseUrl+'foods/userFavorites?page=1',data,{
     }).pipe(map(res=>res))
 }
+// admin crud table data
+getchallenges(){
+  return this.http.get(this.adminbaseUrl+'challenges')
+}
+totalBadges(){
+  return this.http.get(this.adminbaseUrl+'badges')
+}
 
+deleteChallenge(id){
+  return this.http.delete(this.adminbaseUrl+'challenges/'+id,{
+  }).pipe(map(res=>res))
+}
+deleteBadge(id){
+  return this.http.delete(this.adminbaseUrl+'badges/'+id,{
+  }).pipe(map(res=>res))
+}
+searchfood(name){
+  return this.http.get(this.adminbaseUrl+'foods?search='+name,{
+  }).pipe(map(res=>res))
+}
 userFavouriteMeals(id){
-  return this.http.post(this.adminbaseUrl+'favoriteFoodLogs/userFavorites',id,{
-
+  console.log("id ye hai",id)
+  return this.http.post('https://dev-api.saluslifestyles.com/api/favoriteFoodLogs/userFavorites',id,{
+    
   }).pipe(map(res=>res))
 }
 

@@ -4,6 +4,7 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor ,HttpUserEvent } f
   import { Observable } from 'rxjs';
   import { tap } from "rxjs/operators";
 import{Router} from '@angular/router'
+import { error } from 'util';
 
 
 @Injectable()
@@ -25,15 +26,20 @@ export class AuthInterceptor implements HttpInterceptor{
          succ => { },
         err => {
   
-        if(err.status=501)
-          this.router.navigateByUrl('/');
+        if(err.status==401){
+            this.router.navigateByUrl('/');
         console.log("error ha")
+
+        }
+        if(err.status==422){
+          console.log("here")
+        }
         }
         
         ));
       }
       else{
-          this.router.navigateByUrl('/')
+           this.router.navigateByUrl('/')
       }
 
     }

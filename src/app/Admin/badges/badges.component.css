@@ -2,7 +2,7 @@
     background: #e3e8eb;
     padding-top: 4%;
     font-family:inherit ;
-     height: 100vh
+     /* height: 100vh */
 }
 .container-fluid{
     width: 92%;
@@ -83,7 +83,22 @@
     cursor: pointer;
 }
 
-
-
-
-  
+table{
+    background: white;
+}
+.col{
+  width: 20% !important; 
+}
+.fa-edit{
+    color: #87bc51;
+    font-size: 24px;
+}
+.fa-trash{
+    color: #b3254b;
+    font-size: 24px;
+}
+.text{
+    text-align: center;
+    text-decoration: underline;
+    color: #93cbfa;
+}

@@ -115,6 +115,32 @@
   </form>
 
 
+
+  <table class="table table-borderless mt-3" >
+    <thead>
+        <tr>
+            <th scope="col" class="col">Badge TITLE</th>
+            <th scope="col" class="col text-center">Start Date</th>
+            <th scope="col" class="col text-center">End Date</th>
+            <!-- <th scope="col" class="col text-center ">Total Point</th> -->
+            <th scope="col" class="col text-center ">EDIT/DELETE</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let items of badges ">
+            <td class="col  text-left">{{items.name}}</td>
+            <td class="col text text-center">{{items.start_date}}</td>
+            <td class="col text text-center">{{items.end_date}}</td> 
+            <td class="col text-center"><span><i (click)="open(content,items,j)" class="fa fa-edit"></i></span>&nbsp;&nbsp;
+                <span><i (click)="deleteData(items.id)" class="fa fa-trash"></i></span></td>
+                <!-- <td class="col text-center">id</td> -->
+                
+        </tr>
+    </tbody>
+</table>
+
+
+
   </div>
 </div>
 

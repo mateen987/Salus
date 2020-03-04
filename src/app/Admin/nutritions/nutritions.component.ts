@@ -93,7 +93,7 @@ deleteData(id){
   })
 }
 updateData(){
-  // console.log("so now"+this.modaldata)
+   console.log("so now"+this.modaldata)
 this.service.updateNutrition(this.modaldata).subscribe(res=>{
   this.nutritionTable();
 this.model.dismissAll();

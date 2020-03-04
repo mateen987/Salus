@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class BadgesComponent implements OnInit {
   cities=[];
+  badges:any;
   selectedItems = [];
   dropdownSettings: any = {};
   ShowFilter = false;
@@ -67,6 +68,7 @@ export class BadgesComponent implements OnInit {
   
   ngOnInit() {
 this.getpoints();
+this.getbadges();
 this.getcompanyName();
     this.cities =[
       { item_id: 1, item_text: 'lahore' },
@@ -87,8 +89,14 @@ this.getcompanyName();
   showSuccess(){
   this.toastr.success("Data Saved successfully");
   }
+  dltSuccess(){
+    this.toastr.success("Data Delete successfully");
+    }
   showError(){
     this.toastr.error("Please Enter Correct data");
+    }
+    errorMessage(){
+      this.toastr.error("Some Error occure");
     }
   
   onItemSelect(item_id: any) {
@@ -131,12 +139,12 @@ handleLimitSelection() {
  
 upload(){
   let ngbDate = this.badgeForm.controls['end_date'].value;
-  let endDate = ngbDate.year+'-'+ ngbDate.month+'-'+ ngbDate.day;
+  let endDate = ngbDate.year+'-'+ ('0' + ngbDate.month).slice(-2) +'-'+ ('0'+ngbDate.day).slice(-2) ;
   let formValues = this.badgeForm.value;
   formValues['end_date'] = endDate;
 
   let ngbstartDate = this.badgeForm.controls['start_date'].value;
-  let startDate = ngbstartDate.year+'-'+ ngbstartDate.month+'-'+ ngbstartDate.day;
+  let startDate = ngbstartDate.year+'-'+ ('0' + ngbstartDate.month).slice(-2) +'-'+ ('0'+ngbstartDate.day).slice(-2);
   let formstartValues = this.badgeForm.value;
   formstartValues['start_date'] = startDate;
 
@@ -152,19 +160,35 @@ upload(){
   //   fd.append('active', this.badgeForm.get('active').value);
   //   fd.append('groupIDs', this.badgeForm.get('groupIDs').value);
 
-  // console.log(this.badgeForm.value)
+   console.log(this.badgeForm.value)
    this.service.postbadge(this.badgeForm.value).subscribe(res =>{
   //  console.log("okg"+res);
    this.showSuccess();
+   this.getbadges();
     this.badgeForm.reset();
    },error=>{
     this.showError();
    }
    ) 
   
-  
 }
 
+
+getbadges(){
+  this.service.totalBadges().subscribe(res=>{
+    this.badges=res;
+   console.log(this.badges)
+  })
+}
+deleteData(id){
+  
+ this.service.deleteBadge(id).subscribe(res=>{
+   this.dltSuccess();
+   this.getbadges();
+ },error =>{
+    this.errorMessage();
+ })
+}
 logout(){
 
   localStorage.removeItem('userid');

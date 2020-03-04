@@ -40,10 +40,11 @@
         </div>
         <div class="form-group calenderInput">
           <div class="input-group">
-            <input class="form-control date" readonly  ngbDatepicker #dd="ngbDatepicker" placeholder="Select-Date" name="dp">
+            <input class="form-control date" readonly   ngbDatepicker #dd="ngbDatepicker" [(ngModel)]="dateInput" (dateSelect)="open(dateInput)" placeholder="Select-Date" >
             <!-- <div class="input-group-append"> -->
-            <button class="btn calender btn-outline-secondary fa fa-calendar" (click)="dd.toggle()"
+            <button class="btn calender btn-outline-secondary fa fa-calendar" (click)="dd.toggle()" 
               type="button"></button>
+
             <!-- </div> -->
           </div>
 
@@ -55,7 +56,7 @@
       <div class="animation column col-sm-12 col-md-4 col-lg-2 p-2">
         <div class="item text-center">
           <label class="nutrition">CALORIES BURNED</label>
-          <circle-progress [percent]="75" radius="67" [outerStrokeWidth]="12" [innerStrokeWidth]="12" [space]="-12"
+          <circle-progress [percent]="calories" radius="67" [outerStrokeWidth]="12" [innerStrokeWidth]="12" [space]="-12"
             [showUnits]="false" [outerStrokeColor]="'#ad123c'" [innerStrokeColor]="'#e7e8ea'" [titleFontSize]="36"
             [titleColor]=" '#ffffff' " [subtitleFontSize]="18" [animation]="true" [animationDuration]="300"
             [subtitle]="'Kcel'" [showSubtitle]="false" [title]="calories" [showTitle]="true" [startFromZero]="false"
@@ -109,7 +110,8 @@
       
 
       
-      <h4>MY Exercise Diary - {{ viewDate | calendarDate:('dayViewTitle'):'en'}}</h4><br>
+      <h4 [hidden]="dateInput !== undefined">MY Exercise Diary - {{ viewDate | calendarDate:('dayViewTitle'):'en'}}</h4><br>
+      <h4 [hidden]="dateInput == undefined">MY Exercise Diary - {{ dateInput | calendarDate:('dayViewTitle'):'en'}}</h4><br>
 
       <table class="table table-borderless justify-content-center">
        <thead>
