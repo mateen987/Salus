@@ -8,6 +8,14 @@
 .container-fluid{
     width: 92%;
 }
+a.dropdown-item{
+    color: black;
+}
+a.dropdown-item:focus {     
+    background-color:white;    
+
+}
+
 .points{
 position: absolute;
 top: 35%;

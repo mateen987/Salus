@@ -175,11 +175,15 @@ searchfood(name){
   }).pipe(map(res=>res))
 }
 userFavouriteMeals(id){
-  console.log("id ye hai",id)
-  return this.http.post('https://dev-api.saluslifestyles.com/api/favoriteFoodLogs/userFavorites',id,{
-    
+  //  console.log("id ye hai",id)
+  return this.http.post(this.adminbaseUrl+'favoriteFoodLogs/userFavorites',id,{
   }).pipe(map(res=>res))
 }
+// favouriteFood(data){
+//   return this.http.post(this.adminbaseUrl+'favoriteFoodLogs',data,{
+
+//   }).pipe(map(res=>res))
+// }
 
 dashboardData(id){
   return this.http.get(this.adminbaseUrl+'users/'+id+'/dashboard')

@@ -32,6 +32,7 @@ export class DashboardComponent implements OnInit {
   }
 
  getPoint(){
+
    this.service.userPoint(this.user_id).subscribe(res=>{
      this.userPoints=res;
      this.userPoints=this.userPoints.month;

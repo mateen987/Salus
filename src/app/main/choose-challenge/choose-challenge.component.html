@@ -39,7 +39,7 @@
                     <h6 class="slogen"><a class="find-challenge" href="">FIND A CHALLENGE</a></h6>
                     <p class="category" >Choose Category :</p>
                     <div class="form-group inputgroup ">   
-                <select class="form-control dateInput" [(ngModel)]="Category"  (change)="open($event.target.value)" >
+                <select class="form-control dateInput" [(ngModel)]="Category"  [ngModelOptions]="{standalone: true}" (change)="open($event.target.value)" >
                         <option *ngFor="let items of category" [value]="items.id">{{items.name}}</option>
                       </select>
             </div><br>

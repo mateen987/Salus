@@ -63,7 +63,7 @@ viewDate: Date = new Date();
    this.getnutrition();
     this.userselectedFavorite();
     this.favouriteMeals();
-    this.userselectedFavorite();
+    
   }
 
 
@@ -208,7 +208,7 @@ userselectedFavorite(){
 
   this.service.userFavouriteMeals(this.user_id).subscribe(res=>{
         this.userFavorite=res;
-        console.log("han g",this.userFavorite)
+        console.log(this.userFavorite)
   })
 }
 getmeals(){

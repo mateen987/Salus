@@ -389,10 +389,10 @@
 
 <ng-template #content let-c="close" let-d="dismiss">
 
-  <h4 class="text-center claim mt-3 mb-3">ADD FOOD ITEM</h4>
+  <h4 class="text-center claim mt-3 mb-3">ADD FOOD </h4>
 
   <div class="search input-group col-md-8 col-sm-12 m-auto form-controls">
-    <input class="search form-control py-2"  type="search" [(ngModel)]="searchword" placeholder="search-Meal">
+    <input class="search form-control py-2"  type="search" [(ngModel)]="searchword" placeholder="Search Food">
     <span class="input-group-append">
       <button  class="btn search-btn" type="button" (click)="searchFood()">
         <i class="fa fa-search"></i>
@@ -424,7 +424,7 @@
       </div>
     </div>
     <div class="col-md-5 pl-0.3">
-      <label>Choose Meal</label>
+      <label>Choose Food</label>
       <div class="form-group inputgroup form-controls">
         <select class="form-control dateInput" [(ngModel)]="Category">
           <option *ngFor="let items of foodName ; let i=index" [value]="items.id">{{items.name}}</option>

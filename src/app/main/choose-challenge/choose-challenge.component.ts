@@ -23,8 +23,16 @@ data={}
 
   ngOnInit() {
     this.user_id=localStorage.getItem('userid');
-    this.getPoint();
     this.challenge();
+    this.getPoint();
+    this.getbadges();
+   
+  }
+  getbadges(){
+    this.service.totalBadges().subscribe(res=>{
+      this.challeng=res;
+     console.log(this.challeng)
+    })
   }
 
   getPoint(){
@@ -37,17 +45,23 @@ data={}
   }
 
   open(id){
-    // console.log(id);
-    this.subCategory=this.category[id-1].children;
-    this.challeng=this.category[id-1].challenges;
-    // console.log(this.subCategory)
-  }
+     console.log(id);
+     for(let v=0;v<=this.category.length ; v++){
+   if(this.category[v].id==id){
+        this.subCategory= this.category[v].children;  
+      break 
+     };
+
+
+     console.log(this.subCategory)
+  }}
   challenge(){
     this.service.getCategory().subscribe(res=>{
       this.category=res;
-      // console.log(this.category)
+       console.log("han g",this.category)
     })
   }
+
   moredescriptive(id){
     this.data={
       category:this.Category,
