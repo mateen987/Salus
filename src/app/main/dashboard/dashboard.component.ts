@@ -12,6 +12,8 @@ export class DashboardComponent implements OnInit {
   progress = 500;
   user_id:any;
   userData:any;
+  goalCalories=2440;
+  dailyPoints=6;
   Calories:any;
   caloriesBurned:any;
   weekdays:any;
@@ -19,7 +21,11 @@ export class DashboardComponent implements OnInit {
   badges:any;
   userPoints:any;
   point=0;
-  constructor(private service:UserService,private router: Router) { }
+  constructor(private service:UserService,private router: Router) {
+   
+    
+
+   }
 
   progressBar = document.querySelector('.progress-bar');
   // intervalId;
@@ -28,7 +34,7 @@ export class DashboardComponent implements OnInit {
     this.user_id = localStorage.getItem('userid');
     this.getPoint();
     this.getuserdata();
-
+   
   }
 
  getPoint(){
@@ -58,6 +64,8 @@ getuserdata(){
        console.log(this.userData)
       this.Calories=this.userData.today.Calories;
       console.log(this.Calories);
+     
+      this.goalCalories = this.goalCalories - this.Calories
       this.caloriesBurned=this.userData.today.totalCaloriesBurned
       // this.caloriesBurned=this.caloriesBurned.toFixed(2);
       console.log(this.caloriesBurned)
@@ -80,8 +88,15 @@ getuserdata(){
       }
       if(this.userData.today.dailyTasks['reflect'] !=null){
         this.point++
-      }
       
+      }
+      // if (this.point <= 99) {
+     
+      //   this.point = this.point * 17;
+      // } 
+      console.log("points are",this.point)
+      this.dailyPoints=this.dailyPoints-this.point
+ 
   this.weekdays=this.userData.currentWeek;
    this.leaderBoard=this.userData.leaderboard;
   this.badges=this.userData.badges;
