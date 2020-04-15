@@ -87,6 +87,7 @@ obj:any;
      this.subCategory=id;
       }
   upload(){
+    console.log("ok")
     let ngbDate = this.challengeForm.controls['end_date'].value;
     let endDate =  ngbDate.year+'-'+ ('0' + ngbDate.month).slice(-2) +'-'+ ('0'+ngbDate.day).slice(-2);
     let formValues = this.challengeForm.value;
@@ -98,16 +99,18 @@ obj:any;
     // console.log(endDate);
     // console.log(startDate);
      let company = this.challengeForm.controls['categoryIDs'].value;
-     var array = JSON.parse("[" + company + "]");
+     let array = JSON.parse("[" + company + "]");
       let groupid= this.challengeForm.value
       groupid['categoryIDs'] = array;
 
      console.log(this.challengeForm.value);
 
     this.service.uploadchallenges(this.challengeForm.value).subscribe(res=>{
-      // console.log('success'+res);
+
       this.showSuccess();
+      this.getAllChallenges();
       this.challengeForm.reset();
+    
     },error=>{
       this.showError();
     })

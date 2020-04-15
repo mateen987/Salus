@@ -23,8 +23,10 @@ data={};
 userPoints:any;
 chooseDate:any;
 tableData:any;
+durations:any;
 viewDate: Date = new Date();
 dateInput:any;
+minutes=30;
 viewDateInput:any;
   constructor(private _formBuilder:FormBuilder,private toastr:ToastrService,private service:UserService,private date:DatePipe,private ngbDateParserFormatter: NgbDateParserFormatter) {
     this.exerciseForm =this._formBuilder.group({
@@ -116,7 +118,7 @@ getTableData(){
     this.tableData=res;
      console.log("table data",this.tableData)
     this.calories=this.tableData.totalCaloriesBurned;
-    // this.calories=this.calories.toFixed(2)
+     this.calories=this.calories.toFixed(0)
     this.exerciseLogs=this.tableData.exerciseLogs;
     // console.log(this.exerciseLogs)
   
@@ -142,13 +144,16 @@ open(event){
 }
 
 caloriesburned(items){
-  let durations =items.duration;
+   this.durations =items.duration;
+  // this.minutes=this.minutes-this.durations
   let calories_burned_per_minute=items.exercise.calories_burned_per_minute;
-  console.log(calories_burned_per_minute,durations)
-  durations=durations*calories_burned_per_minute
-   durations=durations.toFixed(2)
-  console.log(durations)
-  return durations;
+  console.log(calories_burned_per_minute,this.durations)
+  this.minutes= this.durations
+   this.minutes=30 - this.minutes
+  this.durations=this.durations*calories_burned_per_minute
+   this.durations=this.durations.toFixed(2)
+  return this.durations;
+  
 }
 
 deleteData(id){

@@ -4,6 +4,8 @@ import{UserService} from '../../services/user.service'
 import {NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 import {DatePipe} from '@angular/common';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from "ngx-spinner";  
+
 
 @Component({
   selector: 'app-choose-challenge',
@@ -14,12 +16,14 @@ export class ChooseChallengeComponent implements OnInit {
 category:any;
 userPoints:any;
 Category:any;
+id:any;
 subCategory:any;
 selectedItem:any;
 challeng:any;
+findCategory:any
 user_id:any;
 data={}
-  constructor(private service:UserService,private router: Router) { }
+  constructor(private service:UserService,private router: Router,private SpinnerService: NgxSpinnerService) { }
 
   ngOnInit() {
     this.user_id=localStorage.getItem('userid');
@@ -28,10 +32,20 @@ data={}
     this.getbadges();
    
   }
+  showSpinner() {
+    this.SpinnerService.show();
+    setTimeout(() => {
+        /** spinner ends after 5 seconds */
+        this.SpinnerService.hide();
+    }, 5000);
+  }
+
   getbadges(){
-    this.service.totalBadges().subscribe(res=>{
+ this.showSpinner();
+    this.service.getchallenges().subscribe(res=>{
       this.challeng=res;
-     console.log(this.challeng)
+     console.log("okay we here",this.challeng)
+     this.SpinnerService.hide();
     })
   }
 
@@ -45,6 +59,7 @@ data={}
   }
 
   open(id){
+    this.id=id;
      console.log(id);
      for(let v=0;v<=this.category.length ; v++){
    if(this.category[v].id==id){
@@ -61,14 +76,26 @@ data={}
        console.log("han g",this.category)
     })
   }
+ findChallenge(){
+  console.log(this.category)
+  this.SpinnerService.show();
+// this.category=this.category.find(this.category.id == this.id)
+    this.service.findCategory(this.id).subscribe(res=>{
+     this.findCategory =res;
+       this.challeng=this.findCategory.challenges
+      console.log(this.challeng)
+      this.SpinnerService.hide();
+    })
+ }
 
   moredescriptive(id){
-    this.data={
-      category:this.Category,
-      challenge:id,
-    }
+ console.log(id)
 
-    this.service.sendData(this.data);
+    // this.data = {
+    //   challenge:id,
+    // }
+    // console.log(this.data)
+    this.service.sendData(id);
     this.router.navigate(["/challenge"],)
   }
 

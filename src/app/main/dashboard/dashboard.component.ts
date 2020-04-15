@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import{UserService} from '../../services/user.service'
 import {NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
+import { Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,14 +15,17 @@ export class DashboardComponent implements OnInit {
   userData:any;
   goalCalories=2440;
   dailyPoints=6;
+  totalMinutes:any;
   Calories:any;
   caloriesBurned:any;
   weekdays:any;
   leaderBoard:any;
+  values:any;
   badges:any;
   userPoints:any;
   point=0;
-  constructor(private service:UserService,private router: Router) {
+  totalExercise =30;
+  constructor(private service:UserService,private router: Router,private Renderer:Renderer2) {
    
     
 
@@ -63,7 +67,10 @@ getuserdata(){
       this.userData=res;
        console.log(this.userData)
       this.Calories=this.userData.today.Calories;
-      console.log(this.Calories);
+      this.totalMinutes = this.userData.today.totalMinutesExercised;
+      
+      this.totalExercise =  this.totalExercise - this.totalMinutes;
+      console.log(this.totalMinutes);
      
       this.goalCalories = this.goalCalories - this.Calories
       this.caloriesBurned=this.userData.today.totalCaloriesBurned
@@ -104,8 +111,25 @@ getuserdata(){
    })
 }
 percentage(value){
- return  value.calorieIntake/value.goalCalories*100
-console.log("day is" ,value);
+
+  this.values=value.calorieIntake/value.goalCalories*100;
+  if(this.values > 90){
+    console.log("value is",this.values);
+    return 'progress-bar progress-bar-red'
+  }
+   else return 'progress-bar progress-bar-nutrition'
+}
+
+percentages(value){
+
+  this.values=value.calorieIntake/value.goalCalories*100;
+   this.values.toFixed(2)
+ return this.values+"%";
+}
+calculation(value){
+  this.values=value.calorieIntake/value.goalCalories*100;
+   this.values.toFixed(2)
+ return this.values;
 }
 
 }

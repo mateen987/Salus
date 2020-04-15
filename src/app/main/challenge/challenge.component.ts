@@ -32,7 +32,7 @@ userPoints:any;
     this.user_id=localStorage.getItem('userid');
     this.getPoint();
      this.data = this.service.getuserData();
-      // console.log(this.data)
+     console.log(this.data)
       this.challenge();
    }
    getPoint(){
@@ -44,10 +44,10 @@ userPoints:any;
   }
 
   challenge(){
-   
-    this.service.getCategory().subscribe(res=>{
+    console.log(this.data)
+    this.service.findChallenge(this.data).subscribe(res=>{
       this.category=res;
-      // console.log(this.category)
+       console.log(this.category)
       this.challengeNo=this.data.challenge;
       this.challengecategory=this.data.category;
       this.challengecategory=parseInt(this.challengecategory)
@@ -65,15 +65,16 @@ userPoints:any;
 joinChallenge(){
   this.challengeinfo={
     user_id:localStorage.getItem('userid'),
-    challenge_id:this.challengeNo
+    challenge_id:this.data
   }
+  console.log("info",this.challengeinfo)
 this.service.joinChallenge(this.challengeinfo).subscribe(res => {
  this.challengeCalendar=res;
   // console.log(this.challengeCalendar);
   this.service.CalendarInfo(this.challengeCalendar);
    this.router.navigate(["/join-challenge"])
 }, error=>{
-//  console.log("error");
+ console.log("error");
 })
 
 // [routerLink]="'/join-challenge'"

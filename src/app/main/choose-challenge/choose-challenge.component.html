@@ -49,8 +49,8 @@
                         <option *ngFor="let item of subCategory">{{item.name}}</option>
                       </select>
             </div><br>
-            <button type="button" class="user btn btn-sm pull-right ">
-                    <span class="logfood">SEARCH CHALLENGE</span>
+            <button type="button" class="user btn btn-sm pull-right " (click)="findChallenge()">
+                    <span class="logfood" >SEARCH CHALLENGE</span>
                     <i class="logfoods fa fa-chevron-right "></i>
                   </button><br><br><br>
             </div>
@@ -64,8 +64,8 @@
                  <div class="p-3"  *ngFor="let items of challeng">
                   <h6 >{{items.name}}</h6>
                   <p class="description">
-                   {{items.dicription}}
-                  </p>
+                   {{items.description}}
+                  </p><br>
                  <button type="button" class="btn viewChallenge" [value]="items.id" (click)="moredescriptive(items.id)">VIEW OR JOIN CHALLENGE</button>
                  <!-- <p class="p-4" >15 people are signup for this</p> -->
                  </div>
@@ -94,9 +94,14 @@
         </div>
     
     
+        <ngx-spinner
+        text=""
+        bdColor = "rgba(51, 51, 51, 0.8)"
+        size = "large"
+        color = "#934d4d"
+        type = "ball-8bits"></ngx-spinner>
 
-
-   
+ 
 
 
 

@@ -51,7 +51,7 @@
                     <div class="col-md-5 mb-3">
                         <label>Category</label>
                         <div class="form-group inputgroup">
-                            <select class="form-control dateInput" [(ngModel)]="Category" [ngModelOptions]="{standalone: true}" (change)="open($event.target.value)" >
+                            <select class="form-control dateInput"  formControlName="categoryIDs"   (change)="open($event.target.value)" >
                                 <option  *ngFor="let items of categoryData"   [value]="items.id">{{items.name}}</option>                             
                             </select>
                         </div>
@@ -64,7 +64,7 @@
                 <!-- <input type="text" class="form-control inputgroup"  formControlName="categoryIDs" placeholder="subCategory"><br> -->
 
                         <div class="form-group inputgroup" >
-                            <select  class="form-control dateInput"  formControlName="categoryIDs"  >  
+                            <select  class="form-control dateInput"  [(ngModel)]="Category" [ngModelOptions]="{standalone: true}" >  
                                 <option *ngFor="let subitems of subCategory" [value]="subitems.id">{{subitems.name}}</option>         
                             </select>                           
                         </div>

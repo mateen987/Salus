@@ -5,7 +5,7 @@ import {NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {  ToastrService } from 'ngx-toastr';
 import { error } from '@angular/compiler/src/util';
-
+import { NgxSpinnerService } from "ngx-spinner";  
 
 @Component({
   selector: 'app-nutrition',
@@ -50,7 +50,7 @@ foodName:any;
 viewDateInput:any;
 viewDate: Date = new Date();
   constructor(private datenow:DatePipe,private service:UserService,private toastr:ToastrService,
-    private model:NgbModal,) {
+    private SpinnerService: NgxSpinnerService,  private model:NgbModal,) {
   
       this.getmeals()
    }
@@ -60,8 +60,9 @@ viewDate: Date = new Date();
     this.getPoint();
      this.getallfood();
    this.date = this.datenow.transform(new Date(),"yyyy-MM-dd");
+   this.userselectedFavorite();
    this.getnutrition();
-    this.userselectedFavorite();
+    // this.userselectedFavorite();
     this.favouriteMeals();
     
   }
@@ -202,15 +203,23 @@ favouriteMeals(){
   this.service.FavouriteMeal(this.data).subscribe(res=>{
     this.favouriteMeal=res;
     console.log("okay",this.favouriteMeal);
+ 
   })
-}
-userselectedFavorite(){
 
-  this.service.userFavouriteMeals(this.user_id).subscribe(res=>{
+}
+
+userselectedFavorite(){
+  this.data={
+    user_id: this.user_id,
+    date: this.date
+  }
+  this.service.userFavouriteMeals(this.data).subscribe(res=>{
         this.userFavorite=res;
-        console.log(this.userFavorite)
+        console.log("favrts",this.userFavorite)
   })
 }
+
+
 getmeals(){
   this.service.mealsForNutrition().subscribe(res=>{
     this.userMeal=res;
@@ -218,9 +227,11 @@ getmeals(){
   })
 }
 getallfood(){
+  this.SpinnerService.show();  
   this.service.foodName().subscribe(res=>{
        this.foodName=res;
        console.log(this.foodName);
+       this.SpinnerService.hide();  
   })
 }
 

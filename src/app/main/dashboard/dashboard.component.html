@@ -45,7 +45,7 @@
               &nbsp;</span>
             <i class="logfood fa fa-chevron-right pull-right"></i>
           </button>
-          <p class="day_left">{{goalCalories}} To Go Today</p>
+          <p class="day_left">{{goalCalories}} Kcal To Go Today</p>
         </div>
       </div>
       <div class=" col-sm-12 col-md-4 col-lg-2 p-1">
@@ -60,7 +60,7 @@
             <img class="pull-left icon" src="assets/images/icon/workout.png"><span class="logfood">LOG WORKOUT</span>
             <i class="logfood fa fa-chevron-right pull-right"></i>
           </button>
-          <p class="day_left">140 To Go Today</p>
+          <p class="day_left">{{totalExercise}} Minutes To Go Today</p>
         </div>
       </div>
 
@@ -254,12 +254,15 @@
               <div class="row">
                 <div class="col weak-day" *ngFor="let day of weekdays">
                   <div class="initialSign">
-                    <p class="weeklySign"><img src="assets/images/icon/none.png" alt=""></p>
+                    <p class="weeklySign" >
+                      <img *ngIf="calculation(day) > '90'" src="assets/images/icon/caution.png" alt="">
+                      <img *ngIf="calculation(day) > '80' && calculation(day)  < '90' " src="assets/images/icon/starlead.png" alt="">         
+                    </p>
+                    <!-- <p class="weeklySign" *ngIf="percentages(day) <= '80' "><img src="assets/images/icon/starlead.png" alt=""></p>                   -->
                   </div>
                   <div class="progress justify-content-center  progress-bar-vertical">
-                    <div class="progress-bar progress-bar-nutrition" role="progressbar" aria-valuenow="30"
-                      aria-valuemin="0" aria-valuemax="100"  [style.background-color]="percentage(day)">
-
+                    <div [ngClass]="percentage(day)" role="progressbar" aria-valuenow="30"
+                      aria-valuemin="0" aria-valuemax="100"  [style.height]="percentages(day)" >
                     </div>
                   </div>
                   <div>

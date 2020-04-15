@@ -23,6 +23,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import {DatePipe} from '@angular/common';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 @NgModule({
   declarations: [
     AppComponent,

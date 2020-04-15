@@ -227,7 +227,7 @@ ngAfterViewChecked(){
          this.dailyPoint=this.point;
         //  console.log(this.dailyPoint);
         this.test.push(this.dailyPoint)
-        // console.log("test"+this.test)
+        //  console.log("test"+this.test)
          this.point=0;
        }
            
@@ -257,9 +257,9 @@ this.service.dailytaskpost(this.data).subscribe(res=>{
   this.resData=res;
   //  console.log(this.resData)
   location.reload();
- this.getdata();
- this.getPoint();
-  this.modal.dismissAll();
+//  this.getdata();
+//  this.getPoint();
+//   this.modal.dismissAll();
 
  
 })

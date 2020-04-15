@@ -20,7 +20,10 @@ export class AuthInterceptor implements HttpInterceptor{
      
      const clonedreq=req.clone({
          headers:req.headers.set("Authorization","Bearer "+ localStorage.getItem('token'))
+      
      });
+        // body: raw
+      // redirect: 'follow'
      return next.handle(clonedreq).pipe(
      tap(
          succ => { },

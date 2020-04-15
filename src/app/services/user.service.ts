@@ -24,14 +24,17 @@ Name:any;
    constructor(private http:HttpClient) { }
    sendData(data){
    this.userdata=data;
+   console.log("service",data)
    }
    getuserData(){
+     console.log("service",this.userdata)
   return this.userdata
    }
    CalendarInfo(info){
     this.calendarData=info;
    }
    getcalendarData(){
+    //  console.log("calendar data",this.calendarData)
      return this.calendarData;
    }
 
@@ -116,12 +119,16 @@ getSearchExercise(id){
 getCategory(){
   return this.http.get(this.adminbaseUrl+'categories')
 }
+findCategory(id){
+  return this.http.get(this.adminbaseUrl+'categories/'+id)
+}
 getUsers(){
 return this.http.get(this.adminbaseUrl+'users?page=2')
 }
  
 uploadchallenges(data){
   return this.http.post(this.adminbaseUrl+'challenges',data,{
+    
 
   }).pipe(map(res=>res))
 }
@@ -161,7 +168,9 @@ getchallenges(){
 totalBadges(){
   return this.http.get(this.adminbaseUrl+'badges')
 }
-
+findChallenge(id){
+  return this.http.get(this.adminbaseUrl+'challenges/'+id )
+}
 deleteChallenge(id){
   return this.http.delete(this.adminbaseUrl+'challenges/'+id,{
   }).pipe(map(res=>res))
@@ -174,9 +183,9 @@ searchfood(name){
   return this.http.get(this.adminbaseUrl+'foods?search='+name,{
   }).pipe(map(res=>res))
 }
-userFavouriteMeals(id){
-  //  console.log("id ye hai",id)
-  return this.http.post(this.adminbaseUrl+'favoriteFoodLogs/userFavorites',id,{
+userFavouriteMeals(userId){
+    console.log("id ye hai",userId)
+  return this.http.post(this.adminbaseUrl+'favoriteFoodLogs/userFavorites',userId,{
   }).pipe(map(res=>res))
 }
 // favouriteFood(data){

@@ -32,12 +32,18 @@
     </div>
     <!-- <profile banner end> -->
       <br><br>
+      <!-- <li *ngFor="let item of userCalendar">
+        {{item.day}}
+      </li> -->
+      
+      
     <div class="row">
       <div class="tabletitle col-md-5">
         <h4>{{ viewDate | calendarDate:('dayViewTitle'):'en'}}</h4>
       </div>
       <div class="tabletitle col-md-7">
-        <div class="row"><h5 class="challenge">{{Name}}</h5>
+        <div class="row">
+          <h5 class="challenge">{{Name}}</h5>
           <button type="button" (click)="instruction()" class="btn btn-default Progress_btn  ">
            <span class="logfood">&nbsp;INSTRUCTIONS &nbsp;</span>
             </button>
@@ -51,15 +57,16 @@
         (beforeViewRender)="beforeMonthViewRender($event)"
         >
       </mwl-calendar-month-view>
-      <ng-template #customCellTemplate let-day="day" >
+      <ng-template #customCellTemplate let-day="day" let-point="day">
         <div class="cal-cell-top"  >
           <!-- <span class="cal-day-badge">0/6 points <a class="edit" (click)="open(content)">Edit</a> </span> -->
           <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber' }} </span>
         
         </div>
+    
         <div class="text-center task" >
-          <img (click)="joinChallenge(day)" *ngIf="userCalendar[day.date.getDate()].challengeEntry == false"  src="../../../assets/images/icon/badges/task-uncheck.png" class="img-fluid mx-auto ">
-          <img *ngIf="userCalendar[day.date.getDate()].challengeEntry == true"  src="../../../assets/images/icon/badges/daily-task.png" width="44%" class="img-fluid mx-auto ">
+          <img (click)="joinChallenge(day)" *ngIf="testarray[day.date.getDate()-1] == false"  src="../../../assets/images/icon/badges/task-uncheck.png" class="img-fluid mx-auto ">
+          <img *ngIf="testarray[day.date.getDate()-1] == true"  src="../../../assets/images/icon/badges/daily-task.png" width="44%" class="img-fluid mx-auto ">
     
         </div>
       </ng-template>
@@ -81,8 +88,6 @@
 
   </div>
 </div>
-
-
 
 
 
